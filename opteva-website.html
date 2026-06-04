@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Opteva — Your AI Social Media Manager. Trained On Your Business.</title>
+<meta name="description" content="Create a month's worth of social media content in 15 minutes. AI-powered posts, captions, videos, images, and scheduling for Facebook, Instagram, TikTok, YouTube Shorts, and LinkedIn."/>
+<meta property="og:title" content="Opteva — Your AI Social Media Manager"/>
+<meta property="og:description" content="Create a month's worth of content in 15 minutes. Trained on your business."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════
+   DESIGN SYSTEM
+   ═══════════════════════════════════════ */
+:root{
+  /* Opteva brand colors */
+  --navy:#1B3A5C;--navy-light:#224A72;--navy-dark:#122840;
+  --teal:#3DBCB2;--teal-dark:#2FA89F;--teal-light:#5CD6CC;
+  --teal-glow:rgba(61,188,178,0.10);--teal-glow2:rgba(61,188,178,0.05);
+  /* Light theme palette */
+  --bg:#ffffff;--bg-off:#f5f7fa;--bg-warm:#fafbfd;
+  --text:#1a2a3a;--text-secondary:#566a7f;--text-muted:#8fa0b3;
+  --border:#dfe6ed;--border-light:#eaf0f5;
+  /* Dark card palette (for accent sections like Netlify) */
+  --card-dark:#1B3A5C;--card-dark-light:#224A72;--card-dark-border:rgba(61,188,178,0.25);
+  /* Accents */
+  --blue:#2E86C1;--blue-light:#5BC8D8;
+  --gold:#f59e0b;--rose:#f43f5e;
+  --radius:12px;--radius-lg:20px;--radius-xl:24px;
+  --shadow:0 2px 16px rgba(22,43,69,0.08);--shadow-lg:0 8px 32px rgba(22,43,69,0.12);
+  --shadow-teal:0 4px 24px rgba(78,205,196,0.2);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+/* UTILITY */
+.container{max-width:1160px;margin:0 auto;padding:0 32px;}
+.section{padding:96px 0;}
+@media(max-width:768px){.section{padding:60px 0;}}
+.text-teal{color:var(--teal);}
+.text-muted{color:var(--white-50);}
+.text-center{text-align:center;}
+.flex-center{display:flex;align-items:center;justify-content:center;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr;gap:32px;}}
+
+/* TYPOGRAPHY */
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5.5vw,72px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;}
+h3{font-size:clamp(18px,2.5vw,24px);font-weight:700;line-height:1.3;}
+p{line-height:1.7;}
+.subhead{font-size:clamp(16px,2vw,20px);color:var(--text-secondary);line-height:1.7;max-width:640px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:2px;
+  margin-bottom:16px;}
+.section-label::before{content:'';width:24px;height:2px;background:var(--teal);border-radius:2px;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:16px 32px;border-radius:var(--radius);font-size:16px;font-weight:700;
+  font-family:'Inter',sans-serif;cursor:pointer;border:none;transition:all 0.25s;
+  text-decoration:none;letter-spacing:0.2px;white-space:nowrap;}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow-teal);border-radius:10px;}
+.btn-primary:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 6px 30px rgba(61,188,178,0.3);}
+.btn-secondary{background:transparent;color:var(--navy);border:1.5px solid var(--border);border-radius:10px;}
+.btn-secondary:hover{border-color:var(--teal);color:var(--teal-dark);background:var(--teal-glow);transform:translateY(-2px);}
+/* Dark-context buttons (inside dark cards) */
+.dark-section .btn-secondary{color:white;border-color:rgba(255,255,255,0.2);}
+.dark-section .btn-secondary:hover{border-color:var(--teal);color:var(--teal);}
+.btn-sm{padding:12px 24px;font-size:14px;}
+.btn-lg{padding:18px 40px;font-size:17px;}
+.btn-group{display:flex;gap:16px;flex-wrap:wrap;}
+@media(max-width:480px){.btn-group{flex-direction:column;}.btn{width:100%;}}
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-light);transition:all 0.3s;}
+nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;height:80px;}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo img{height:44px;width:auto;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--teal-dark);}
+.nav-cta{margin-left:8px;}
+.nav-mobile{display:none;background:none;border:none;color:var(--navy);font-size:24px;cursor:pointer;padding:8px;}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-mobile{display:block;}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;
+    background:white;padding:24px;gap:20px;border-bottom:1px solid var(--border);box-shadow:var(--shadow);}
+}
+
+/* ═══════════════════════════════════════
+   SECTION 1: HERO
+   ═══════════════════════════════════════ */
+.hero{padding:160px 0 120px;position:relative;overflow:hidden;background:var(--bg);}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;
+  background:radial-gradient(circle,var(--teal-glow) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(78,205,196,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;}
+.hero-text{max-width:600px;}
+.hero h1{color:var(--navy);}
+.hero h1 span{display:block;background:linear-gradient(135deg,var(--teal-dark),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero .subhead{margin:24px 0 40px;color:var(--text-secondary);}
+.hero-visual{position:relative;}
+
+/* Dashboard Mockup */
+.dash-mockup{background:var(--card-dark);border:1px solid var(--card-dark-border);border-radius:var(--radius-xl);
+  padding:24px;box-shadow:var(--shadow-lg);position:relative;}
+.dash-topbar{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:16px;
+  border-bottom:1px solid rgba(255,255,255,0.08);}
+.dash-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.dash-dot:nth-child(1){background:#f43f5e;}
+.dash-dot:nth-child(2){background:#f59e0b;}
+.dash-dot:nth-child(3){background:#22c55e;}
+.dash-url{margin-left:12px;background:rgba(255,255,255,0.06);border-radius:6px;
+  padding:4px 14px;font-size:12px;color:rgba(255,255,255,0.5);flex:1;}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.dash-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);
+  padding:16px;transition:border-color 0.3s;}
+.dash-card:hover{border-color:var(--teal);}
+.dash-card-icon{font-size:20px;margin-bottom:8px;}
+.dash-card-title{font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:4px;}
+.dash-card-sub{font-size:11px;color:rgba(255,255,255,0.5);}
+.dash-card-bar{height:4px;background:rgba(255,255,255,0.1);border-radius:4px;margin-top:8px;overflow:hidden;}
+.dash-card-bar-fill{height:100%;border-radius:4px;background:var(--teal);}
+
+/* Floating Platform Badges */
+.platform-badges{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;justify-content:center;}
+.p-badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:6px 14px;
+  font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);}
+.p-badge-dot{width:6px;height:6px;border-radius:50%;}
+
+/* Trust Bar */
+.trust-bar{margin-top:64px;text-align:center;}
+.trust-label{font-size:13px;color:var(--text-muted);font-weight:500;margin-bottom:20px;}
+.trust-logos{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;opacity:0.35;}
+.trust-logo{font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-secondary);}
+
+/* ═══════════════════════════════════════
+   SECTION 2: PROBLEM
+   ═══════════════════════════════════════ */
+.problem{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:48px 0 44px;}
+@media(max-width:768px){.pain-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.pain-grid{grid-template-columns:1fr;}}
+.pain-card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:28px 20px;text-align:center;transition:all 0.25s;position:relative;overflow:hidden;}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--rose),#fb923c);opacity:0;transition:opacity 0.25s;}
+.pain-card:hover{border-color:var(--rose);transform:translateY(-4px);box-shadow:0 8px 30px rgba(244,63,94,0.08);}
+.pain-card:hover::before{opacity:1;}
+.pain-icon{font-size:36px;margin-bottom:14px;}
+.pain-title{font-size:15px;font-weight:700;color:var(--navy);line-height:1.4;}
+.problem-bottom{font-size:16px;color:var(--text-secondary);line-height:1.8;max-width:680px;margin:0 auto;text-align:center;}
+.problem-bottom strong{color:var(--teal-dark);font-weight:700;}
+
+/* ═══════════════════════════════════════
+   SECTION 3: SOLUTION
+   ═══════════════════════════════════════ */
+.solution-prompt{background:var(--card-dark);border:1px solid var(--card-dark-border);border-radius:var(--radius-lg);
+  padding:24px;max-width:640px;margin:48px auto 32px;position:relative;}
+.solution-prompt-label{font-size:12px;color:var(--teal);font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;margin-bottom:10px;}
+.solution-prompt-text{font-size:18px;color:rgba(255,255,255,0.9);font-style:italic;line-height:1.6;}
+.solution-prompt-cursor{display:inline-block;width:2px;height:20px;background:var(--teal);
+  margin-left:4px;animation:blink 1s infinite;}
+@keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+
+.solution-arrow{text-align:center;margin:16px 0;font-size:28px;color:var(--teal);
+  animation:pulse-down 2s ease infinite;}
+@keyframes pulse-down{0%,100%{transform:translateY(0);opacity:0.5;}50%{transform:translateY(6px);opacity:1;}}
+
+.output-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px;}
+@media(max-width:768px){.output-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.output-grid{grid-template-columns:1fr;}}
+.output-card{background:white;border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px 16px;text-align:center;transition:all 0.25s;}
+.output-card:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 6px 24px var(--teal-glow);}
+.output-icon{font-size:28px;margin-bottom:10px;}
+.output-label{font-size:14px;font-weight:700;color:var(--navy);}
+.output-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* ═══════════════════════════════════════
+   SECTION 4: BUSINESS BRAIN
+   ═══════════════════════════════════════ */
+.brain{background:var(--card-dark);border-top:1px solid var(--card-dark-border);border-bottom:none;overflow:hidden;color:white;}
+.brain .section-label{color:var(--teal);}
+.brain h2{color:white;}
+.brain .subhead{color:rgba(255,255,255,0.65);}
+.brain-visual{position:relative;display:flex;flex-direction:column;align-items:center;gap:24px;}
+.brain-center{width:120px;height:120px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--blue-light));
+  display:flex;align-items:center;justify-content:center;font-size:48px;
+  box-shadow:0 0 60px var(--teal-glow),0 0 120px var(--teal-glow2);position:relative;z-index:2;}
+.brain-inputs,.brain-outputs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.brain-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;
+  padding:8px 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);transition:all 0.25s;}
+.brain-tag:hover{border-color:var(--teal);color:var(--teal);}
+.brain-tag.out{border-color:rgba(78,205,196,0.3);background:rgba(78,205,196,0.08);color:var(--teal);}
+.brain-flow-label{font-size:12px;color:rgba(255,255,255,0.45);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:8px;}
+.brain-tagline{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);color:var(--teal);
+  font-style:italic;margin-top:32px;text-align:center;}
+
+/* ═══════════════════════════════════════
+   SECTION 5: FEATURES
+   ═══════════════════════════════════════ */
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px;}
+@media(max-width:768px){.features-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.features-grid{grid-template-columns:1fr;}}
+.feature-card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:28px 20px;transition:all 0.25s;position:relative;overflow:hidden;}
+.feature-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--blue-light));opacity:0;transition:opacity 0.3s;}
+.feature-card:hover{border-color:var(--teal);transform:translateY(-4px);
+  box-shadow:0 8px 30px var(--teal-glow);}
+.feature-card:hover::after{opacity:1;}
+.feature-icon{font-size:32px;margin-bottom:14px;}
+.feature-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.feature-desc{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+/* ═══════════════════════════════════════
+   SECTION 6: HOW IT WORKS
+   ═══════════════════════════════════════ */
+.steps{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;position:relative;}
+@media(max-width:768px){.steps-grid{grid-template-columns:1fr;gap:24px;}}
+.step-card{text-align:center;padding:32px 24px;position:relative;}
+.step-num{width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--blue-light));
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:white;margin:0 auto 20px;
+  box-shadow:var(--shadow-teal);}
+.step-title{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.step-desc{font-size:14px;color:var(--text-secondary);line-height:1.7;}
+.step-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:16px;}
+.step-tag{background:white;border:1px solid var(--border);border-radius:6px;
+  padding:4px 10px;font-size:11px;font-weight:600;color:var(--text-muted);}
+.step-arrow{position:absolute;right:-16px;top:50%;transform:translateY(-50%);
+  font-size:24px;color:var(--teal);opacity:0.5;}
+@media(max-width:768px){.step-arrow{display:none;}}
+
+/* ═══════════════════════════════════════
+   SECTION 7: DEMO VIDEO
+   ═══════════════════════════════════════ */
+.demo-video-wrap{max-width:800px;margin:48px auto 32px;border-radius:var(--radius-xl);
+  overflow:hidden;border:1px solid var(--card-dark-border);box-shadow:var(--shadow-lg);
+  background:var(--card-dark);aspect-ratio:16/9;display:flex;align-items:center;
+  justify-content:center;position:relative;cursor:pointer;}
+.demo-play{width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--blue-light));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-teal);transition:all 0.3s;}
+.demo-play:hover{transform:scale(1.1);box-shadow:0 8px 40px rgba(78,205,196,0.35);}
+.demo-play-icon{font-size:32px;margin-left:4px;color:white;}
+
+/* ═══════════════════════════════════════
+   SECTION 8: PRICING
+   ═══════════════════════════════════════ */
+.pricing{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+@media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
+.price-card{background:white;border:1px solid var(--border);border-radius:var(--radius-xl);
+  padding:36px 28px;position:relative;transition:all 0.3s;}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.price-card.featured{border-color:var(--teal);box-shadow:0 0 40px var(--teal-glow);transform:scale(1.03);}
+.price-card.featured:hover{transform:scale(1.03) translateY(-4px);}
+.price-popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--teal);color:white;font-size:12px;font-weight:800;
+  padding:5px 16px;border-radius:20px;letter-spacing:0.5px;}
+.price-name{font-size:16px;font-weight:700;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+.price-amount{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--navy);}
+.price-amount span{font-size:18px;font-weight:500;color:var(--text-muted);}
+.price-desc{font-size:14px;color:var(--text-secondary);margin:12px 0 24px;line-height:1.6;}
+.price-features{list-style:none;margin-bottom:28px;}
+.price-features li{font-size:14px;color:var(--text-secondary);padding:8px 0;
+  border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:10px;}
+.price-features li:last-child{border-bottom:none;}
+.price-check{color:var(--teal-dark);font-weight:700;font-size:16px;}
+.price-card .btn{width:100%;}
+.price-card .btn-secondary{color:var(--navy);border-color:var(--border);}
+.price-card.featured .btn-primary{background:var(--teal);color:white;box-shadow:var(--shadow-teal);}
+
+/* ═══════════════════════════════════════
+   SECTION 9: FAQ
+   ═══════════════════════════════════════ */
+.faq-list{max-width:720px;margin:48px auto 0;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{width:100%;background:none;border:none;color:var(--navy);padding:20px 0;
+  font-size:16px;font-weight:600;font-family:'Inter',sans-serif;text-align:left;
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color 0.2s;}
+.faq-q:hover{color:var(--teal-dark);}
+.faq-arrow{font-size:20px;color:var(--text-muted);transition:transform 0.3s;flex-shrink:0;margin-left:16px;}
+.faq-item.open .faq-arrow{transform:rotate(45deg);color:var(--teal-dark);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:20px;}
+.faq-a p{font-size:15px;color:var(--text-secondary);line-height:1.8;}
+
+/* ═══════════════════════════════════════
+   SECTION 10: FINAL CTA
+   ═══════════════════════════════════════ */
+.final-cta{position:relative;overflow:hidden;background:var(--card-dark);color:white;}
+.final-cta::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(78,205,196,0.1) 0%,transparent 60%);pointer-events:none;}
+.final-cta-inner{position:relative;z-index:1;text-align:center;}
+.final-cta h2{margin-bottom:16px;color:white;}
+.final-cta .subhead{margin:0 auto 40px;color:rgba(255,255,255,0.7);}
+.final-cta .section-label{color:var(--teal);}
+.final-cta .btn-secondary{color:white;border-color:rgba(255,255,255,0.2);}
+.final-cta .btn-secondary:hover{border-color:var(--teal);color:var(--teal);}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding:48px 0 24px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{display:flex;align-items:center;}
+.footer-logo img{height:32px;width:auto;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--teal-dark);}
+.footer-copy{width:100%;text-align:center;margin-top:24px;padding-top:24px;
+  border-top:1px solid var(--border-light);font-size:12px;color:var(--text-muted);}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="opteva-logo.png" alt="Opteva" /></a>
+    <div class="nav-links" id="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#demo" class="btn btn-primary btn-sm nav-cta">Book a Demo</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1: HERO
+     ═══════════════════════════════════════ -->
+<section class="hero section" id="hero">
+  <div class="container grid-2">
+    <div class="hero-text fade-up">
+      <h1>Your AI Social Media Manager.<br/><span>Trained On Your Business.</span></h1>
+      <p class="subhead">Create a month's worth of content in 15 minutes. Generate posts, captions, videos, images, hashtags, and publishing schedules for Facebook, Instagram, TikTok, YouTube Shorts, and LinkedIn from a single dashboard.</p>
+      <div class="btn-group">
+        <a href="#demo" class="btn btn-primary btn-lg">Book a Demo</a>
+        <a href="#see-demo" class="btn btn-secondary btn-lg">&#9654; Watch 2-Min Demo</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up" style="transition-delay:0.15s;">
+      <div class="dash-mockup">
+        <div class="dash-topbar">
+          <span class="dash-dot"></span><span class="dash-dot"></span><span class="dash-dot"></span>
+          <span class="dash-url">app.opteva.ai/dashboard</span>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-card-icon">&#9997;&#65039;</div>
+            <div class="dash-card-title">Content Generator</div>
+            <div class="dash-card-sub">42 posts generated</div>
+            <div class="dash-card-bar"><div class="dash-card-bar-fill" style="width:85%;"></div></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-icon">&#128197;</div>
+            <div class="dash-card-title">Content Calendar</div>
+            <div class="dash-card-sub">This week scheduled</div>
+            <div class="dash-card-bar"><div class="dash-card-bar-fill" style="width:100%;"></div></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-icon">&#127912;</div>
+            <div class="dash-card-title">Image Generator</div>
+            <div class="dash-card-sub">18 images created</div>
+            <div class="dash-card-bar"><div class="dash-card-bar-fill" style="width:60%;"></div></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-icon">&#127909;</div>
+            <div class="dash-card-title">Video Generator</div>
+            <div class="dash-card-sub">8 reels ready</div>
+            <div class="dash-card-bar"><div class="dash-card-bar-fill" style="width:45%;"></div></div>
+          </div>
+        </div>
+        <div class="platform-badges">
+          <span class="p-badge"><span class="p-badge-dot" style="background:#1877f2;"></span>Facebook</span>
+          <span class="p-badge"><span class="p-badge-dot" style="background:#e4405f;"></span>Instagram</span>
+          <span class="p-badge"><span class="p-badge-dot" style="background:#000;border:1px solid #333;"></span>TikTok</span>
+          <span class="p-badge"><span class="p-badge-dot" style="background:#ff0000;"></span>YouTube</span>
+          <span class="p-badge"><span class="p-badge-dot" style="background:#0a66c2;"></span>LinkedIn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="trust-bar fade-up container" style="transition-delay:0.3s;">
+    <div class="trust-label">Trusted by service businesses nationwide</div>
+    <div class="trust-logos">
+      <span class="trust-logo">Med Spas</span>
+      <span class="trust-logo">Dentists</span>
+      <span class="trust-logo">Realtors</span>
+      <span class="trust-logo">HVAC</span>
+      <span class="trust-logo">Chiropractors</span>
+      <span class="trust-logo">Plumbing</span>
+      <span class="trust-logo">Wellness</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 2: PROBLEM
+     ═══════════════════════════════════════ -->
+<section class="problem section" id="problem">
+  <div class="container text-center">
+    <div class="section-label fade-up">The Problem</div>
+    <h2 class="fade-up">Social Media Shouldn't Feel<br/>Like A Full-Time Job</h2>
+    <div class="pain-grid">
+      <div class="pain-card fade-up">
+        <div class="pain-icon">&#9200;</div>
+        <div class="pain-title">No Time To<br/>Create Content</div>
+      </div>
+      <div class="pain-card fade-up" style="transition-delay:0.08s;">
+        <div class="pain-icon">&#10067;</div>
+        <div class="pain-title">Never Know<br/>What To Post</div>
+      </div>
+      <div class="pain-card fade-up" style="transition-delay:0.16s;">
+        <div class="pain-icon">&#128200;</div>
+        <div class="pain-title">Inconsistent<br/>Marketing</div>
+      </div>
+      <div class="pain-card fade-up" style="transition-delay:0.24s;">
+        <div class="pain-icon">&#128176;</div>
+        <div class="pain-title">Can't Afford A<br/>Marketing Team</div>
+      </div>
+    </div>
+    <p class="problem-bottom fade-up">Most business owners spend hours every week creating content, editing videos, writing captions, and trying to stay consistent. <strong>Opteva automates the entire process.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 3: SOLUTION
+     ═══════════════════════════════════════ -->
+<section class="section" id="solution">
+  <div class="container text-center">
+    <div class="section-label fade-up">The Solution</div>
+    <h2 class="fade-up">One Idea. Every Platform.</h2>
+    <div class="solution-prompt fade-up">
+      <div class="solution-prompt-label">Your Prompt</div>
+      <div class="solution-prompt-text">"Write a post about HydraFacial anti-aging benefits."<span class="solution-prompt-cursor"></span></div>
+    </div>
+    <div class="solution-arrow fade-up">&#8595;</div>
+    <div class="output-grid">
+      <div class="output-card fade-up">
+        <div class="output-icon">&#128196;</div>
+        <div class="output-label">Facebook Post</div>
+        <div class="output-sub">Optimized for engagement</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.05s;">
+        <div class="output-icon">&#128247;</div>
+        <div class="output-label">Instagram Caption</div>
+        <div class="output-sub">With hashtags & CTA</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.1s;">
+        <div class="output-icon">&#127916;</div>
+        <div class="output-label">TikTok Script</div>
+        <div class="output-sub">Hook + story + CTA</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.15s;">
+        <div class="output-icon">&#127909;</div>
+        <div class="output-label">Reel Script</div>
+        <div class="output-sub">Timed voiceover</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.2s;">
+        <div class="output-icon">&#9654;&#65039;</div>
+        <div class="output-label">YouTube Shorts</div>
+        <div class="output-sub">Vertical video script</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.25s;">
+        <div class="output-icon">&#35;</div>
+        <div class="output-label">Hashtags</div>
+        <div class="output-sub">Industry + trending</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.3s;">
+        <div class="output-icon">&#127912;</div>
+        <div class="output-label">AI Image</div>
+        <div class="output-sub">Brand-matched visual</div>
+      </div>
+      <div class="output-card fade-up" style="transition-delay:0.35s;">
+        <div class="output-icon">&#128253;</div>
+        <div class="output-label">AI Video</div>
+        <div class="output-sub">Ready to post</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 4: BUSINESS BRAIN
+     ═══════════════════════════════════════ -->
+<section class="brain section" id="brain">
+  <div class="container text-center">
+    <div class="section-label fade-up">Business Brain</div>
+    <h2 class="fade-up">Trained On Your Business</h2>
+    <p class="subhead fade-up" style="margin:16px auto 48px;">Unlike generic tools, Opteva learns your services, offers, FAQs, promotions, and brand voice. Every piece of content sounds like it came from you.</p>
+
+    <div class="brain-visual fade-up">
+      <div class="brain-flow-label">Your business feeds the brain</div>
+      <div class="brain-inputs">
+        <span class="brain-tag">Services</span>
+        <span class="brain-tag">Offers</span>
+        <span class="brain-tag">FAQs</span>
+        <span class="brain-tag">Website</span>
+        <span class="brain-tag">Brand Voice</span>
+        <span class="brain-tag">Promotions</span>
+      </div>
+      <div style="font-size:24px;color:var(--teal);margin:12px 0;">&#8595;</div>
+      <div class="brain-center">&#129504;</div>
+      <div style="font-size:24px;color:var(--teal);margin:12px 0;">&#8595;</div>
+      <div class="brain-flow-label">The brain creates everything</div>
+      <div class="brain-outputs">
+        <span class="brain-tag out">Content</span>
+        <span class="brain-tag out">Videos</span>
+        <span class="brain-tag out">Images</span>
+        <span class="brain-tag out">Replies</span>
+        <span class="brain-tag out">Scheduling</span>
+        <span class="brain-tag out">Hashtags</span>
+      </div>
+      <div class="brain-tagline">"Sounds exactly like you."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 5: FEATURES
+     ═══════════════════════════════════════ -->
+<section class="section" id="features">
+  <div class="container text-center">
+    <div class="section-label fade-up">Features</div>
+    <h2 class="fade-up">Everything Your Marketing<br/>Team Would Do</h2>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon">&#9997;&#65039;</div>
+        <div class="feature-title">AI Content Writer</div>
+        <div class="feature-desc">Generate posts, captions, scripts, and articles trained on your business voice.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.05s;">
+        <div class="feature-icon">&#127912;</div>
+        <div class="feature-title">AI Image Generator</div>
+        <div class="feature-desc">Create stunning brand-matched visuals without a designer.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.1s;">
+        <div class="feature-icon">&#127909;</div>
+        <div class="feature-title">AI Video Generator</div>
+        <div class="feature-desc">Turn scripts into ready-to-post reels, shorts, and video content.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.15s;">
+        <div class="feature-icon">&#128197;</div>
+        <div class="feature-title">Social Media Scheduler</div>
+        <div class="feature-desc">Schedule and publish across all platforms from one dashboard.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.2s;">
+        <div class="feature-icon">&#128172;</div>
+        <div class="feature-title">Comment Reply Assistant</div>
+        <div class="feature-desc">Never miss a comment or DM. AI drafts on-brand replies instantly.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.25s;">
+        <div class="feature-icon">&#128466;&#65039;</div>
+        <div class="feature-title">Content Calendar</div>
+        <div class="feature-desc">Visual calendar to plan, organize, and manage your entire content strategy.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.3s;">
+        <div class="feature-icon">&#129504;</div>
+        <div class="feature-title">Business Knowledge Training</div>
+        <div class="feature-desc">Upload your info once. Every piece of content reflects your unique business.</div>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:0.35s;">
+        <div class="feature-icon">&#127760;</div>
+        <div class="feature-title">Multi-Platform Publishing</div>
+        <div class="feature-desc">Facebook, Instagram, TikTok, YouTube Shorts, and LinkedIn in one click.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 6: HOW IT WORKS
+     ═══════════════════════════════════════ -->
+<section class="steps section" id="how-it-works">
+  <div class="container text-center">
+    <div class="section-label fade-up">How It Works</div>
+    <h2 class="fade-up">Three Steps To Effortless<br/>Social Media</h2>
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-num">1</div>
+        <div class="step-title">Train Your AI</div>
+        <div class="step-desc">Upload your services, offers, FAQs, website, and brand voice. Takes 10 minutes.</div>
+        <div class="step-tags">
+          <span class="step-tag">Services</span><span class="step-tag">Offers</span>
+          <span class="step-tag">FAQs</span><span class="step-tag">Website</span>
+          <span class="step-tag">Brand Voice</span>
+        </div>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step-card fade-up" style="transition-delay:0.1s;">
+        <div class="step-num">2</div>
+        <div class="step-title">Generate Content</div>
+        <div class="step-desc">Type one prompt. Get posts, captions, images, and videos for every platform instantly.</div>
+        <div class="step-tags">
+          <span class="step-tag">Posts</span><span class="step-tag">Captions</span>
+          <span class="step-tag">Images</span><span class="step-tag">Videos</span>
+        </div>
+        <span class="step-arrow">&#8594;</span>
+      </div>
+      <div class="step-card fade-up" style="transition-delay:0.2s;">
+        <div class="step-num">3</div>
+        <div class="step-title">Schedule Everywhere</div>
+        <div class="step-desc">Publish across Facebook, Instagram, TikTok, YouTube Shorts, and LinkedIn in one click.</div>
+        <div class="step-tags">
+          <span class="step-tag">Facebook</span><span class="step-tag">Instagram</span>
+          <span class="step-tag">TikTok</span><span class="step-tag">YouTube</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7: DEMO VIDEO
+     ═══════════════════════════════════════ -->
+<section class="section" id="see-demo">
+  <div class="container text-center">
+    <div class="section-label fade-up">See It In Action</div>
+    <h2 class="fade-up">Watch How It Works</h2>
+    <div class="demo-video-wrap fade-up">
+      <div class="demo-play"><span class="demo-play-icon">&#9654;</span></div>
+    </div>
+    <div class="fade-up" style="margin-top:32px;">
+      <a href="#demo" class="btn btn-primary btn-lg">Book Your Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 8: PRICING
+     ═══════════════════════════════════════ -->
+<section class="pricing section" id="pricing">
+  <div class="container text-center">
+    <div class="section-label fade-up">Pricing</div>
+    <h2 class="fade-up">Simple, Transparent Pricing</h2>
+    <p class="subhead fade-up" style="margin:16px auto 0;">Everything you need to dominate social media. No hidden fees.</p>
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="price-card fade-up">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">$199<span>/mo</span></div>
+        <div class="price-desc">Perfect for businesses getting started with consistent social media.</div>
+        <ul class="price-features">
+          <li><span class="price-check">&#10003;</span>AI Content Writer</li>
+          <li><span class="price-check">&#10003;</span>AI Business Brain</li>
+          <li><span class="price-check">&#10003;</span>Content Calendar</li>
+          <li><span class="price-check">&#10003;</span>50 Posts / Month</li>
+          <li><span class="price-check">&#10003;</span>3 Platforms</li>
+          <li><span class="price-check">&#10003;</span>Email Support</li>
+        </ul>
+        <a href="#demo" class="btn btn-secondary">Get Started</a>
+      </div>
+      <!-- Growth (Featured) -->
+      <div class="price-card featured fade-up" style="transition-delay:0.1s;">
+        <div class="price-popular">MOST POPULAR</div>
+        <div class="price-name">Growth</div>
+        <div class="price-amount">$299<span>/mo</span></div>
+        <div class="price-desc">For businesses ready to scale their content and grow their audience.</div>
+        <ul class="price-features">
+          <li><span class="price-check">&#10003;</span>Unlimited Content Generation</li>
+          <li><span class="price-check">&#10003;</span>AI Image Generator</li>
+          <li><span class="price-check">&#10003;</span>AI Video Generator</li>
+          <li><span class="price-check">&#10003;</span>Social Publishing</li>
+          <li><span class="price-check">&#10003;</span>5 Platforms</li>
+          <li><span class="price-check">&#10003;</span>Comment Reply Assistant</li>
+          <li><span class="price-check">&#10003;</span>Priority Support</li>
+        </ul>
+        <a href="#demo" class="btn btn-primary">Book a Demo</a>
+      </div>
+      <!-- Agency -->
+      <div class="price-card fade-up" style="transition-delay:0.2s;">
+        <div class="price-name">Agency</div>
+        <div class="price-amount">$499<span>/mo</span></div>
+        <div class="price-desc">For agencies managing multiple client accounts from one dashboard.</div>
+        <ul class="price-features">
+          <li><span class="price-check">&#10003;</span>Everything in Growth</li>
+          <li><span class="price-check">&#10003;</span>5 Client Accounts</li>
+          <li><span class="price-check">&#10003;</span>White-Label Dashboard</li>
+          <li><span class="price-check">&#10003;</span>Client Reporting</li>
+          <li><span class="price-check">&#10003;</span>Team Collaboration</li>
+          <li><span class="price-check">&#10003;</span>Dedicated Account Manager</li>
+        </ul>
+        <a href="#demo" class="btn btn-secondary">Book a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 9: FAQ
+     ═══════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="container text-center">
+    <div class="section-label fade-up">FAQ</div>
+    <h2 class="fade-up">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this different from ChatGPT?<span class="faq-arrow">+</span></button>
+        <div class="faq-a"><p>ChatGPT is a general-purpose tool. Opteva is trained specifically on YOUR business. It knows your services, offers, FAQs, promotions, and brand voice. Every post sounds like it came from you, not from a robot. Plus, Opteva generates images, videos, and publishes directly to your social accounts.</p></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.05s;">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this different from Canva?<span class="faq-arrow">+</span></button>
+        <div class="faq-a"><p>Canva is a design tool. You still need to come up with the ideas, write the copy, and create the designs yourself. Opteva generates everything for you: the content, the images, the videos, and the publishing schedule. One prompt creates everything across all platforms.</p></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.1s;">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this different from Hootsuite?<span class="faq-arrow">+</span></button>
+        <div class="faq-a"><p>Hootsuite is a scheduling tool. You still need to create all the content yourself. Opteva creates the content AND schedules it. It replaces your content creator, graphic designer, video editor, and scheduling tool in one platform.</p></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.15s;">
+        <button class="faq-q" onclick="toggleFaq(this)">Can it create videos?<span class="faq-arrow">+</span></button>
+        <div class="faq-a"><p>Yes. Opteva generates short-form video content including TikTok scripts, Instagram Reel scripts, and YouTube Shorts scripts complete with timed voiceover, on-screen text, and visual direction. For the Growth plan and above, we also generate ready-to-post video content.</p></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.2s;">
+        <button class="faq-q" onclick="toggleFaq(this)">Can it post automatically?<span class="faq-arrow">+</span></button>
+        <div class="faq-a"><p>Yes. Opteva connects to Facebook, Instagram, TikTok, YouTube, and LinkedIn. You can schedule posts in advance and they publish automatically at the optimal time for your audience.</p></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:0.25s;">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I train it on my business?<span class="faq-arrow">+</span></button>
+        <div class="faq-a"><p>Absolutely. That is the core differentiator. You upload your services, offers, FAQs, website content, and brand voice. Opteva learns everything about your business and every piece of content it creates reflects your unique brand. It sounds exactly like you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 10: FINAL CTA
+     ═══════════════════════════════════════ -->
+<section class="final-cta section" id="demo">
+  <div class="container">
+    <div class="final-cta-inner fade-up">
+      <div class="section-label" style="justify-content:center;">Get Started</div>
+      <h2>Stop Spending Hours<br/>On Social Media</h2>
+      <p class="subhead">Let your AI Social Media Manager do it for you. Create a month's worth of content in 15 minutes.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="https://api.opteva.ai/widget/bookings/stephanie-sullivan-personal-calendar-0xlbtihfq" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Book Your Demo</a>
+        <a href="#see-demo" class="btn btn-secondary btn-lg">Start Free Trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo"><img src="opteva-logo.png" alt="Opteva" /></span>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#demo">Book a Demo</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; 2026 Opteva. All rights reserved. Your AI Social Media Manager.</div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════ -->
+<script>
+// Navbar scroll effect
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50);});
+
+// FAQ toggle
+function toggleFaq(btn){btn.parentElement.classList.toggle('open');}
+
+// Scroll-triggered fade-up animation
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{document.getElementById('nav-links').classList.remove('open');});
+});
+</script>
+</body>
+</html>

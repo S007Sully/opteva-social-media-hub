@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Opteva — Social Media Assistant Demo</title>
+<meta name="description" content="Your personal AI-powered social media assistant. Ready-made posts, AI writer, reply templates, and step-by-step guides — all in your brand voice."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#c9963a;--gold-light:#e8c07d;--gold-pale:#fdf6ea;
+  --rose:#c06b7a;--rose-pale:#fdf0f2;
+  --deep:#1a1a2e;--charcoal:#2d2d3a;
+  --text:#2a2a2a;--muted:#888;--border:#e8e0d8;
+  --cream:#faf8f5;
+  --teal:#2a7a7a;--teal-light:#3da8a8;--teal-pale:#edf6f6;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:#f5f3ef;color:var(--text);min-height:100vh;}
+
+/* DEMO BANNER */
+.demo-banner{background:linear-gradient(90deg,var(--teal),#1d5c5c);color:white;text-align:center;
+  padding:9px 16px;font-size:13px;font-weight:700;letter-spacing:0.5px;position:sticky;top:0;z-index:100;}
+.demo-banner span{opacity:0.75;font-weight:500;}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#2d1a3a 55%,#1a2e2a 100%);position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9963a' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.header-inner{position:relative;z-index:1;padding:22px 20px 0;text-align:center;}
+.opteva-tag{display:inline-flex;align-items:center;gap:5px;
+  background:linear-gradient(135deg,var(--teal),#1d5c5c);border-radius:20px;
+  padding:5px 16px;font-size:12px;color:white;font-weight:800;margin-bottom:12px;letter-spacing:0.5px;}
+.client-badge{display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(201,150,58,0.3);
+  border-radius:50px;padding:9px 20px;margin-bottom:10px;}
+.client-dot{width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.client-name{font-family:'Playfair Display',serif;font-size:16px;color:white;text-align:left;line-height:1.2;}
+.client-sub{font-size:11px;color:rgba(255,255,255,0.5);}
+.header-tagline{color:rgba(255,255,255,0.45);font-size:12px;letter-spacing:1px;text-transform:uppercase;padding-bottom:14px;}
+
+/* TABS */
+.tabs-wrap{background:rgba(0,0,0,0.25);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.08);}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;max-width:720px;margin:0 auto;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:12px 15px;background:transparent;color:rgba(255,255,255,0.5);
+  border:none;border-bottom:3px solid transparent;font-size:12px;font-weight:700;cursor:pointer;
+  font-family:'Nunito',sans-serif;white-space:nowrap;transition:all 0.2s;letter-spacing:0.2px;}
+.tab-btn.active{color:var(--gold-light);border-bottom-color:var(--gold);background:rgba(201,150,58,0.08);}
+
+/* CONTENT */
+.content{max-width:640px;margin:0 auto;padding:22px 16px 100px;}
+
+/* PANELS */
+.panel{display:none;}
+.panel.active{display:block;animation:fadeIn 0.22s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
+
+/* HOME */
+.welcome-card{background:white;border-radius:20px;padding:22px;margin-bottom:16px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);border-left:4px solid var(--gold);}
+.welcome-card h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--charcoal);margin-bottom:6px;}
+.welcome-card p{font-size:14px;color:#555;line-height:1.75;}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.stat-card{background:white;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.05);text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;
+  background:linear-gradient(135deg,var(--gold),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-label{font-size:12px;color:var(--muted);margin-top:2px;}
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.qa-card{background:white;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;border:1px solid var(--border);}
+.qa-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+.qa-icon{font-size:26px;margin-bottom:8px;}
+.qa-title{font-size:14px;font-weight:700;color:var(--charcoal);}
+.qa-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+
+/* INFO CARDS */
+.info-card{background:white;border-radius:16px;padding:16px 18px;margin-bottom:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.info-card.gold{border-left:4px solid var(--gold);}
+.info-card.teal{border-left:4px solid var(--teal);}
+.info-card.rose{border-left:4px solid var(--rose);}
+.info-card p{font-size:14px;color:#444;line-height:1.75;}
+
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:18px;}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
+.search-box{width:100%;padding:13px 16px 13px 42px;font-size:14px;border:2px solid var(--border);
+  border-radius:14px;font-family:'Nunito',sans-serif;outline:none;background:white;color:var(--text);transition:border-color 0.2s;}
+.search-box:focus{border-color:var(--gold);}
+
+/* POST CARD */
+.post-card{background:white;border-radius:20px;margin-bottom:16px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);overflow:hidden;border:1px solid rgba(232,224,216,0.5);}
+.post-header{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.post-emoji-box{width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold-pale),var(--rose-pale));
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.post-topic{font-family:'Playfair Display',serif;font-size:16px;font-weight:500;color:var(--charcoal);}
+.post-meta{font-size:12px;color:var(--muted);margin-top:2px;}
+.day-pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:800;margin-right:4px;}
+.post-body{padding:16px 18px;}
+.ver-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+.ver-btn{padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;
+  border:1.5px solid var(--border);background:white;color:var(--muted);font-weight:600;
+  font-family:'Nunito',sans-serif;transition:all 0.2s;}
+.ver-btn.vg{background:var(--gold-pale);border-color:var(--gold);color:#7a5a10;}
+.ver-btn.vr{background:var(--rose-pale);border-color:var(--rose);color:#7a3040;}
+.post-text{background:var(--cream);border-radius:14px;padding:16px;font-size:14px;
+  line-height:1.85;color:#2a2a2a;white-space:pre-wrap;font-family:'Nunito',sans-serif;
+  border-left:3px solid var(--gold);}
+.img-picker{margin-top:14px;border-radius:14px;overflow:hidden;border:1.5px solid var(--border);}
+.img-wrap{position:relative;background:#f0ece5;height:155px;}
+.img-wrap img{width:100%;height:155px;object-fit:cover;display:block;}
+.img-fail{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;
+  justify-content:center;color:#aaa;font-size:13px;gap:6px;background:#f5f0ea;text-align:center;}
+.img-fail.show{display:flex;}
+.img-nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.4);
+  color:white;border:none;border-radius:50%;width:30px;height:30px;cursor:pointer;
+  font-size:16px;display:flex;align-items:center;justify-content:center;z-index:2;}
+.img-info{padding:8px 14px;background:var(--cream);}
+.img-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;}
+.img-tip{font-size:12px;color:#5a4a3a;line-height:1.5;margin-top:2px;}
+.img-dots{display:flex;gap:5px;margin-top:6px;}
+.dot{width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;}
+.copy-btn{margin-top:12px;width:100%;padding:12px;
+  background:linear-gradient(135deg,var(--gold),#a8762a);color:white;border:none;
+  border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:'Nunito',sans-serif;box-shadow:0 3px 12px rgba(201,150,58,0.3);
+  transition:all 0.2s;letter-spacing:0.3px;}
+.copy-btn.done{background:linear-gradient(135deg,var(--teal),#1d5c5c);}
+.copy-btn:hover{opacity:0.9;}
+.no-results{text-align:center;color:var(--muted);padding:40px;font-style:italic;}
+
+/* GUIDE CARD */
+.guide-card{background:white;border-radius:20px;margin-bottom:14px;
+  box-shadow:0 3px 16px rgba(0,0,0,0.07);overflow:hidden;}
+.guide-header{width:100%;background:none;border:none;cursor:pointer;
+  padding:16px 18px;display:flex;align-items:center;gap:12px;text-align:left;}
+.guide-icon{width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:23px;flex-shrink:0;}
+.guide-ttl{font-family:'Playfair Display',serif;font-size:16px;color:var(--charcoal);}
+.guide-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.guide-arrow{font-size:22px;color:#ccc;margin-left:auto;transition:transform 0.25s;}
+.guide-arrow.open{transform:rotate(90deg);}
+.guide-steps{padding:4px 18px 18px;border-top:1px solid var(--border);display:none;}
+.guide-steps.open{display:block;}
+.step{display:flex;gap:12px;align-items:flex-start;margin-top:14px;}
+.step-circle{width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.step-num-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;}
+.step-text{font-size:14px;color:#333;line-height:1.65;white-space:pre-wrap;}
+.guide-tip{margin-top:14px;background:var(--cream);border-radius:10px;padding:10px 14px;font-size:13px;color:#666;}
+
+/* SCHEDULE */
+.sched-row{background:white;border-radius:16px;padding:16px 18px;margin-bottom:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);display:flex;align-items:flex-start;gap:14px;}
+.sched-day{flex-shrink:0;width:78px;padding:6px 0;border-radius:10px;
+  font-size:11px;font-weight:800;text-align:center;text-transform:uppercase;letter-spacing:0.5px;}
+.sched-title{font-weight:700;font-size:15px;color:var(--charcoal);}
+.sched-desc{font-size:13px;color:#666;line-height:1.6;margin-top:4px;}
+
+/* AI */
+.ai-card{background:white;border-radius:20px;padding:20px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);margin-bottom:16px;}
+.ai-label{display:block;font-size:14px;color:#555;margin-bottom:8px;font-weight:700;}
+.ai-textarea{width:100%;padding:13px;font-size:14px;border:2px solid var(--border);border-radius:12px;
+  font-family:'Nunito',sans-serif;resize:vertical;line-height:1.6;outline:none;
+  background:var(--cream);color:var(--text);transition:border-color 0.2s;}
+.ai-textarea:focus{border-color:var(--gold);background:white;}
+.ai-btn{margin-top:12px;width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--deep),var(--charcoal));color:white;border:none;
+  border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;
+  font-family:'Nunito',sans-serif;box-shadow:0 4px 14px rgba(26,26,46,0.3);
+  transition:opacity 0.2s,transform 0.2s;letter-spacing:0.3px;}
+.ai-btn:disabled{background:#ccc;box-shadow:none;cursor:not-allowed;}
+.ai-btn:not(:disabled):hover{opacity:0.9;transform:translateY(-1px);}
+.ai-result{margin-top:16px;background:var(--cream);border-radius:14px;padding:16px;
+  font-size:14px;line-height:1.85;color:#2a2a2a;white-space:pre-wrap;
+  font-family:'Nunito',sans-serif;border-left:3px solid var(--gold);}
+.hidden{display:none!important;}
+
+/* PRICING */
+.price-card{background:white;border-radius:20px;padding:22px;margin-bottom:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);border:1px solid var(--border);position:relative;overflow:hidden;}
+.price-card.featured{border:2px solid var(--gold);background:linear-gradient(135deg,#fefdfb,var(--gold-pale));}
+.price-badge{position:absolute;top:16px;right:16px;background:var(--gold);color:white;
+  font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;letter-spacing:0.5px;}
+.price-name{font-family:'Playfair Display',serif;font-size:20px;color:var(--charcoal);margin-bottom:4px;}
+.price-amount{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;
+  background:linear-gradient(135deg,var(--gold),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;}
+.price-period{font-size:13px;color:var(--muted);}
+.price-desc{font-size:14px;color:#555;margin:12px 0;line-height:1.6;}
+.price-features{list-style:none;}
+.price-features li{font-size:13px;color:#444;padding:5px 0;border-bottom:1px solid var(--border);}
+.price-features li:last-child{border-bottom:none;}
+.price-features li::before{content:'✓  ';color:var(--gold);font-weight:800;}
+.price-cta{margin-top:16px;width:100%;padding:12px;
+  background:linear-gradient(135deg,var(--charcoal),var(--deep));color:white;border:none;
+  border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:opacity 0.2s;letter-spacing:0.3px;}
+.price-card.featured .price-cta{background:linear-gradient(135deg,var(--gold),#a8762a);
+  box-shadow:0 4px 14px rgba(201,150,58,0.3);}
+
+/* BRANDING */
+.brand-card{background:white;border-radius:20px;padding:22px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);margin-bottom:14px;}
+.brand-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--charcoal);margin-bottom:14px;}
+.brand-label{font-size:13px;font-weight:700;color:#555;margin-bottom:4px;display:block;}
+.brand-input{width:100%;padding:11px 14px;font-size:14px;border:2px solid var(--border);
+  border-radius:10px;font-family:'Nunito',sans-serif;outline:none;
+  background:var(--cream);color:var(--text);transition:border-color 0.2s;margin-bottom:10px;}
+.brand-input:focus{border-color:var(--gold);}
+.brand-apply-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--teal),#1d5c5c);
+  color:white;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:'Nunito',sans-serif;box-shadow:0 3px 12px rgba(42,122,122,0.3);transition:opacity 0.2s;}
+.brand-preview-box{background:linear-gradient(135deg,var(--deep),#2d1a3a);
+  border-radius:14px;padding:16px;margin-top:14px;text-align:center;color:white;}
+.brand-preview-name{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px;}
+.brand-preview-sub{font-size:12px;opacity:0.55;}
+
+/* LEAD / GET STARTED */
+.lead-section{border-radius:20px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.12);margin-bottom:16px;}
+.lead-header{background:linear-gradient(135deg,var(--deep),#2d1a3a);padding:24px;color:white;text-align:center;}
+.lead-header h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px;}
+.lead-header p{font-size:14px;opacity:0.75;line-height:1.7;}
+.lead-form-wrap{background:white;padding:0;}
+.lead-form-wrap iframe{width:100%;min-height:800px;border:none;border-radius:0 0 20px 20px;}
+
+/* CANVA / REELS CREATOR */
+.reels-card{background:white;border-radius:20px;padding:22px;margin-bottom:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);}
+.reels-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--charcoal);margin-bottom:14px;}
+.canva-embed-wrap{border-radius:14px;overflow:hidden;border:2px solid var(--border);margin-bottom:14px;
+  background:var(--cream);min-height:500px;position:relative;}
+.canva-embed-wrap iframe{width:100%;height:500px;border:none;}
+.canva-templates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.canva-tmpl{background:var(--cream);border:2px solid var(--border);border-radius:14px;padding:16px;
+  cursor:pointer;transition:all 0.2s;text-align:center;}
+.canva-tmpl:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,0.1);}
+.canva-tmpl.active{border-color:var(--gold);background:var(--gold-pale);}
+.canva-tmpl-icon{font-size:32px;margin-bottom:8px;}
+.canva-tmpl-title{font-size:14px;font-weight:700;color:var(--charcoal);}
+.canva-tmpl-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.canva-open-btn{width:100%;padding:14px;
+  background:linear-gradient(135deg,#7B2FBE,#00C4CC);color:white;border:none;
+  border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;
+  font-family:'Nunito',sans-serif;box-shadow:0 4px 14px rgba(123,47,190,0.3);
+  transition:opacity 0.2s;letter-spacing:0.3px;}
+.canva-open-btn:hover{opacity:0.9;}
+.reels-tips{display:grid;grid-template-columns:1fr;gap:8px;}
+.reel-tip{background:var(--cream);border-radius:10px;padding:12px 14px;font-size:13px;color:#444;
+  display:flex;align-items:flex-start;gap:8px;line-height:1.6;}
+
+/* SCHEDULER */
+.sched-calendar{background:white;border-radius:20px;padding:22px;margin-bottom:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);}
+.sched-calendar h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--charcoal);margin-bottom:14px;}
+.sched-week-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sched-week-label{font-family:'Playfair Display',serif;font-size:16px;color:var(--charcoal);}
+.sched-nav-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:white;
+  cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.sched-nav-btn:hover{border-color:var(--gold);background:var(--gold-pale);}
+.sched-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:14px;}
+.sched-day-header{text-align:center;font-size:11px;font-weight:800;color:var(--muted);
+  text-transform:uppercase;padding:6px 0;letter-spacing:0.5px;}
+.sched-cell{background:var(--cream);border-radius:10px;min-height:80px;padding:6px;
+  border:2px solid transparent;cursor:pointer;transition:all 0.15s;position:relative;}
+.sched-cell:hover{border-color:var(--gold-light);background:white;}
+.sched-cell.today{border-color:var(--teal);background:var(--teal-pale);}
+.sched-cell-date{font-size:11px;font-weight:700;color:var(--charcoal);margin-bottom:4px;}
+.sched-cell-post{font-size:10px;padding:3px 6px;border-radius:6px;margin-bottom:2px;
+  font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sched-cell-post.edu{background:#fdf6ea;color:#a67c30;}
+.sched-cell-post.benefit{background:#fdf0f2;color:#a05060;}
+.sched-cell-post.inspire{background:#edf6f6;color:#2a7a7a;}
+.sched-cell-post.reel{background:#f0e6f6;color:#7B2FBE;}
+.sched-status{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.sched-status-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#555;}
+.sched-status-dot{width:10px;height:10px;border-radius:50%;}
+.sched-queue{margin-top:14px;}
+.sched-queue-item{background:var(--cream);border-radius:12px;padding:12px 16px;margin-bottom:8px;
+  display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border);}
+.sched-queue-info{display:flex;align-items:center;gap:10px;}
+.sched-queue-type{width:8px;height:32px;border-radius:4px;flex-shrink:0;}
+.sched-queue-title{font-size:14px;font-weight:700;color:var(--charcoal);}
+.sched-queue-time{font-size:12px;color:var(--muted);}
+.sched-queue-status{font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;}
+
+/* KPI DASHBOARD */
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.kpi-card{background:white;border-radius:16px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  position:relative;overflow:hidden;}
+.kpi-card::after{content:'';position:absolute;top:0;right:0;width:60px;height:60px;
+  border-radius:0 16px 0 60px;opacity:0.08;}
+.kpi-card.up::after{background:var(--teal);}
+.kpi-card.down::after{background:var(--rose);}
+.kpi-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+.kpi-value{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--charcoal);margin:4px 0;}
+.kpi-change{font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:3px;
+  padding:2px 8px;border-radius:20px;}
+.kpi-change.up{background:var(--teal-pale);color:var(--teal);}
+.kpi-change.down{background:var(--rose-pale);color:var(--rose);}
+.kpi-full{grid-column:1/-1;}
+.chart-card{background:white;border-radius:20px;padding:22px;margin-bottom:14px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07);}
+.chart-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--charcoal);margin-bottom:14px;}
+.chart-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.chart-bar-label{font-size:12px;font-weight:600;color:#555;width:70px;text-align:right;flex-shrink:0;}
+.chart-bar-track{flex:1;height:24px;background:var(--cream);border-radius:12px;overflow:hidden;}
+.chart-bar-fill{height:100%;border-radius:12px;transition:width 0.6s ease;display:flex;
+  align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:700;color:white;}
+.chart-bar-fill.gold{background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.chart-bar-fill.teal{background:linear-gradient(90deg,var(--teal),var(--teal-light));}
+.chart-bar-fill.rose{background:linear-gradient(90deg,var(--rose),#e08a9a);}
+.chart-bar-fill.purple{background:linear-gradient(90deg,#7B2FBE,#a855f7);}
+.top-posts{margin-top:14px;}
+.top-post-row{display:flex;align-items:center;gap:12px;padding:12px;background:var(--cream);
+  border-radius:12px;margin-bottom:8px;}
+.top-post-rank{width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--rose));
+  color:white;font-size:13px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.top-post-info{flex:1;}
+.top-post-title{font-size:14px;font-weight:700;color:var(--charcoal);}
+.top-post-stat{font-size:12px;color:var(--muted);}
+.kpi-upgrade-banner{background:linear-gradient(135deg,var(--deep),#2d1a3a);border-radius:20px;
+  padding:22px;text-align:center;color:white;margin-top:14px;}
+.kpi-upgrade-banner h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:8px;}
+.kpi-upgrade-banner p{font-size:14px;opacity:0.7;margin-bottom:16px;line-height:1.6;}
+.kpi-upgrade-btn{padding:12px 28px;background:linear-gradient(135deg,var(--gold),#a8762a);
+  color:white;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;
+  font-family:'Nunito',sans-serif;box-shadow:0 4px 14px rgba(201,150,58,0.4);}
+
+/* FOOTER */
+.powered-footer{text-align:center;margin-top:30px;padding:16px;font-size:12px;color:var(--muted);}
+.powered-footer a{color:var(--teal);font-weight:700;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">⚡ OPTEVA DEMO &nbsp;<span>— This is what your clients see when they sign up</span></div>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="opteva-tag">⚡ Powered by Opteva</div>
+    <div class="client-badge">
+      <div class="client-dot">🌸</div>
+      <div>
+        <div class="client-name" id="disp-name">Lumière Med Spa</div>
+        <div class="client-sub" id="disp-loc">Las Vegas, NV</div>
+      </div>
+    </div>
+    <div class="header-tagline">Your Personal Social Media Assistant</div>
+  </div>
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="go('home',this)">🏠 Home</button>
+      <button class="tab-btn" onclick="go('posts',this)">✍️ Posts</button>
+      <button class="tab-btn" onclick="go('reels',this)">🎬 Reels</button>
+      <button class="tab-btn" onclick="go('ai',this)">💬 Ask AI</button>
+      <button class="tab-btn" onclick="go('reply',this)">💌 Replies</button>
+      <button class="tab-btn" onclick="go('planner',this)">📅 Planner</button>
+      <button class="tab-btn" onclick="go('kpi',this)">📊 Insights</button>
+      <button class="tab-btn" onclick="go('schedule',this)">🗓️ Tips</button>
+      <button class="tab-btn" onclick="go('howto',this)">📲 How-To</button>
+      <button class="tab-btn" onclick="go('pricing',this)">💎 Pricing</button>
+      <button class="tab-btn" onclick="go('branding',this)">🎨 Branding</button>
+      <button class="tab-btn" onclick="go('lead',this)">📩 Get Started</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- HOME -->
+<div id="panel-home" class="panel active">
+  <div class="welcome-card">
+    <h2>Hi, <span id="disp-owner">Sarah</span>! 👋</h2>
+    <p>Welcome to your personal Social Media Assistant — built just for <strong id="disp-biz2">Lumière Med Spa</strong>. Everything here is simple. You'll feel confident in minutes!</p>
+  </div>
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">3×</div><div class="stat-label">Posts per week</div></div>
+    <div class="stat-card"><div class="stat-num">~15</div><div class="stat-label">Minutes / week</div></div>
+    <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">AI available</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">In your voice</div></div>
+  </div>
+  <div class="quick-actions">
+    <div class="qa-card" onclick="go('posts',null)"><div class="qa-icon">✍️</div><div class="qa-title">Ready-Made Posts</div><div class="qa-sub">Copy & paste in seconds</div></div>
+    <div class="qa-card" onclick="go('reels',null)"><div class="qa-icon">🎬</div><div class="qa-title">Create Reels</div><div class="qa-sub">Captions & voiceover</div></div>
+    <div class="qa-card" onclick="go('planner',null)"><div class="qa-icon">📅</div><div class="qa-title">Schedule Posts</div><div class="qa-sub">Plan your whole week</div></div>
+    <div class="qa-card" onclick="go('kpi',null)"><div class="qa-icon">📊</div><div class="qa-title">Your Insights</div><div class="qa-sub">See what's working</div></div>
+    <div class="qa-card" onclick="go('ai',null)"><div class="qa-icon">💬</div><div class="qa-title">Ask AI to Write</div><div class="qa-sub">Custom post in 10 sec</div></div>
+    <div class="qa-card" onclick="go('reply',null)"><div class="qa-icon">💌</div><div class="qa-title">Reply Templates</div><div class="qa-sub">Never leave a DM waiting</div></div>
+  </div>
+  <div class="info-card teal"><p>✅ <strong>What's ready for you:</strong> Ready-made posts · Reels creator with captions · Post scheduler · Performance insights · AI writer · Reply templates · How-to guides · Everything in one place.</p></div>
+</div>
+
+<!-- POSTS -->
+<div id="panel-posts" class="panel">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-box" type="text" placeholder="Search posts… try 'botox' or 'Monday' or 'skin'" oninput="filterPosts(this.value)"/>
+  </div>
+  <div id="posts-container"></div>
+  <div id="no-results" class="no-results hidden">No posts found. Try a different word!</div>
+</div>
+
+<!-- AI WRITER -->
+<div id="panel-ai" class="panel">
+  <div class="info-card gold"><p>✨ <strong>Tell me what you want</strong> and I'll write a perfect post in your voice — in about 10 seconds!</p></div>
+  <div class="ai-card">
+    <label class="ai-label">What should the post be about?</label>
+    <textarea class="ai-textarea" id="write-input" rows="3" placeholder='Try: "our new HydraFacial treatment" or "why skin hydration matters in summer"'></textarea>
+    <button class="ai-btn" id="write-btn" onclick="aiWrite()">✨ Write My Post</button>
+    <div id="write-result" class="hidden ai-result"></div>
+  </div>
+</div>
+
+<!-- REPLIES -->
+<div id="panel-reply" class="panel">
+  <div class="info-card rose"><p>💌 <strong>Copy any reply below</strong> — or paste what someone said and I'll write the perfect response!</p></div>
+  <div class="ai-card" style="margin-bottom:16px;">
+    <label class="ai-label">What did someone say? I'll write a reply:</label>
+    <textarea class="ai-textarea" id="reply-input" rows="2" placeholder='Example: "How much does Botox cost at your spa?"'></textarea>
+    <button class="ai-btn" id="reply-btn" onclick="aiReply()">💌 Write My Reply</button>
+    <div id="reply-result" class="hidden ai-result"></div>
+  </div>
+  <div id="reply-templates"></div>
+</div>
+
+<!-- SCHEDULE -->
+<div id="panel-schedule" class="panel">
+  <div class="info-card gold"><p>📅 <strong>Post 3 times a week.</strong> Mon · Wed · Fri. Takes about 15 minutes total. Use Meta Business Suite to schedule the whole week on Sunday!</p></div>
+  <div class="sched-row">
+    <div class="sched-day" style="background:#fdf6ea;color:#a67c30;">MON</div>
+    <div><div class="sched-title">📚 Educate</div><div class="sched-desc">Share a quick interesting fact about a treatment or skin health. Help people learn and trust you!</div></div>
+  </div>
+  <div class="sched-row">
+    <div class="sched-day" style="background:#fdf0f2;color:#a05060;">WED</div>
+    <div><div class="sched-title">💆 Show a Benefit</div><div class="sched-desc">Tell people how a treatment helped someone. Before & after stories, results they can expect. Real and relatable!</div></div>
+  </div>
+  <div class="sched-row">
+    <div class="sched-day" style="background:#edf6f6;color:#2a7a7a;">FRI</div>
+    <div><div class="sched-title">🌸 Inspire & Invite</div><div class="sched-desc">A warm tip, self-care reminder, or weekend treat message. Always end with your contact info!</div></div>
+  </div>
+  <div class="info-card teal" style="margin-top:6px;"><p>💡 <strong>Best times:</strong> 8–10am or 12–1pm. <strong>Best days:</strong> Tuesday through Thursday get the most reach. Schedule the whole week in 15 minutes on Sunday night!</p></div>
+</div>
+
+<!-- HOW-TO -->
+<div id="panel-howto" class="panel">
+  <div class="info-card gold"><p>📲 <strong>Tap any guide</strong> to open step-by-step instructions. Simple, I promise! 😊</p></div>
+  <div id="guides-container"></div>
+  <div class="info-card teal"><p>🌐 <strong>Bookmark:</strong> <span style="font-family:monospace;background:white;padding:2px 8px;border-radius:4px;">business.facebook.com</span> — post, schedule, and reply to ALL messages in one place.</p></div>
+</div>
+
+<!-- PRICING -->
+<div id="panel-pricing" class="panel">
+  <div class="info-card gold"><p>💎 <strong>Simple, transparent pricing.</strong> Everything your business needs to grow — done for you.</p></div>
+  <div class="price-card">
+    <div class="price-name">Starter</div>
+    <div class="price-amount">$297</div>
+    <div class="price-period">per month</div>
+    <div class="price-desc">Perfect for businesses just getting started with social media.</div>
+    <ul class="price-features">
+      <li>Custom Social Media Assistant App</li>
+      <li>12 ready-made posts per month</li>
+      <li>AI post writer — unlimited use</li>
+      <li>How-to guides & reply templates</li>
+      <li>Monthly content review call</li>
+      <li>Email support</li>
+    </ul>
+    <button class="price-cta" onclick="go('lead',null)">Get Started →</button>
+  </div>
+  <div class="price-card featured">
+    <div class="price-badge">MOST POPULAR</div>
+    <div class="price-name">Growth</div>
+    <div class="price-amount">$497</div>
+    <div class="price-period">per month</div>
+    <div class="price-desc">For businesses ready to grow their following and attract clients consistently.</div>
+    <ul class="price-features">
+      <li>Everything in Starter</li>
+      <li>24 ready-made posts per month</li>
+      <li>Weekly strategy check-in call</li>
+      <li>Competitor & hashtag research</li>
+      <li>Story & reel templates</li>
+      <li>Priority support — same-day reply</li>
+      <li>Monthly analytics report</li>
+    </ul>
+    <button class="price-cta" onclick="go('lead',null)">Get Started →</button>
+  </div>
+  <div class="price-card">
+    <div class="price-name">Done-For-You</div>
+    <div class="price-amount">$1,197</div>
+    <div class="price-period">per month</div>
+    <div class="price-desc">We handle everything. You focus on your clients.</div>
+    <ul class="price-features">
+      <li>Everything in Growth</li>
+      <li>We write & post FOR you every week</li>
+      <li>Professional graphic design</li>
+      <li>Reputation management</li>
+      <li>Paid ad management (ad spend extra)</li>
+      <li>Weekly reporting call</li>
+      <li>Dedicated account manager</li>
+    </ul>
+    <button class="price-cta" onclick="go('lead',null)">Get Started →</button>
+  </div>
+</div>
+
+<!-- BRANDING EDITOR -->
+<div id="panel-branding" class="panel">
+  <div class="info-card teal"><p>🎨 <strong>Live Demo Tool</strong> — Change the client name and info below to show any prospect exactly what their app would look like!</p></div>
+  <div class="brand-card">
+    <h3>Customize This Demo</h3>
+    <label class="brand-label">Business Name</label>
+    <input class="brand-input" id="brand-biz" value="Lumière Med Spa" placeholder="e.g. Glow Med Spa"/>
+    <label class="brand-label">Owner / Contact Name</label>
+    <input class="brand-input" id="brand-owner" value="Sarah" placeholder="e.g. Sarah"/>
+    <label class="brand-label">City & State</label>
+    <input class="brand-input" id="brand-loc" value="Las Vegas, NV" placeholder="e.g. Las Vegas, NV"/>
+    <label class="brand-label">Phone Number</label>
+    <input class="brand-input" id="brand-phone" value="702-555-0100" placeholder="e.g. 702-555-0100"/>
+    <label class="brand-label">Email Address</label>
+    <input class="brand-input" id="brand-email" value="hello@lumieremedspa.com" placeholder="e.g. hello@yourbiz.com"/>
+    <label class="brand-label">Business Type</label>
+    <select class="brand-input" id="brand-type">
+      <option>Med Spa / Aesthetics</option>
+      <option>Acupuncture / Wellness</option>
+      <option>Chiropractor / Physical Therapy</option>
+      <option>Dental Practice</option>
+      <option>Salon / Beauty</option>
+      <option>Fitness / Yoga Studio</option>
+      <option>Real Estate</option>
+    </select>
+    <button class="brand-apply-btn" onclick="applyBranding(event)">✅ Apply Branding to Demo</button>
+    <div class="brand-preview-box" id="brand-preview">
+      <div class="brand-preview-name">Lumière Med Spa</div>
+      <div class="brand-preview-sub">Las Vegas, NV · Sarah · 702-555-0100</div>
+    </div>
+  </div>
+  <div class="info-card gold"><p>⚡ <strong>How Opteva delivers this:</strong> Within 48 hours of signing up, your client gets a fully branded app like this — pre-loaded with their services, voice, and contact info. Ready to use from day one.</p></div>
+</div>
+
+<!-- REELS CREATOR (CANVA) -->
+<div id="panel-reels" class="panel">
+  <div class="info-card gold"><p>🎬 <strong>Create scroll-stopping Reels</strong> with captions, voiceover, and beautiful templates — right here inside your app!</p></div>
+
+  <div class="reels-card">
+    <h3>Choose a Template</h3>
+    <div class="canva-templates">
+      <div class="canva-tmpl active" onclick="selectReelTemplate(this,'reel-promo')" id="tmpl-reel-promo">
+        <div class="canva-tmpl-icon">✨</div>
+        <div class="canva-tmpl-title">Service Promo</div>
+        <div class="canva-tmpl-sub">Highlight a treatment</div>
+      </div>
+      <div class="canva-tmpl" onclick="selectReelTemplate(this,'reel-tip')" id="tmpl-reel-tip">
+        <div class="canva-tmpl-icon">💡</div>
+        <div class="canva-tmpl-title">Quick Tip</div>
+        <div class="canva-tmpl-sub">Share skincare advice</div>
+      </div>
+      <div class="canva-tmpl" onclick="selectReelTemplate(this,'reel-before')" id="tmpl-reel-before">
+        <div class="canva-tmpl-icon">📸</div>
+        <div class="canva-tmpl-title">Before & After</div>
+        <div class="canva-tmpl-sub">Show your results</div>
+      </div>
+      <div class="canva-tmpl" onclick="selectReelTemplate(this,'reel-intro')" id="tmpl-reel-intro">
+        <div class="canva-tmpl-icon">👋</div>
+        <div class="canva-tmpl-title">Meet the Team</div>
+        <div class="canva-tmpl-sub">Introduce your staff</div>
+      </div>
+    </div>
+    <a href="https://www.canva.com/design/create/videos" target="_blank" rel="noopener" class="canva-open-btn" style="display:block;text-align:center;text-decoration:none;">
+      🎨 Open Canva Video Editor →
+    </a>
+  </div>
+
+  <div class="reels-card">
+    <h3>AI Caption & Voiceover Tools</h3>
+    <div class="ai-card" style="box-shadow:none;padding:0;margin-bottom:0;">
+      <label class="ai-label">Describe your reel and I'll write the caption + voiceover script:</label>
+      <textarea class="ai-textarea" id="reel-input" rows="3" placeholder='Try: "15-second reel showing our HydraFacial process with before and after"'></textarea>
+      <button class="ai-btn" id="reel-btn" onclick="aiReel()">🎬 Write Caption + Voiceover</button>
+      <div id="reel-result" class="hidden ai-result"></div>
+    </div>
+  </div>
+
+  <div class="reels-card">
+    <h3>Reel Tips That Get Views</h3>
+    <div class="reels-tips">
+      <div class="reel-tip"><span>🎯</span><span><strong>Hook in 1 second.</strong> Start with motion, text on screen, or a surprising visual. You have ONE second before they scroll.</span></div>
+      <div class="reel-tip"><span>📝</span><span><strong>Add captions always.</strong> 85% of people watch Reels with sound OFF. Captions are not optional.</span></div>
+      <div class="reel-tip"><span>⏱️</span><span><strong>Keep it 7–15 seconds.</strong> Short Reels get replayed more, and replays = more reach.</span></div>
+      <div class="reel-tip"><span>🎵</span><span><strong>Use trending audio.</strong> Tap the audio icon on any popular Reel to save it, then use it on yours.</span></div>
+      <div class="reel-tip"><span>📲</span><span><strong>Post 3–5 Reels/week.</strong> Instagram is pushing Reels HARD. More Reels = way more visibility.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- POST PLANNER / SCHEDULER -->
+<div id="panel-planner" class="panel">
+  <div class="info-card gold"><p>📅 <strong>Plan and schedule your whole week.</strong> See your content calendar, drag posts into slots, and never miss a posting day!</p></div>
+
+  <div class="sched-calendar">
+    <h3>Content Calendar</h3>
+    <div class="sched-week-nav">
+      <button class="sched-nav-btn" onclick="navWeek(-1)">‹</button>
+      <div class="sched-week-label" id="sched-week-label">This Week</div>
+      <button class="sched-nav-btn" onclick="navWeek(1)">›</button>
+    </div>
+    <div class="sched-grid" id="sched-grid"></div>
+    <div class="sched-status">
+      <div class="sched-status-item"><div class="sched-status-dot" style="background:#a67c30;"></div>Educational</div>
+      <div class="sched-status-item"><div class="sched-status-dot" style="background:#a05060;"></div>Benefit / Story</div>
+      <div class="sched-status-item"><div class="sched-status-dot" style="background:#2a7a7a;"></div>Inspire / CTA</div>
+      <div class="sched-status-item"><div class="sched-status-dot" style="background:#7B2FBE;"></div>Reel</div>
+    </div>
+  </div>
+
+  <div class="sched-calendar">
+    <h3>Upcoming Queue</h3>
+    <div id="sched-queue"></div>
+  </div>
+
+  <div class="info-card teal"><p>🔗 <strong>Coming Soon:</strong> Connect your Instagram & Facebook to schedule posts directly from here — no need to leave the app! Upgrade to Growth plan to be first in line.</p></div>
+</div>
+
+<!-- KPI / INSIGHTS DASHBOARD -->
+<div id="panel-kpi" class="panel">
+  <div class="info-card gold"><p>📊 <strong>Your social media performance at a glance.</strong> See what's working, what's growing, and where to focus next!</p></div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card up">
+      <div class="kpi-label">Followers</div>
+      <div class="kpi-value">1,247</div>
+      <span class="kpi-change up">↑ 12% <span style="font-weight:400;opacity:0.7;">this month</span></span>
+    </div>
+    <div class="kpi-card up">
+      <div class="kpi-label">Reach</div>
+      <div class="kpi-value">8,432</div>
+      <span class="kpi-change up">↑ 23% <span style="font-weight:400;opacity:0.7;">this month</span></span>
+    </div>
+    <div class="kpi-card up">
+      <div class="kpi-label">Engagement</div>
+      <div class="kpi-value">4.8%</div>
+      <span class="kpi-change up">↑ 0.6% <span style="font-weight:400;opacity:0.7;">this month</span></span>
+    </div>
+    <div class="kpi-card down">
+      <div class="kpi-label">Profile Visits</div>
+      <div class="kpi-value">312</div>
+      <span class="kpi-change down">↓ 3% <span style="font-weight:400;opacity:0.7;">this month</span></span>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Engagement by Post Type</h3>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">Reels</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill purple" style="width:85%;">6.2%</div></div>
+    </div>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">Carousels</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill gold" style="width:68%;">4.8%</div></div>
+    </div>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">Single Photo</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill teal" style="width:52%;">3.6%</div></div>
+    </div>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">Stories</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill rose" style="width:40%;">2.8%</div></div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Best Posting Times</h3>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">9–10 AM</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill gold" style="width:92%;">Top reach</div></div>
+    </div>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">12–1 PM</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill teal" style="width:78%;">High reach</div></div>
+    </div>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">7–8 PM</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill rose" style="width:61%;">Good reach</div></div>
+    </div>
+    <div class="chart-bar-row">
+      <div class="chart-bar-label">3–4 PM</div>
+      <div class="chart-bar-track"><div class="chart-bar-fill purple" style="width:35%;">Moderate</div></div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3>Top Performing Posts</h3>
+    <div class="top-posts">
+      <div class="top-post-row">
+        <div class="top-post-rank">1</div>
+        <div class="top-post-info">
+          <div class="top-post-title">💉 Botox — The Real Story</div>
+          <div class="top-post-stat">1,842 reach · 156 likes · 23 saves</div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div class="top-post-rank">2</div>
+        <div class="top-post-info">
+          <div class="top-post-title">💦 HydraFacial — What It Does</div>
+          <div class="top-post-stat">1,456 reach · 132 likes · 18 saves</div>
+        </div>
+      </div>
+      <div class="top-post-row">
+        <div class="top-post-rank">3</div>
+        <div class="top-post-info">
+          <div class="top-post-title">🌟 Microneedling for Your Skin</div>
+          <div class="top-post-stat">1,203 reach · 98 likes · 31 saves</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-upgrade-banner">
+    <h3>Want Real-Time Analytics?</h3>
+    <p>Upgrade to Growth plan to connect your Instagram & Facebook for live data, weekly reports, and AI-powered recommendations.</p>
+    <button class="kpi-upgrade-btn" onclick="go('lead',null)">📊 Upgrade to Growth →</button>
+  </div>
+</div>
+
+<!-- LEAD CAPTURE — GHL FORM -->
+<div id="panel-lead" class="panel">
+  <div class="lead-section">
+    <div class="lead-header">
+      <h2>Ready to Grow? 🌸</h2>
+      <p>Book a free call with Stephanie — we'll show you exactly how to grow your social media in 15 minutes a week. No tech skills needed!</p>
+    </div>
+    <div class="lead-form-wrap">
+      <iframe
+        src="https://api.opteva.ai/widget/bookings/stephanie-sullivan-personal-calendar-0xlbtihfq"
+        title="Schedule your free audit with Stephanie"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
+<div class="powered-footer">⚡ <a href="#">Opteva</a> · Social Media Made Simple</div>
+
+<!-- GHL Booking Widget Script -->
+<script src="https://api.opteva.ai/js/form_embed.js"></script>
+
+<script>
+// ══════════════════════════════
+// CLIENT STATE
+// ══════════════════════════════
+let C = {
+  name:"Lumière Med Spa", owner:"Sarah", loc:"Las Vegas, NV",
+  phone:"702-555-0100", email:"hello@lumieremedspa.com", type:"Med Spa / Aesthetics"
+};
+
+// ══════════════════════════════
+// POST DATA
+// ══════════════════════════════
+const POSTS = [
+  {id:"botox",emoji:"💉",topic:"Botox — The Real Story",day:"Mon",dc:"#fdf6ea",dtc:"#a67c30",type:"Educational",
+    images:[
+      {src:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80",tip:"Spa treatment — calm and welcoming"},
+      {src:"https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80",tip:"Aesthetics close-up — clean and professional"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`Did you know Botox doesn't just reduce wrinkles?
+
+It also helps with migraines, excessive sweating, and jaw tension from clenching!
+
+Most people are surprised by how many things it can help with. And the treatment takes less than 15 minutes.
+
+Results last 3–4 months. Many of our clients come back every season.
+
+Curious if it might be right for you? We'd love to chat!
+
+📞 Text or call ${C.phone} · ${C.name}`},
+      {tag:"Short",cls:"vr",tf:()=>`Botox myth: it freezes your face.
+
+Reality: when done right, it looks completely natural. Our clients say people notice they look refreshed — not "done." 💉
+
+Text ${C.phone} for a free consult! ${C.name}`},
+    ]},
+  {id:"hydrafacial",emoji:"💦",topic:"HydraFacial — What It Does",day:"Mon",dc:"#fdf6ea",dtc:"#a67c30",type:"Educational",
+    images:[
+      {src:"https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80",tip:"Glowing skin result — aspirational"},
+      {src:"https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80",tip:"Clean spa aesthetic — light and airy"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`A HydraFacial is one of our most popular treatments — and once you try it, you'll understand why! 💦
+
+It cleanses, exfoliates, and floods your skin with hydrating serums all in one session.
+
+No redness. No downtime. You can go right back to your day.
+
+Your skin looks incredible immediately after — perfect before a big event or just as a monthly treat!
+
+📞 Text us: ${C.phone} · ${C.name}`},
+    ]},
+  {id:"filler",emoji:"✨",topic:"Dermal Fillers — Natural Results",day:"Wed",dc:"#fdf0f2",dtc:"#a05060",type:"Treatment Benefit",
+    images:[
+      {src:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80",tip:"Natural glowing skin — beautiful"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`The goal of filler isn't to change how you look.
+
+It's to restore what time quietly takes away. Volume. Lift. That little bit of fullness that makes you look like YOU — just refreshed.
+
+When done well, no one can tell. They just say: "You look amazing! Did you do something different?"
+
+That's what we're here for. Natural, beautiful results every time.
+
+📞 Book your free consult: ${C.phone} · ${C.name}`},
+    ]},
+  {id:"microneedling",emoji:"🌟",topic:"Microneedling for Your Skin",day:"Wed",dc:"#fdf0f2",dtc:"#a05060",type:"Service Spotlight",
+    images:[
+      {src:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80",tip:"Skincare treatment — spa feeling"},
+      {src:"https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80",tip:"Glowing skin results"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`Your skin has an incredible ability to heal itself. Microneedling gives it the nudge it needs. 🌟
+
+Tiny needles create micro-channels, triggering your body's own collagen production.
+
+The result? Smoother texture. Smaller pores. Fewer fine lines. A real glow.
+
+We pair it with custom serums for even better results. Packages available!
+
+📞 ${C.phone} · ${C.name}`},
+    ]},
+  {id:"spf",emoji:"☀️",topic:"Daily SPF — The #1 Skin Tip",day:"Fri",dc:"#edf6f6",dtc:"#2a7a7a",type:"Wellness Reminder",
+    images:[
+      {src:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80",tip:"Skincare flatlay — beautiful and aspirational"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`The #1 thing you can do for your skin right now? SPF. Every. Single. Day. ☀️
+
+Sun damage is the number one cause of premature aging. And the great news? It's almost entirely preventable.
+
+Wear SPF 30 or higher — even on cloudy days. Even in winter. Even indoors near windows.
+
+Your future self will thank you!
+
+And when you're ready for a professional boost — we're here. 💕
+
+📞 ${C.phone} · ${C.name}`},
+    ]},
+  {id:"selfcare",emoji:"💆",topic:"Weekend Self-Care Reminder",day:"Fri",dc:"#edf6f6",dtc:"#2a7a7a",type:"Wellness Reminder",
+    images:[
+      {src:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80",tip:"Relaxing spa — candles and calm"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`This weekend — do something nice for yourself. 🌸
+
+You work hard. You take care of everyone else. It's okay to take care of YOU too.
+
+Whether it's a HydraFacial, a Botox touch-up, or just a consultation — we're here to help you feel your very best.
+
+You deserve to feel confident and radiant.
+
+📞 Call or text: ${C.phone} · ${C.name}`},
+    ]},
+  {id:"consult",emoji:"💛",topic:"Free Consultation Invite",day:"Mon",dc:"#fdf6ea",dtc:"#a67c30",type:"Call to Action",
+    images:[
+      {src:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80",tip:"Spa consultation — warm and professional"},
+    ],
+    versions:[
+      {tag:"⭐ Best",cls:"vg",tf:()=>`Not sure where to start? That's completely okay — most of our clients felt the same way! 💛
+
+That's why we offer a FREE consultation. No pressure. No commitment.
+
+We'll talk about your goals, answer every question, and create a plan that's right for you.
+
+Come as you are. Leave feeling excited and confident!
+
+📞 Book your free consult: ${C.phone} · ${C.name}`},
+    ]},
+];
+
+const REPLY_TMPLS = [
+  {title:"Someone asks about pricing",replies:[
+    {label:"Warm & invite them in",tf:()=>`Hi! Thank you for reaching out 😊 Pricing depends on the treatment and what we recommend for you. The best next step is a free 15-minute consultation — no pressure, just answers! Call or text us at ${C.phone}. We'd love to meet you! ${C.name} 💕`},
+    {label:"Short reply",tf:()=>`Hi! Pricing varies by treatment. Come in for a FREE consultation — no pressure! Text or call ${C.phone}. 💕 ${C.name}`},
+  ]},
+  {title:"Someone comments something positive",replies:[
+    {label:"Warm thank you",tf:()=>`Thank you so much! That truly means the world to us. 🌸 If you ever want to book or have questions, we're here — call or text ${C.phone}. ${C.name}`},
+  ]},
+  {title:"Someone asks 'Does Botox hurt?'",replies:[
+    {label:"Reassuring answer",tf:()=>`Great question! Most clients describe it as a tiny quick pinch — nothing more. We can also apply numbing cream beforehand! Most people are surprised by how easy it is 😊 Text ${C.phone} to learn more or book! ${C.name} 💕`},
+  ]},
+  {title:"Someone asks about a specific treatment",replies:[
+    {label:"Helpful & inviting",tf:()=>`Hi! That's a great question — we'd love to tell you more about it! The best way is to come in for a quick FREE consult where we can walk you through everything. No pressure at all! Text or call ${C.phone}. ${C.name} 🌸`},
+  ]},
+];
+
+const GUIDES = [
+  {id:"post-now",emoji:"📤",title:"Post Right Now",sub:"Publish to Facebook & Instagram today",color:"#c9963a",
+    steps:[
+      {icon:"🌐",text:"Go to business.facebook.com\n(or open Meta Business Suite app on your phone)"},
+      {icon:"🔵",text:'Click the blue "Create post" button'},
+      {icon:"☑️",text:"Make sure BOTH Facebook AND Instagram are checked at the top"},
+      {icon:"🖼️",text:"Click 'Add photo' and pick your image"},
+      {icon:"✍️",text:"Paste your caption (copy from the Posts tab above!)"},
+      {icon:"👁️",text:"Check the preview — does it look good?"},
+      {icon:"✅",text:'Click the green "Publish" button'},
+      {icon:"🎉",text:"Done! You're live on Facebook AND Instagram at the same time!"},
+    ]},
+  {id:"schedule-post",emoji:"📅",title:"Schedule Posts Ahead of Time",sub:"Set it up once — it posts automatically",color:"#c06b7a",
+    steps:[
+      {icon:"🌐",text:"Go to business.facebook.com"},
+      {icon:"🔵",text:'Click "Create post"'},
+      {icon:"☑️",text:"Check Facebook AND Instagram"},
+      {icon:"🖼️",text:"Add your photo and paste your caption"},
+      {icon:"🔽",text:"Click the small arrow NEXT to the Publish button (bottom right)"},
+      {icon:"📆",text:'Choose "Schedule post"'},
+      {icon:"🕐",text:"Pick your date and time — best: Mon/Wed/Fri at 9am or 12pm"},
+      {icon:"✅",text:"Click 'Schedule' — it posts automatically! 🎉"},
+    ]},
+  {id:"inbox",emoji:"💬",title:"Reply to All Messages",sub:"Facebook & Instagram messages in one place",color:"#2a7a7a",
+    steps:[
+      {icon:"🌐",text:"Go to business.facebook.com"},
+      {icon:"📬",text:'Click "Inbox" on the left menu'},
+      {icon:"📩",text:"See ALL messages — Facebook AND Instagram together!"},
+      {icon:"👆",text:"Click any message to open it"},
+      {icon:"✍️",text:"Type your reply at the bottom"},
+      {icon:"📤",text:"Press Enter or click Send"},
+      {icon:"💡",text:"Tip: Replying within a few hours builds SO much trust with potential clients!"},
+    ]},
+  {id:"followers",emoji:"👥",title:"Get More Followers — No Ads!",sub:"Simple free weekly actions that actually work",color:"#1a1a2e",
+    steps:[
+      {icon:"❤️",text:"After posting, click the hearts/likes on your post"},
+      {icon:"📩",text:'Click "Invite" next to anyone who liked but doesn\'t follow yet'},
+      {icon:"🔍",text:"Find 5–10 local businesses nearby — like their page, leave a kind genuine comment"},
+      {icon:"📤",text:"Share your business page post to your personal profile once a week"},
+      {icon:"👥",text:'Go to your page → "Invite Friends" → invite relevant people you know'},
+      {icon:"💡",text:"Do this consistently — followers grow slowly then suddenly all at once!"},
+    ]},
+];
+
+// ══════════════════════════════
+// HELPERS
+// ══════════════════════════════
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+const PS = {};
+
+function buildPost(p){
+  const s=PS[p.id]||{ver:0,img:0};
+  const v=p.versions[s.ver]; const t=v.tf();
+  const img=p.images[s.img];
+  const vBtns=p.versions.length>1?`<div class="ver-tabs">${p.versions.map((pv,i)=>`
+    <button class="ver-btn ${i===s.ver?pv.cls:''}" onclick="setVer('${p.id}',${i})">${pv.tag}</button>`).join('')}</div>`:'';
+  const nav=p.images.length>1?`
+    <button class="img-nav-btn" style="left:8px" onclick="iNav('${p.id}',-1)">‹</button>
+    <button class="img-nav-btn" style="right:8px" onclick="iNav('${p.id}',1)">›</button>`:'';
+  const dots=p.images.length>1?`<div class="img-dots">${p.images.map((_,i)=>`
+    <button class="dot" onclick="setImg('${p.id}',${i})" style="background:${i===s.img?'var(--gold)':'#ddd'}"></button>`).join('')}</div>`:'';
+  return `<div class="post-card" id="card-${p.id}">
+    <div class="post-header">
+      <div class="post-emoji-box">${p.emoji}</div>
+      <div>
+        <div class="post-topic">${p.topic}</div>
+        <div class="post-meta"><span class="day-pill" style="background:${p.dc};color:${p.dtc};">${p.day}</span>${p.type}</div>
+      </div>
+    </div>
+    <div class="post-body">
+      ${vBtns}
+      <div class="post-text" id="text-${p.id}">${esc(t)}</div>
+      <div class="img-picker"><div class="img-wrap">
+        <img src="${img.src}" alt="" onerror="this.style.display='none';this.nextElementSibling.classList.add('show')"/>
+        <div class="img-fail">📸 Use a photo from your practice</div>${nav}
+      </div><div class="img-info">
+        <div class="img-label">📸 Image idea ${s.img+1}${p.images.length>1?' of '+p.images.length:''}</div>
+        <div class="img-tip">${img.tip}</div>${dots}
+      </div></div>
+      <button class="copy-btn" id="cb-${p.id}" onclick="copyPost('${p.id}')">📋 Copy This Post</button>
+    </div>
+  </div>`;
+}
+
+function renderPosts(list){document.getElementById('posts-container').innerHTML=list.map(buildPost).join('');}
+
+function setVer(id,i){PS[id]={...(PS[id]||{img:0}),ver:i};reCard(id);}
+function iNav(id,d){const p=POSTS.find(x=>x.id===id);const s=PS[id]||{ver:0,img:0};
+  PS[id]={...s,img:(s.img+d+p.images.length)%p.images.length};reCard(id);}
+function setImg(id,i){PS[id]={...(PS[id]||{ver:0}),img:i};reCard(id);}
+function reCard(id){const p=POSTS.find(x=>x.id===id);const c=document.getElementById('card-'+id);
+  if(!c||!p)return;const t=document.createElement('div');t.innerHTML=buildPost(p);c.replaceWith(t.firstElementChild);}
+function copyPost(id){const p=POSTS.find(x=>x.id===id);const s=PS[id]||{ver:0};
+  navigator.clipboard.writeText(p.versions[s.ver].tf()).then(()=>{
+    const b=document.getElementById('cb-'+id);if(!b)return;
+    b.textContent='✅ Copied!';b.classList.add('done');
+    setTimeout(()=>{b.textContent='📋 Copy This Post';b.classList.remove('done');},2200);});}
+function filterPosts(q){const t=q.trim().toLowerCase();
+  const l=t?POSTS.filter(p=>p.topic.toLowerCase().includes(t)||p.type.toLowerCase().includes(t)||
+    p.day.toLowerCase().includes(t)||p.versions.some(v=>v.tf().toLowerCase().includes(t))):POSTS;
+  renderPosts(l);document.getElementById('no-results').classList.toggle('hidden',l.length>0);}
+
+function renderReplies(){
+  document.getElementById('reply-templates').innerHTML=REPLY_TMPLS.map(rt=>`
+    <div style="background:white;border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 3px 14px rgba(0,0,0,0.06);">
+      <div style="font-family:'Playfair Display',serif;font-size:15px;color:var(--charcoal);margin-bottom:12px;">📌 ${rt.title}</div>
+      ${rt.replies.map((r,i)=>`
+        <div style="background:var(--cream);border-radius:12px;padding:14px;font-size:14px;line-height:1.8;white-space:pre-wrap;color:#2a2a2a;border-left:3px solid var(--rose);margin-bottom:8px;">${esc(r.tf())}</div>
+        <button onclick="cpTxt(this,'${encodeURIComponent(r.tf())}')" style="width:100%;padding:10px;background:linear-gradient(135deg,var(--rose),#a05060);color:white;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:${i<rt.replies.length-1?'12px':'0'};">📋 Copy — ${r.label}</button>
+      `).join('')}
+    </div>`).join('');}
+
+function cpTxt(btn,enc){navigator.clipboard.writeText(decodeURIComponent(enc)).then(()=>{
+  const o=btn.innerHTML;btn.innerHTML='✅ Copied!';btn.style.background='linear-gradient(135deg,var(--teal),#1d5c5c)';
+  setTimeout(()=>{btn.innerHTML=o;btn.style.background='';},2200);});}
+
+function renderGuides(){
+  document.getElementById('guides-container').innerHTML=GUIDES.map(g=>`
+    <div class="guide-card">
+      <button class="guide-header" onclick="toggleG('${g.id}')">
+        <div class="guide-icon" style="background:${g.color}18;">${g.emoji}</div>
+        <div><div class="guide-ttl">${g.title}</div><div class="guide-sub">${g.sub}</div></div>
+        <div class="guide-arrow" id="arr-${g.id}">›</div>
+      </button>
+      <div class="guide-steps" id="gs-${g.id}">
+        ${g.steps.map((s,i)=>`<div class="step">
+          <div class="step-circle" style="background:${g.color}15;border:2px solid ${g.color}35;">${s.icon}</div>
+          <div><div class="step-num-lbl" style="color:${g.color};">Step ${i+1}</div>
+          <div class="step-text">${esc(s.text)}</div></div>
+        </div>`).join('')}
+        <div class="guide-tip">💡 <strong>Stuck?</strong> Go to 💬 Ask AI and just describe what you need — I'll write simple steps for you!</div>
+      </div>
+    </div>`).join('');}
+
+function toggleG(id){document.getElementById('gs-'+id).classList.toggle('open');document.getElementById('arr-'+id).classList.toggle('open');}
+
+// ══════════════════════════════
+// TABS
+// ══════════════════════════════
+function go(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(btn&&btn.classList)btn.classList.add('active');
+  else document.querySelectorAll('.tab-btn').forEach(b=>{if(b.getAttribute('onclick').includes("'"+id+"'"))b.classList.add('active');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ══════════════════════════════
+// BRANDING
+// ══════════════════════════════
+function applyBranding(e){
+  C.name=document.getElementById('brand-biz').value||C.name;
+  C.owner=document.getElementById('brand-owner').value||C.owner;
+  C.loc=document.getElementById('brand-loc').value||C.loc;
+  C.phone=document.getElementById('brand-phone').value||C.phone;
+  C.email=document.getElementById('brand-email').value||C.email;
+  C.type=document.getElementById('brand-type').value||C.type;
+  document.getElementById('disp-name').textContent=C.name;
+  document.getElementById('disp-loc').textContent=C.loc;
+  document.getElementById('disp-owner').textContent=C.owner;
+  document.getElementById('disp-biz2').textContent=C.name;
+  document.getElementById('brand-preview').innerHTML=`
+    <div class="brand-preview-name">${C.name}</div>
+    <div class="brand-preview-sub">${C.loc} · ${C.owner} · ${C.phone}</div>`;
+  renderPosts(POSTS);renderReplies();
+  const btn=e.target;btn.textContent='✅ Applied!';setTimeout(()=>btn.textContent='✅ Apply Branding to Demo',1800);
+}
+
+// ══════════════════════════════
+// AI WRITER (Demo Mode with Smart Fallback)
+// ══════════════════════════════
+const AI_TEMPLATES = {
+  post: [
+    (topic)=>`Here's something we get asked about a lot — ${topic}. 🌸
+
+And honestly? It's one of those things that makes such a real difference when you experience it for yourself.
+
+We've seen so many of our clients walk out feeling more confident, more refreshed, and honestly — just happier.
+
+If you've been curious, there's no pressure. We'd love to just chat about it over a free consultation.
+
+You deserve to feel amazing. 💕
+
+📞 Text or call ${C.phone} · ${C.name}`,
+    (topic)=>`Let's talk about ${topic} — because we know there are SO many questions! 💛
+
+The truth is, it's simpler than most people think. And the results speak for themselves.
+
+Our clients always tell us they wish they'd done it sooner.
+
+Want to learn more? We offer free consultations — no pressure, just answers!
+
+📞 ${C.phone} · ${C.name} 🌸`,
+  ],
+  reply: [
+    (msg)=>`Hi there! Thank you so much for reaching out 😊 That's a great question!
+
+We'd love to help — the best next step is a quick free consultation where we can chat about exactly what you're looking for. No pressure at all!
+
+Text or call us at ${C.phone}. We're here for you! 💕 ${C.name}`,
+    (msg)=>`Hey! Thanks for your message 🌸 We appreciate you thinking of us!
+
+We'd love to tell you more — feel free to call or text ${C.phone} and we can answer all your questions. Or book a free consult at your convenience!
+
+${C.name} 💛`,
+  ]
+};
+
+function generateDemoPost(topic){
+  const idx = Math.floor(Math.random()*AI_TEMPLATES.post.length);
+  return AI_TEMPLATES.post[idx](topic);
+}
+function generateDemoReply(msg){
+  const idx = Math.floor(Math.random()*AI_TEMPLATES.reply.length);
+  return AI_TEMPLATES.reply[idx](msg);
+}
+
+async function callAI(msg,resId,btnId,btnLbl,type){
+  const btn=document.getElementById(btnId);const res=document.getElementById(resId);
+  btn.disabled=true;btn.textContent='✨ Writing for you...';
+  res.classList.remove('hidden');res.textContent='...';
+  const old=res.nextElementSibling;if(old&&old.classList.contains('copy-btn'))old.remove();
+
+  // Simulate a brief delay for realistic feel
+  await new Promise(r=>setTimeout(r,1200+Math.random()*800));
+
+  const topic = msg.match(/about[:\s]*[""]?(.+?)[""]?\s*[.!]?\s*(?:Sound|Be|Under|Write)/i);
+  const input = topic ? topic[1] : msg.slice(0,60);
+
+  const txt = type==='reply' ? generateDemoReply(input) : generateDemoPost(input);
+
+  res.textContent=txt;
+  const cb=document.createElement('button');
+  cb.className='copy-btn';cb.textContent='📋 Copy Text';
+  cb.onclick=()=>{navigator.clipboard.writeText(txt).then(()=>{cb.textContent='✅ Copied!';cb.classList.add('done');setTimeout(()=>{cb.textContent='📋 Copy Text';cb.classList.remove('done');},2200);});};
+  res.after(cb);
+  btn.disabled=false;btn.textContent=btnLbl;
+}
+
+function aiWrite(){const v=document.getElementById('write-input').value.trim();if(!v)return;
+  callAI(v,'write-result','write-btn','✨ Write My Post','post');}
+function aiReply(){const v=document.getElementById('reply-input').value.trim();if(!v)return;
+  callAI(v,'reply-result','reply-btn','💌 Write My Reply','reply');}
+function aiReel(){const v=document.getElementById('reel-input').value.trim();if(!v)return;
+  callAI(v,'reel-result','reel-btn','🎬 Write Caption + Voiceover','reel');}
+
+// ══════════════════════════════
+// REELS TEMPLATES
+// ══════════════════════════════
+AI_TEMPLATES.reel = [
+  (topic)=>`📱 CAPTION:
+${topic} — and it only takes a few minutes. ✨
+
+This is one of those treatments where you see results immediately. No kidding.
+
+Want to try it? DM us or call ${C.phone}!
+
+#${C.type.replace(/[^a-zA-Z]/g,'')} #skincare #beauty #${C.loc.split(',')[0].trim().replace(/\s/g,'')} #selfcare #glowup
+
+———————
+
+🎙️ VOICEOVER SCRIPT:
+[0s] "Okay, let me show you something amazing..."
+[2s] "This is what ${topic} actually looks like..."
+[5s] "See the difference? That happened in just one session."
+[8s] "If you've been thinking about it... this is your sign."
+[11s] "Link in bio to book. ${C.name}."
+
+———————
+
+🎵 AUDIO: Use trending sound · Keep it 12–15 seconds
+📐 FORMAT: 9:16 vertical · Film in good lighting`,
+];
+
+function generateDemoReel(topic){
+  return AI_TEMPLATES.reel[0](topic);
+}
+
+// Override callAI to handle reel type
+const origCallAI = callAI;
+callAI = async function(msg,resId,btnId,btnLbl,type){
+  if(type==='reel'){
+    const btn=document.getElementById(btnId);const res=document.getElementById(resId);
+    btn.disabled=true;btn.textContent='🎬 Writing caption + voiceover...';
+    res.classList.remove('hidden');res.textContent='...';
+    const old=res.nextElementSibling;if(old&&old.classList.contains('copy-btn'))old.remove();
+    await new Promise(r=>setTimeout(r,1500+Math.random()*800));
+    const txt = generateDemoReel(msg);
+    res.textContent=txt;
+    const cb=document.createElement('button');
+    cb.className='copy-btn';cb.textContent='📋 Copy Caption + Script';
+    cb.onclick=()=>{navigator.clipboard.writeText(txt).then(()=>{cb.textContent='✅ Copied!';cb.classList.add('done');setTimeout(()=>{cb.textContent='📋 Copy Caption + Script';cb.classList.remove('done');},2200);});};
+    res.after(cb);
+    btn.disabled=false;btn.textContent=btnLbl;
+  } else {
+    return origCallAI(msg,resId,btnId,btnLbl,type);
+  }
+};
+
+function selectReelTemplate(el,tmplId){
+  document.querySelectorAll('.canva-tmpl').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ══════════════════════════════
+// SCHEDULER / PLANNER
+// ══════════════════════════════
+let schedWeekOffset = 0;
+
+const SCHED_POSTS = [
+  {day:1,time:'9:00 AM',title:'📚 Botox Education',type:'edu',status:'scheduled'},
+  {day:3,time:'12:00 PM',title:'💆 HydraFacial Results',type:'benefit',status:'scheduled'},
+  {day:5,time:'9:00 AM',title:'🌸 Weekend Self-Care',type:'inspire',status:'scheduled'},
+  {day:2,time:'11:00 AM',title:'🎬 Quick Tip Reel',type:'reel',status:'draft'},
+  {day:4,time:'10:00 AM',title:'🎬 Before & After Reel',type:'reel',status:'draft'},
+];
+
+function getWeekDates(offset){
+  const now=new Date();const day=now.getDay();
+  const mon=new Date(now);mon.setDate(now.getDate()-day+1+(offset*7));
+  const dates=[];
+  for(let i=0;i<7;i++){const d=new Date(mon);d.setDate(mon.getDate()+i);dates.push(d);}
+  return dates;
+}
+
+function renderPlanner(){
+  const dates=getWeekDates(schedWeekOffset);
+  const today=new Date();today.setHours(0,0,0,0);
+
+  // Week label
+  const m1=dates[0].toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  const m2=dates[6].toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  document.getElementById('sched-week-label').textContent=
+    schedWeekOffset===0?`This Week · ${m1} – ${m2}`:
+    schedWeekOffset===1?`Next Week · ${m1} – ${m2}`:
+    `${m1} – ${m2}`;
+
+  // Grid
+  const dayNames=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let html=dayNames.map(d=>`<div class="sched-day-header">${d}</div>`).join('');
+  dates.forEach((dt,i)=>{
+    const isToday=dt.getTime()===today.getTime();
+    const posts=SCHED_POSTS.filter(p=>p.day===i);
+    html+=`<div class="sched-cell${isToday?' today':''}">
+      <div class="sched-cell-date">${dt.getDate()}</div>
+      ${posts.map(p=>`<div class="sched-cell-post ${p.type}">${p.title.split(' ').slice(0,2).join(' ')}</div>`).join('')}
+    </div>`;
+  });
+  document.getElementById('sched-grid').innerHTML=html;
+
+  // Queue
+  let qHtml='';
+  SCHED_POSTS.sort((a,b)=>a.day-b.day).forEach(p=>{
+    const dt=dates[p.day];
+    const dayStr=dt.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+    const statusCls=p.status==='scheduled'?'background:var(--teal-pale);color:var(--teal);':'background:var(--gold-pale);color:#a67c30;';
+    const typeColors={edu:'#a67c30',benefit:'#a05060',inspire:'#2a7a7a',reel:'#7B2FBE'};
+    qHtml+=`<div class="sched-queue-item">
+      <div class="sched-queue-info">
+        <div class="sched-queue-type" style="background:${typeColors[p.type]||'#ccc'};"></div>
+        <div>
+          <div class="sched-queue-title">${p.title}</div>
+          <div class="sched-queue-time">${dayStr} · ${p.time}</div>
+        </div>
+      </div>
+      <span class="sched-queue-status" style="${statusCls}">${p.status==='scheduled'?'✅ Scheduled':'📝 Draft'}</span>
+    </div>`;
+  });
+  document.getElementById('sched-queue').innerHTML=qHtml;
+}
+
+function navWeek(dir){schedWeekOffset+=dir;renderPlanner();}
+
+// Enter key support
+document.addEventListener('DOMContentLoaded',()=>{
+  ['write-input','reply-input','reel-input'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.addEventListener('keydown',ev=>{if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();
+      if(id==='write-input')aiWrite();
+      else if(id==='reply-input')aiReply();
+      else if(id==='reel-input')aiReel();
+    }});
+  });
+});
+
+// ══════════════════════════════
+// INIT
+// ══════════════════════════════
+renderPosts(POSTS);
+renderReplies();
+renderGuides();
+renderPlanner();
+</script>
+</body>
+</html>
