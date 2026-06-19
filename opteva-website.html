@@ -272,8 +272,9 @@ nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,
    SECTION 8: PRICING
    ═══════════════════════════════════════ */
 .pricing{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-@media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;}
+@media(max-width:1024px){.pricing-grid{grid-template-columns:repeat(2,1fr);gap:24px;}}
+@media(max-width:560px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
 .price-card{background:white;border:1px solid var(--border);border-radius:var(--radius-xl);
   padding:36px 28px;position:relative;transition:all 0.3s;}
 .price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
@@ -706,15 +707,16 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
       <!-- Starter -->
       <div class="price-card fade-up">
         <div class="price-name">Starter</div>
-        <div class="price-amount">$149<span>/mo</span></div>
-        <div class="price-desc">Perfect for businesses getting started with consistent social media.</div>
+        <div class="price-amount">$197<span>/mo</span></div>
+        <div class="price-desc">For businesses getting started with consistent social media.</div>
         <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>AI Content Writer</li>
+          <li><span class="price-check">&#10003;</span>Content Writing</li>
           <li><span class="price-check">&#10003;</span>AI Business Brain</li>
           <li><span class="price-check">&#10003;</span>Content Calendar</li>
           <li><span class="price-check">&#10003;</span>50 Posts / Month</li>
           <li><span class="price-check">&#10003;</span>3 Platforms</li>
           <li><span class="price-check">&#10003;</span>Email Support</li>
+          <li><span class="price-check">&#10003;</span>Branded White-Label Dashboard (your logo and colors)</li>
         </ul>
         <a href="#demo" class="btn btn-secondary">Get Started</a>
       </div>
@@ -722,9 +724,10 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
       <div class="price-card featured fade-up" style="transition-delay:0.1s;">
         <div class="price-popular">MOST POPULAR</div>
         <div class="price-name">Growth</div>
-        <div class="price-amount">$249<span>/mo</span></div>
+        <div class="price-amount">$297<span>/mo</span></div>
         <div class="price-desc">For businesses ready to scale their content and grow their audience.</div>
         <ul class="price-features">
+          <li><span class="price-check">&#10003;</span>Everything in Starter</li>
           <li><span class="price-check">&#10003;</span>Unlimited Content Generation</li>
           <li><span class="price-check">&#10003;</span>AI Image Generator</li>
           <li><span class="price-check">&#10003;</span>AI Video Generator</li>
@@ -732,23 +735,40 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
           <li><span class="price-check">&#10003;</span>5 Platforms</li>
           <li><span class="price-check">&#10003;</span>Comment Reply Assistant</li>
           <li><span class="price-check">&#10003;</span>Priority Support</li>
+          <li><span class="price-check">&#10003;</span>Branded White-Label Dashboard (your logo and colors)</li>
         </ul>
         <a href="#demo" class="btn btn-primary">Book a Demo</a>
       </div>
       <!-- Agency -->
       <div class="price-card fade-up" style="transition-delay:0.2s;">
         <div class="price-name">Agency</div>
-        <div class="price-amount">$499<span>/mo</span></div>
+        <div class="price-amount">$597<span>/mo</span></div>
         <div class="price-desc">For agencies managing multiple client accounts from one dashboard.</div>
         <ul class="price-features">
           <li><span class="price-check">&#10003;</span>Everything in Growth</li>
           <li><span class="price-check">&#10003;</span>5 Client Accounts</li>
-          <li><span class="price-check">&#10003;</span>White-Label Dashboard</li>
           <li><span class="price-check">&#10003;</span>Client Reporting</li>
           <li><span class="price-check">&#10003;</span>Team Collaboration</li>
           <li><span class="price-check">&#10003;</span>Dedicated Account Manager</li>
+          <li><span class="price-check">&#10003;</span>Branded White-Label Dashboard (your logo and colors)</li>
         </ul>
         <a href="#demo" class="btn btn-secondary">Book a Demo</a>
+      </div>
+      <!-- Social Media Automation -->
+      <div class="price-card fade-up" style="transition-delay:0.3s;">
+        <div class="price-name">Social Media Automation</div>
+        <div class="price-amount">$1,497<span>/mo</span></div>
+        <div class="price-desc">Fully done for you. We create and post everything across every platform.</div>
+        <ul class="price-features">
+          <li><span class="price-check">&#10003;</span>Everything in Agency</li>
+          <li><span class="price-check">&#10003;</span>Full Done-For-You Content Creation</li>
+          <li><span class="price-check">&#10003;</span>Daily Posting Across All Platforms</li>
+          <li><span class="price-check">&#10003;</span>Dedicated Content Manager</li>
+          <li><span class="price-check">&#10003;</span>Monthly Strategy Call</li>
+          <li><span class="price-check">&#10003;</span>Priority Support</li>
+          <li><span class="price-check">&#10003;</span>Branded White-Label Dashboard (your logo and colors)</li>
+        </ul>
+        <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-primary">Book a Demo</a>
       </div>
     </div>
   </div>
