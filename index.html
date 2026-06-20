@@ -104,6 +104,20 @@ nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,
 .step-desc{font-size:14px;color:var(--text-secondary);line-height:1.75;}
 .step-detail{margin-top:14px;font-size:13px;color:var(--text-muted);font-style:italic;}
 
+/* REVIEWS */
+.reviews{background:var(--card-dark);border-top:1px solid var(--card-dark-border);}
+.reviews .section-label{color:var(--teal);}
+.reviews h2{color:white;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+@media(max-width:768px){.reviews-grid{grid-template-columns:1fr;}}
+.review-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-xl);padding:32px 28px;display:flex;flex-direction:column;gap:16px;transition:border-color 0.25s;}
+.review-card:hover{border-color:var(--teal);}
+.review-stars{font-size:18px;letter-spacing:2px;color:#f59e0b;}
+.review-quote{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.75;flex:1;font-style:italic;}
+.review-author{border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;}
+.review-name{font-size:15px;font-weight:700;color:white;}
+.review-biz{font-size:13px;color:rgba(255,255,255,0.5);margin-top:3px;}
+
 /* PRICING */
 .pricing{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
 .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;}
@@ -264,6 +278,40 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
         <div class="step-title">It Posts. You Do Nothing.</div>
         <div class="step-desc">Your content goes live at the right time, every day, across every platform.</div>
         <div class="step-detail">Show up to the comments. That's all you need to do.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews section" id="reviews">
+  <div class="container text-center">
+    <div class="section-label fade-up" style="justify-content:center;">Client Results</div>
+    <h2 class="fade-up">What Our Clients Are Saying</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-quote">"Opteva helped me get my socials and Google Business Profile updated and running. With the branded dashboard and all my socials in one place, I finally had time to focus on making money."</p>
+        <div class="review-author">
+          <div class="review-name">Stephanie Jordan</div>
+          <div class="review-biz">Acupuncturist, Las Vegas, NV</div>
+        </div>
+      </div>
+      <div class="review-card fade-up" style="transition-delay:0.1s;">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-quote">"I wasn't visible at all on social media. Opteva got me up and running within 48 hours. I saw a 133% increase in visibility in just one week and booked two new patients."</p>
+        <div class="review-author">
+          <div class="review-name">Jed Correa</div>
+          <div class="review-biz">Wellness Clinic, Chicago, IL</div>
+        </div>
+      </div>
+      <div class="review-card fade-up" style="transition-delay:0.2s;">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-quote">"My med spa was drowning in social media overload. It was messy. Opteva cleaned everything up and gave my business real visibility online."</p>
+        <div class="review-author">
+          <div class="review-name">Kara Crockett</div>
+          <div class="review-biz">Med Spa Owner, Seattle, WA</div>
+        </div>
       </div>
     </div>
   </div>
