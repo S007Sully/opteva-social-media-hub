@@ -120,9 +120,8 @@ nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,
 
 /* PRICING */
 .pricing{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;}
-@media(max-width:1024px){.pricing-grid{grid-template-columns:repeat(2,1fr);gap:24px;}}
-@media(max-width:560px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px;max-width:840px;margin-left:auto;margin-right:auto;}
+@media(max-width:640px){.pricing-grid{grid-template-columns:1fr;max-width:440px;}}
 .price-card{background:white;border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px 28px;position:relative;transition:all 0.3s;display:flex;flex-direction:column;}
 .price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .price-card.featured{border-color:var(--teal);box-shadow:0 0 40px var(--teal-glow);transform:scale(1.03);}
@@ -322,65 +321,36 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
   <div class="container text-center">
     <div class="section-label fade-up" style="justify-content:center;">Pricing</div>
     <h2 class="fade-up">Simple, Transparent Pricing</h2>
-    <p class="subhead fade-up" style="margin:16px auto 0;">No setup fees. No per-seat charges. Cancel anytime. Every plan includes a branded white-label dashboard with your logo and colors.</p>
+    <p class="subhead fade-up" style="margin:16px auto 0;">Every plan includes a white-label branded dashboard with your logo and colors. $197 one-time onboarding fee.</p>
     <div class="pricing-grid">
       <div class="price-card fade-up">
-        <div class="price-name">Starter</div>
-        <div class="price-amount">$197<span>/mo</span></div>
-        <div class="price-desc">Consistent content every month without lifting a finger.</div>
+        <div class="price-name">DIY</div>
+        <div class="price-amount">$497<span>/mo</span></div>
+        <div class="price-desc">Your own branded social media app, powered by AI trained in your voice. You write, post, and grow.</div>
         <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>30 posts/month written in your voice</li>
-          <li><span class="price-check">&#10003;</span>AI trained on your business</li>
-          <li><span class="price-check">&#10003;</span>Content calendar</li>
-          <li><span class="price-check">&#10003;</span>3 platforms</li>
-          <li><span class="price-check">&#10003;</span>Email support</li>
-          <li><span class="price-check">&#10003;</span>Branded white-label dashboard</li>
+          <li><span class="price-check">&#10003;</span>Custom branded social media app</li>
+          <li><span class="price-check">&#10003;</span>AI Caption Writer trained in your voice</li>
+          <li><span class="price-check">&#10003;</span>AI Image Studio</li>
+          <li><span class="price-check">&#10003;</span>AI Video Editor</li>
+          <li><span class="price-check">&#10003;</span>Post directly from the app</li>
+          <li><span class="price-check">&#10003;</span>LinkedIn, Instagram, Facebook</li>
+          <li><span class="price-check">&#10003;</span>White-label branded dashboard</li>
         </ul>
         <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-secondary">Get Started</a>
       </div>
       <div class="price-card featured fade-up" style="transition-delay:0.1s;">
         <div class="price-popular">MOST POPULAR</div>
-        <div class="price-name">Growth</div>
-        <div class="price-amount">$297<span>/mo</span></div>
-        <div class="price-desc">Unlimited content, images, videos, and publishing across 5 platforms.</div>
-        <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>Everything in Starter</li>
-          <li><span class="price-check">&#10003;</span>Unlimited content generation</li>
-          <li><span class="price-check">&#10003;</span>AI image and video creation</li>
-          <li><span class="price-check">&#10003;</span>Automatic social publishing</li>
-          <li><span class="price-check">&#10003;</span>5 platforms</li>
-          <li><span class="price-check">&#10003;</span>Comment reply assistant</li>
-          <li><span class="price-check">&#10003;</span>Priority support</li>
-          <li><span class="price-check">&#10003;</span>Branded white-label dashboard</li>
-        </ul>
-        <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-primary">Book a Demo</a>
-      </div>
-      <div class="price-card fade-up" style="transition-delay:0.2s;">
-        <div class="price-name">Agency</div>
-        <div class="price-amount">$597<span>/mo</span></div>
-        <div class="price-desc">Run content for 5 clients from one dashboard.</div>
-        <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>Everything in Growth</li>
-          <li><span class="price-check">&#10003;</span>5 client accounts</li>
-          <li><span class="price-check">&#10003;</span>Client reporting</li>
-          <li><span class="price-check">&#10003;</span>Team collaboration</li>
-          <li><span class="price-check">&#10003;</span>Dedicated account manager</li>
-          <li><span class="price-check">&#10003;</span>Branded white-label dashboard</li>
-        </ul>
-        <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-secondary">Book a Demo</a>
-      </div>
-      <div class="price-card fade-up" style="transition-delay:0.3s;">
-        <div class="price-name">Done For You</div>
+        <div class="price-name">Fully Automated</div>
         <div class="price-amount">$1,497<span>/mo</span></div>
         <div class="price-desc">We handle everything. Daily posts, dedicated manager, zero effort from you.</div>
         <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>Everything in Agency</li>
+          <li><span class="price-check">&#10003;</span>Everything in DIY</li>
           <li><span class="price-check">&#10003;</span>Full done-for-you content creation</li>
           <li><span class="price-check">&#10003;</span>Daily posting across all platforms</li>
           <li><span class="price-check">&#10003;</span>Dedicated content manager</li>
           <li><span class="price-check">&#10003;</span>Monthly strategy call</li>
           <li><span class="price-check">&#10003;</span>Priority support</li>
-          <li><span class="price-check">&#10003;</span>Branded white-label dashboard</li>
+          <li><span class="price-check">&#10003;</span>White-label branded dashboard</li>
         </ul>
         <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-primary">Book a Demo</a>
       </div>
