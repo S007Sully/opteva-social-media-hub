@@ -120,8 +120,8 @@ nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,
 
 /* PRICING */
 .pricing{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px;max-width:840px;margin-left:auto;margin-right:auto;}
-@media(max-width:640px){.pricing-grid{grid-template-columns:1fr;max-width:440px;}}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;max-width:1120px;margin-left:auto;margin-right:auto;}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;max-width:480px;}}
 .price-card{background:white;border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px 28px;position:relative;transition:all 0.3s;display:flex;flex-direction:column;}
 .price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .price-card.featured{border-color:var(--teal);box-shadow:0 0 40px var(--teal-glow);transform:scale(1.03);}
@@ -321,32 +321,45 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
   <div class="container text-center">
     <div class="section-label fade-up" style="justify-content:center;">Pricing</div>
     <h2 class="fade-up">Simple, Transparent Pricing</h2>
-    <p class="subhead fade-up" style="margin:16px auto 0;">Every plan includes a white-label branded dashboard with your logo and colors. $197 one-time onboarding fee.</p>
+    <p class="subhead fade-up" style="margin:16px auto 0;">Every plan includes a white-label branded app with your logo and colors. $190 one-time onboarding fee.</p>
     <div class="pricing-grid">
       <div class="price-card fade-up">
         <div class="price-name">DIY</div>
         <div class="price-amount">$497<span>/mo</span></div>
         <div class="price-desc">AI trained in your exact voice. You generate the content. We make it effortless.</div>
         <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>AI that writes in your exact voice</li>
-          <li><span class="price-check">&#10003;</span>Images, captions, and video scripts done for you</li>
-          <li><span class="price-check">&#10003;</span>Post to LinkedIn, Instagram, and Facebook in one place</li>
+          <li><span class="price-check">&#10003;</span>AI that writes in your exact voice and brand</li>
+          <li><span class="price-check">&#10003;</span>Captions, images, and video scripts on demand</li>
+          <li><span class="price-check">&#10003;</span>Post to LinkedIn, Instagram, and Facebook</li>
           <li><span class="price-check">&#10003;</span>Your own branded app, ready in 48 hours</li>
         </ul>
         <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-secondary">Get Started</a>
       </div>
       <div class="price-card featured fade-up" style="transition-delay:0.1s;">
         <div class="price-popular">MOST POPULAR</div>
-        <div class="price-name">Fully Automated</div>
-        <div class="price-amount">$1,497<span>/mo</span></div>
-        <div class="price-desc">We handle everything. You don't touch it.</div>
+        <div class="price-name">Automated</div>
+        <div class="price-amount">$997<span>/mo</span></div>
+        <div class="price-desc">We handle the content and posting. You just show up and grow.</div>
         <ul class="price-features">
-          <li><span class="price-check">&#10003;</span>Everything in DIY, completely hands-free</li>
-          <li><span class="price-check">&#10003;</span>Dedicated content manager posts daily for you</li>
-          <li><span class="price-check">&#10003;</span>Monthly strategy call with Stephanie</li>
-          <li><span class="price-check">&#10003;</span>Zero effort. Just approve and grow.</li>
+          <li><span class="price-check">&#10003;</span>Everything in DIY, fully hands-free</li>
+          <li><span class="price-check">&#10003;</span>Content manager posts daily for you</li>
+          <li><span class="price-check">&#10003;</span>Monthly strategy call included</li>
+          <li><span class="price-check">&#10003;</span>Zero effort on your end. Just approve and grow.</li>
         </ul>
         <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-primary">Book a Demo</a>
+      </div>
+      <div class="price-card fade-up" style="transition-delay:0.2s;">
+        <div class="price-name">CRM Integration</div>
+        <div class="price-amount">$1,497<span>/mo</span></div>
+        <div class="price-desc">Full automation plus your CRM connected. See exactly where every lead comes from.</div>
+        <ul class="price-features">
+          <li><span class="price-check">&#10003;</span>Everything in Automated</li>
+          <li><span class="price-check">&#10003;</span>Connects to Go High Level or any CRM you use</li>
+          <li><span class="price-check">&#10003;</span>ROI dashboard: track leads, spend, and growth</li>
+          <li><span class="price-check">&#10003;</span>Built-in content calendar with swipe scheduling</li>
+          <li><span class="price-check">&#10003;</span>LinkedIn, Instagram, Facebook in one pipeline</li>
+        </ul>
+        <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" class="btn btn-secondary">Book a Demo</a>
       </div>
     </div>
   </div>
