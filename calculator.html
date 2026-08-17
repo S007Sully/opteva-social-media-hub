@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Opteva | What your content line is actually worth</title>
+<meta name="description" content="Five questions. See what the content line earns or costs your agency every month, before you give us anything."/>
+<meta property="og:title" content="What your content line is actually worth"/>
+<meta property="og:description" content="Five questions, one number. Most agencies have never run it."/>
+<meta property="og:type" content="website"/>
+<meta name="robots" content="noindex"/>
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#1B3A5C;--teal:#3DBCB2;--teal-dark:#2FA89F;--teal-light:#5CD6CC;
+  --teal-glow:rgba(61,188,178,0.10);
+  --bg:#ffffff;--bg-off:#f5f7fa;
+  --text:#1a2a3a;--text-secondary:#566a7f;--text-muted:#8fa0b3;
+  --border:#dfe6ed;--border-light:#eaf0f5;
+  --card-dark:#1B3A5C;
+  --loss:#B0433A;--gain:#2F8F6B;
+  --radius:12px;--radius-lg:20px;--radius-xl:24px;
+  --shadow-teal:0 4px 24px rgba(78,205,196,0.2);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.container{max-width:960px;margin:0 auto;padding:0 24px;}
+@media(max-width:640px){.container{padding:0 18px;}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.6vw,50px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--navy);text-wrap:balance;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.2;color:var(--navy);}
+p{line-height:1.7;}
+.label{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:2px;}
+.label::before{content:'';width:24px;height:2px;background:var(--teal);border-radius:2px;}
+
+nav{border-bottom:1px solid var(--border-light);background:var(--bg);}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-logo img{height:38px;width:auto;display:block;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 34px;border-radius:var(--radius);font-size:17px;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;border:none;transition:all .25s;text-decoration:none;}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow-teal);}
+.btn-primary:hover:not(:disabled){background:var(--teal-light);transform:translateY(-2px);}
+.btn-primary:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;}
+.btn-sm{padding:11px 22px;font-size:15px;}
+
+.head{padding:64px 0 36px;}
+.head p{color:var(--text-secondary);font-size:clamp(16px,2vw,19px);max-width:56ch;margin-top:18px;}
+
+.grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:start;padding-bottom:80px;}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:28px;}}
+
+.field{display:flex;flex-direction:column;gap:8px;padding:22px 0;border-bottom:1px solid var(--border-light);}
+.field:first-child{padding-top:0;}
+.field label{font-size:16px;font-weight:650;color:var(--navy);line-height:1.45;}
+.field .hint{font-size:13.5px;color:var(--text-muted);}
+.input-wrap{position:relative;display:flex;align-items:center;max-width:260px;}
+.input-wrap .pre{position:absolute;left:16px;font-size:17px;color:var(--text-muted);font-weight:600;pointer-events:none;}
+input[type=number],input[type=email],input[type=text]{
+  width:100%;font-family:'Inter',sans-serif;font-size:19px;font-weight:650;color:var(--navy);
+  padding:14px 16px;border:1.5px solid var(--border);border-radius:var(--radius);background:#fff;
+  transition:border-color .2s,box-shadow .2s;font-variant-numeric:tabular-nums;
+}
+input.money{padding-left:34px;}
+input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-glow);}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+input[type=number]{-moz-appearance:textfield;}
+
+.panel{position:sticky;top:24px;background:var(--card-dark);border-radius:var(--radius-xl);padding:34px 30px;color:#fff;}
+@media(max-width:900px){.panel{position:static;}}
+.panel .label{color:var(--teal);}
+.result-num{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,56px);font-weight:700;line-height:1.05;margin:16px 0 6px;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;}
+.result-num.loss{color:#FF8B80;}
+.result-num.gain{color:#7FE3C4;}
+.result-cap{font-size:14.5px;color:rgba(255,255,255,.68);line-height:1.6;}
+.rows{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;gap:13px;}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14px;}
+.row span{color:rgba(255,255,255,.6);}
+.row b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.empty{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;margin-top:14px;}
+
+.gate{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);}
+.gate h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;}
+.gate p{font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:16px;}
+.gate input{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#fff;font-size:16px;padding:13px 15px;}
+.gate input::placeholder{color:rgba(255,255,255,.4);font-weight:500;}
+.gate input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(61,188,178,.18);}
+.gate .btn{width:100%;margin-top:12px;}
+.gate .fine{margin-top:12px;font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;}
+.gate .err{margin-top:10px;font-size:13px;color:#FF8B80;}
+
+.done{text-align:center;padding:8px 0;}
+.done .tick{font-size:34px;color:var(--teal);}
+.done h3{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin:10px 0 10px;}
+.done p{font-size:14.5px;color:rgba(255,255,255,.7);margin-bottom:20px;}
+.done .btn{width:100%;}
+
+footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding:30px 0;font-size:13px;color:var(--text-muted);text-align:center;}
+footer a{color:var(--text-muted);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="Optevalogo.png" alt="Opteva"/></a>
+    <a href="index.html#book" class="btn btn-primary btn-sm">I'm in</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="head">
+    <div class="label">The Content Line</div>
+    <h1>What your content line is actually worth.</h1>
+    <p>Five questions. You get the number before you give us anything. Most agency owners have never run this, and the answer is usually not the one they expect.</p>
+  </div>
+
+  <div class="grid">
+    <form id="calc" novalidate>
+      <div class="field">
+        <label for="clients">How many clients do you have on retainer?</label>
+        <div class="hint">Everyone currently paying you a monthly fee.</div>
+        <div class="input-wrap"><input type="number" id="clients" min="0" step="1" inputmode="numeric" placeholder="12"/></div>
+      </div>
+
+      <div class="field">
+        <label for="asking">How many have asked you for social content in the last six months?</label>
+        <div class="hint">Asked, whether or not you said yes.</div>
+        <div class="input-wrap"><input type="number" id="asking" min="0" step="1" inputmode="numeric" placeholder="5"/></div>
+      </div>
+
+      <div class="field">
+        <label for="charge">What do you charge for content today, per client, per month?</label>
+        <div class="hint">Zero is a real answer, and a common one.</div>
+        <div class="input-wrap"><span class="pre">$</span><input type="number" id="charge" min="0" step="1" inputmode="numeric" class="money" placeholder="400"/></div>
+      </div>
+
+      <div class="field">
+        <label for="hours">Hours your team spends per client, per month, on content.</label>
+        <div class="hint">Writing, sourcing images, scheduling, and the revision rounds.</div>
+        <div class="input-wrap"><input type="number" id="hours" min="0" step="0.5" inputmode="decimal" placeholder="6"/></div>
+      </div>
+
+      <div class="field">
+        <label for="rate">Blended hourly cost of whoever does it.</label>
+        <div class="hint">Salary and overhead, not what you bill. Your own time counts.</div>
+        <div class="input-wrap"><span class="pre">$</span><input type="number" id="rate" min="0" step="1" inputmode="numeric" class="money" placeholder="75"/></div>
+      </div>
+    </form>
+
+    <aside class="panel" aria-live="polite">
+      <div id="stateEmpty">
+        <div class="label">Your Number</div>
+        <p class="empty">Fill in the five answers and your number appears here. Nothing is sent anywhere until you decide to send it.</p>
+      </div>
+
+      <div id="stateResult" hidden>
+        <div class="label">Your Number</div>
+        <div class="result-num" id="resultNum">$0</div>
+        <div class="result-cap" id="resultCap"></div>
+        <div class="rows">
+          <div class="row"><span>Cost to produce, per client</span><b id="rCost">$0</b></div>
+          <div class="row"><span>Margin per client</span><b id="rMargin">$0</b></div>
+          <div class="row"><span>Hours a month across the roster</span><b id="rHours">0</b></div>
+        </div>
+
+        <div class="gate" id="gate">
+          <h3>Want the full breakdown?</h3>
+          <p>The one page version, with the number worked through so you can put it in front of a partner.</p>
+          <input type="email" id="email" placeholder="you@youragency.com" autocomplete="email"/>
+          <button type="button" class="btn btn-primary" id="send">Send it over</button>
+          <div class="err" id="err" hidden></div>
+          <div class="fine">One email with the breakdown. No sequence you have to escape from.</div>
+        </div>
+
+        <div class="done" id="done" hidden>
+          <div class="tick">&#10003;</div>
+          <h3>On its way.</h3>
+          <p>If you would rather just see it work, bring one client's Instagram handle to fifteen minutes and leave with five posts in that client's voice.</p>
+          <a href="index.html#book" class="btn btn-primary">I'm in</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="container">&copy; 2026 Opteva &middot; <a href="index.html">opteva.ai</a></div>
+</footer>
+
+<script>
+// ---------------------------------------------------------------------------
+// PASTE YOUR GOHIGHLEVEL INBOUND WEBHOOK URL HERE.
+// Get it from the workflow: Add Trigger > Inbound Webhook > copy the URL.
+// While this is empty the calculator still works; it just does not send.
+// ---------------------------------------------------------------------------
+var WEBHOOK_URL = '';
+
+var $ = function(id){ return document.getElementById(id); };
+var ids = ['clients','asking','charge','hours','rate'];
+var money = function(n){
+  var s = Math.abs(Math.round(n)).toLocaleString('en-US');
+  return (n < 0 ? '-$' : '$') + s;
+};
+
+function values(){
+  var v = {};
+  var complete = true;
+  ids.forEach(function(id){
+    var raw = $(id).value.trim();
+    if(raw === '' || isNaN(parseFloat(raw))){ complete = false; v[id] = 0; }
+    else { v[id] = Math.max(0, parseFloat(raw)); }
+  });
+  v.complete = complete;
+  return v;
+}
+
+function segment(v){
+  if(v.charge <= 0) return 'agency-declining';
+  return v.charge >= (v.hours * v.rate) ? 'agency-delivering' : 'agency-eating';
+}
+
+function compute(){
+  var v = values();
+  if(!v.complete){
+    $('stateEmpty').hidden = false;
+    $('stateResult').hidden = true;
+    return;
+  }
+  $('stateEmpty').hidden = true;
+  $('stateResult').hidden = false;
+
+  var cost   = v.hours * v.rate;        // to produce one client's content
+  var margin = v.charge - cost;         // per client, per month
+  var total  = margin * v.clients;      // across the roster
+  var hours  = v.hours * v.clients;
+
+  var el = $('resultNum');
+  el.textContent = money(total);
+  el.className = 'result-num ' + (total < 0 ? 'loss' : 'gain');
+
+  var seg = segment(v);
+  var cap;
+  if(seg === 'agency-declining'){
+    cap = 'You are charging nothing for content while ' + v.asking + ' client' +
+          (v.asking === 1 ? ' has' : 's have') + ' asked for it. That is not a saving. ' +
+          'It is a line someone else gets to open with your client.';
+  } else if(seg === 'agency-eating'){
+    cap = 'You are losing ' + money(Math.abs(margin)) + ' per client, every month, on work you are already doing. ' +
+          'Most shops find this out at the sixth client.';
+  } else {
+    cap = 'The content line pays today. The question is what it looks like at ' +
+          (v.clients + 3) + ' clients, when one writer is covering that many voices.';
+  }
+  $('resultCap').textContent = cap;
+  $('rCost').textContent   = money(cost);
+  $('rMargin').textContent = money(margin);
+  $('rHours').textContent  = (Math.round(hours * 10) / 10).toLocaleString('en-US');
+}
+
+ids.forEach(function(id){ $(id).addEventListener('input', compute); });
+
+$('send').addEventListener('click', function(){
+  var email = $('email').value.trim();
+  var err = $('err');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    err.textContent = 'That email does not look right. Check it and try again.';
+    err.hidden = false;
+    $('email').focus();
+    return;
+  }
+  err.hidden = true;
+
+  var v = values();
+  var cost = v.hours * v.rate;
+  var payload = {
+    email: email,
+    client_count: v.clients,
+    clients_asking: v.asking,
+    charge_per_client: v.charge,
+    hours_per_client: v.hours,
+    blended_hourly_cost: v.rate,
+    monthly_result: Math.round((v.charge - cost) * v.clients),
+    segment_tag: segment(v),
+    high_value: v.clients >= 10,
+    source: 'content-line-calculator'
+  };
+
+  var btn = $('send');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  var finish = function(){
+    $('gate').hidden = true;
+    $('done').hidden = false;
+  };
+
+  if(!WEBHOOK_URL){
+    console.warn('WEBHOOK_URL is not set. Payload that would have been sent:', payload);
+    finish();
+    return;
+  }
+
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  }).then(finish).catch(function(){
+    // The lead matters more than the request. Never show them a failure here.
+    console.error('Webhook post failed', payload);
+    finish();
+  });
+});
+</script>
+
+</body>
+</html>
