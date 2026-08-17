@@ -124,10 +124,13 @@ nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,
 .proof-role{font-size:13.5px;color:var(--text-muted);}
 .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px;text-align:left;}
 @media(max-width:760px){.proof-grid{grid-template-columns:1fr;}}
-.proof-card{background:var(--bg-off);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:26px 24px;display:flex;flex-direction:column;gap:14px;}
-.proof-card p{font-size:15px;color:var(--text-secondary);line-height:1.7;font-style:italic;flex:1;}
-.proof-card .who{font-size:14px;font-weight:700;color:var(--navy);}
-.proof-card .where{font-size:13px;color:var(--text-muted);margin-top:2px;}
+.proof-card{background:var(--bg-off);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:30px 28px;display:flex;flex-direction:column;gap:18px;}
+/* Same serif italic as Jed's quote, one step down the scale. All three
+   testimonials read as one treatment; size alone carries the hierarchy. */
+.proof-card p{font-family:'Playfair Display',serif;font-size:clamp(17px,2.1vw,20px);font-weight:500;font-style:italic;color:var(--navy);line-height:1.55;flex:1;}
+.proof-card .who{font-size:15px;font-weight:700;color:var(--navy);}
+.proof-card .where{font-size:13.5px;color:var(--text-muted);margin-top:3px;}
+@media(max-width:600px){.proof-card{padding:26px 22px;}}
 
 /* THE OFFER */
 .offer{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
