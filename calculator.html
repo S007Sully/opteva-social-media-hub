@@ -180,6 +180,14 @@ footer a{color:var(--text-muted);}
           <p>If you would rather just see it work, bring one client's Instagram handle to fifteen minutes and leave with five posts in that client's voice.</p>
           <a href="index.html#book" class="btn btn-primary">I'm in</a>
         </div>
+
+        <!-- Shown instead of the email gate when no webhook is configured, so the
+             page never promises to send something it cannot send. -->
+        <div class="gate" id="noGate" hidden>
+          <h3>That number is yours to keep.</h3>
+          <p>If it is not the number you wanted, the fastest way to change it is to see the work. Bring one client's Instagram handle to fifteen minutes and leave with five posts in that client's voice.</p>
+          <a href="index.html#book" class="btn btn-primary">I'm in</a>
+        </div>
       </div>
     </aside>
   </div>
@@ -193,7 +201,10 @@ footer a{color:var(--text-muted);}
 // ---------------------------------------------------------------------------
 // PASTE YOUR GOHIGHLEVEL INBOUND WEBHOOK URL HERE.
 // Get it from the workflow: Add Trigger > Inbound Webhook > copy the URL.
-// While this is empty the calculator still works; it just does not send.
+//
+// While this is empty the calculator still works and still shows the number.
+// The email capture hides itself instead, because a form that says "on its way"
+// while quietly dropping the address is worse than no form at all.
 // ---------------------------------------------------------------------------
 var WEBHOOK_URL = '';
 
@@ -261,6 +272,12 @@ function compute(){
 
 ids.forEach(function(id){ $(id).addEventListener('input', compute); });
 
+// No webhook configured: swap the email capture for the booking CTA.
+if(!WEBHOOK_URL){
+  $('gate').hidden = true;
+  $('noGate').hidden = false;
+}
+
 $('send').addEventListener('click', function(){
   var email = $('email').value.trim();
   var err = $('err');
@@ -295,12 +312,6 @@ $('send').addEventListener('click', function(){
     $('gate').hidden = true;
     $('done').hidden = false;
   };
-
-  if(!WEBHOOK_URL){
-    console.warn('WEBHOOK_URL is not set. Payload that would have been sent:', payload);
-    finish();
-    return;
-  }
 
   fetch(WEBHOOK_URL, {
     method: 'POST',
