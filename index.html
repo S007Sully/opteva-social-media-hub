@@ -5,477 +5,329 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link rel="icon" type="image/png" href="opteva-mark.png"/>
 <link rel="apple-touch-icon" href="opteva-mark.png"/>
-<title>Opteva | Client content, in each client's own voice</title>
-<meta name="description" content="Your clients keep asking for social. Opteva writes each client's content in that client's own voice and publishes it to Facebook and Instagram through your GoHighLevel. You add a revenue line, not a person."/>
-<meta property="og:title" content="Opteva | Client content, in each client's own voice"/>
-<meta property="og:description" content="Turn it down, farm it out, or quietly eat the cost. Most agencies pick one. There is a fourth option. Send one client handle and see it."/>
+<title>Opteva | Client social, resold under your agency</title>
+<meta name="description" content="Opteva writes every client's social posts in that client's own voice and publishes through your GoHighLevel. One install covers your whole roster."/>
+<meta property="og:title" content="Opteva | Client social, resold under your agency"/>
+<meta property="og:description" content="One install, your whole roster. Opteva drafts in each client's voice, you approve, GoHighLevel publishes."/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <script>document.documentElement.className+=' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --navy:#1B3A5C;--navy-light:#224A72;
-  --teal:#3DBCB2;--teal-dark:#2FA89F;--teal-light:#5CD6CC;
-  --teal-glow:rgba(61,188,178,0.10);--teal-glow2:rgba(61,188,178,0.05);
-  --bg:#ffffff;--bg-off:#f5f7fa;
-  --text:#1a2a3a;--text-secondary:#566a7f;--text-muted:#8fa0b3;
-  --border:#dfe6ed;--border-light:#eaf0f5;
-  --card-dark:#1B3A5C;--card-dark-border:rgba(61,188,178,0.25);
-  --radius:12px;--radius-lg:20px;--radius-xl:24px;
-  --shadow:0 2px 16px rgba(22,43,69,0.08);--shadow-lg:0 8px 32px rgba(22,43,69,0.12);
-  --shadow-teal:0 4px 24px rgba(78,205,196,0.2);
+  --navy:#12283F;--navy-mid:#1B3A5C;
+  --teal:#3DBCB2;--teal-dark:#2A9D94;--teal-light:#5CD6CC;
+  --bg:#ffffff;--bg-off:#F6F8FA;
+  --text:#12283F;--text-2:#5A6E82;--text-3:#94A5B6;
+  --line:#E4EBF1;--line-soft:#EFF3F7;
+  --r:14px;--r-lg:22px;
+  --shadow-teal:0 6px 24px rgba(61,188,178,0.24);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-.container{max-width:1100px;margin:0 auto;padding:0 24px;}
-.section{padding:88px 0;}
-@media(max-width:768px){.section{padding:56px 0;}.container{padding:0 20px;}}
-.text-center{text-align:center;}
-h1{font-family:'Playfair Display',serif;font-size:clamp(34px,5.2vw,64px);font-weight:700;line-height:1.08;letter-spacing:-0.02em;}
-h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,44px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;}
-h3{font-family:'Inter',sans-serif;font-size:19px;font-weight:700;line-height:1.35;}
-p{line-height:1.7;}
-.subhead{font-size:clamp(16px,2vw,20px);color:var(--text-secondary);line-height:1.7;max-width:640px;}
-.section-label{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
-.section-label::before{content:'';width:24px;height:2px;background:var(--teal);border-radius:2px;}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+@media(max-width:700px){.wrap{padding:0 20px;}body{font-size:16px;}}
+section{padding:120px 0;}
+@media(max-width:700px){section{padding:76px 0;}}
 
-/* BUTTONS: one label, one destination, everywhere on this page */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 38px;border-radius:var(--radius);font-size:17px;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;border:none;transition:all 0.25s;text-decoration:none;letter-spacing:0.2px;white-space:nowrap;}
-.btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow-teal);}
-.btn-primary:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 6px 30px rgba(61,188,178,0.32);}
-.btn-primary .arrow{transition:transform 0.25s;}
-.btn-primary:hover .arrow{transform:translateX(4px);}
-.btn-sm{padding:11px 22px;font-size:15px;}
-.btn-lg{padding:20px 46px;font-size:18px;}
-.cta-note{margin-top:14px;font-size:14px;color:var(--text-muted);line-height:1.6;max-width:440px;}
-.cta-block{margin-top:40px;}
-.cta-block.center{display:flex;flex-direction:column;align-items:center;}
-.cta-block.center .cta-note{text-align:center;}
-@media(max-width:480px){.btn{width:100%;padding:17px 20px;}.btn-sm{width:auto;}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6.2vw,74px);font-weight:700;line-height:1.03;letter-spacing:-0.03em;text-wrap:balance;}
+h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4.4vw,50px);font-weight:700;line-height:1.1;letter-spacing:-0.025em;text-wrap:balance;}
+h3{font-size:16px;font-weight:700;letter-spacing:-0.01em;}
+.lead{font-size:clamp(17px,1.9vw,21px);color:var(--text-2);line-height:1.6;max-width:34em;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:2.4px;}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--teal);}
+.center{text-align:center;}
+.center .eyebrow{justify-content:center;}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-light);transition:all 0.3s;}
-nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,0.06);}
-.nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px;}
-.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
-.nav-logo img{height:40px;width:auto;}
-.nav-links{display:flex;align-items:center;gap:28px;}
-.nav-links a:not(.btn){font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:color 0.2s;}
-.nav-links a:not(.btn):hover{color:var(--teal-dark);}
-@media(max-width:768px){.nav-links a:not(.btn){display:none;}.nav-logo img{height:34px;}.nav-inner{height:64px;}}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:19px 42px;border-radius:var(--r);font-size:17px;font-weight:800;font-family:'Inter',sans-serif;border:none;cursor:pointer;text-decoration:none;background:var(--teal);color:#fff;box-shadow:var(--shadow-teal);transition:background .2s,transform .2s,box-shadow .2s;}
+.btn:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 10px 32px rgba(61,188,178,.34);}
+.btn:focus-visible{outline:3px solid var(--navy);outline-offset:3px;}
+.btn .ar{transition:transform .2s;}
+.btn:hover .ar{transform:translateX(4px);}
+.btn-sm{padding:12px 24px;font-size:15px;}
+.note{margin-top:16px;font-size:14.5px;color:var(--text-3);line-height:1.6;}
+@media(max-width:480px){.btn{width:100%;justify-content:center;}.btn-sm{width:auto;}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s;}
+nav.on{border-bottom-color:var(--line-soft);}
+.nav-in{max-width:1140px;margin:0 auto;padding:0 28px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-in img{height:36px;width:auto;display:block;}
+.nav-l{display:flex;align-items:center;gap:34px;}
+.nav-l a:not(.btn){font-size:14.5px;font-weight:500;color:var(--text-2);text-decoration:none;}
+.nav-l a:not(.btn):hover{color:var(--teal-dark);}
+@media(max-width:820px){.nav-l a:not(.btn){display:none;}.nav-in{height:68px;padding:0 20px;}}
 
 /* HERO */
-.hero{padding:150px 0 80px;position:relative;overflow:hidden;background:var(--bg);}
-.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,var(--teal-glow) 0%,transparent 70%);pointer-events:none;}
-.hero-inner{position:relative;z-index:1;max-width:800px;}
-.hero h1{color:var(--navy);margin-bottom:22px;}
-.hero h1 span{display:block;background:linear-gradient(135deg,var(--teal-dark),#2E86C1);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.hero .subhead{margin-bottom:8px;}
-.credential{margin-top:44px;padding-top:28px;border-top:1px solid var(--border-light);display:flex;align-items:center;gap:16px;max-width:620px;}
-.credential-num{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;}
-.credential-text{font-size:15px;color:var(--text-secondary);line-height:1.6;}
-.credential-text strong{color:var(--navy);font-weight:700;}
-@media(max-width:768px){.hero{padding:120px 0 60px;}}
+.hero{padding:186px 0 104px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;top:-260px;right:-220px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(61,188,178,.10) 0%,transparent 68%);pointer-events:none;}
+.hero-in{position:relative;z-index:1;max-width:860px;}
+.hero h1{color:var(--navy);}
+.hero h1 em{display:block;font-style:normal;color:var(--teal-dark);}
+.hero .lead{margin:26px 0 40px;}
+.cred{margin-top:56px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;align-items:center;gap:18px;max-width:520px;}
+.cred b{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1;}
+.cred span{font-size:14.5px;color:var(--text-2);line-height:1.55;}
+@media(max-width:700px){.hero{padding:132px 0 72px;}}
 
-/* THREE OPTIONS */
-.options{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
-.options-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
-@media(max-width:860px){.options-grid{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto;}}
-.option-card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 26px;}
-.option-num{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;}
-.option-card h3{color:var(--navy);margin-bottom:12px;}
-.option-card p{font-size:14.5px;color:var(--text-secondary);line-height:1.75;}
-.option-cost{display:inline-block;margin-top:16px;font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:20px;background:var(--bg-off);color:var(--text-muted);}
-.options-kicker{text-align:center;margin-top:40px;font-family:'Playfair Display',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:var(--navy);line-height:1.4;}
+/* PROBLEM */
+.prob{background:var(--bg-off);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:52px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;}
+@media(max-width:800px){.cols{grid-template-columns:1fr;}}
+.col{background:#fff;padding:34px 30px;}
+.col h3{color:var(--navy);margin-bottom:10px;font-size:18px;}
+.col p{font-size:15px;color:var(--text-2);line-height:1.65;}
+.col .cost{display:block;margin-top:18px;font-size:11.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-3);}
+.turn{margin-top:56px;text-align:center;}
+.turn p{font-family:'Playfair Display',serif;font-size:clamp(22px,3.2vw,34px);font-weight:700;color:var(--navy);line-height:1.35;max-width:20em;margin:0 auto;text-wrap:balance;}
+.turn small{display:block;margin-top:16px;font-family:'Inter',sans-serif;font-size:15.5px;font-weight:500;color:var(--text-2);}
 
-/* VOICE */
-.voice{background:white;}
-.voice-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-@media(max-width:860px){.voice-inner{grid-template-columns:1fr;gap:32px;}}
-.voice-quote{background:var(--bg-off);border-left:3px solid var(--teal);border-radius:0 var(--radius-lg) var(--radius-lg) 0;padding:32px 30px;}
-.voice-quote p{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--navy);line-height:1.5;}
-.voice-quote .attrib{margin-top:16px;font-family:'Inter',sans-serif;font-style:normal;font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.3px;}
-.voice-body p{font-size:16px;color:var(--text-secondary);margin-bottom:16px;}
-.voice-body p strong{color:var(--navy);font-weight:700;}
+/* PLATFORM */
+.flow{margin:56px auto 0;max-width:920px;border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:38px 30px;overflow-x:auto;}
+.flow svg{display:block;margin:0 auto;min-width:660px;}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;}
+@media(max-width:800px){.specs{grid-template-columns:1fr;gap:24px;}}
+.spec{padding-top:20px;border-top:2px solid var(--navy);}
+.spec h3{color:var(--navy);margin-bottom:8px;}
+.spec p{font-size:14.5px;color:var(--text-2);line-height:1.65;}
+.honest{margin-top:52px;padding:18px 24px;border:1px dashed var(--line);border-radius:var(--r);font-size:14px;color:var(--text-3);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;}
+.honest b{color:var(--text-2);font-weight:700;}
 
-/* WHAT IT DOES */
-.does{background:var(--card-dark);color:white;}
-.does .section-label{color:var(--teal);}
-.does h2{color:white;}
-.does .subhead{color:rgba(255,255,255,0.66);}
-.does-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
-@media(max-width:860px){.does-grid{grid-template-columns:1fr;}}
-.does-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-xl);padding:30px 26px;}
-.does-check{width:34px;height:34px;border-radius:9px;background:rgba(61,188,178,0.16);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;margin-bottom:16px;}
-.does-card h3{color:white;margin-bottom:10px;font-size:17px;}
-.does-card p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;}
-.does-honest{margin-top:36px;padding:22px 26px;border:1px dashed rgba(255,255,255,0.22);border-radius:var(--radius-lg);font-size:14.5px;color:rgba(255,255,255,0.72);line-height:1.75;max-width:760px;margin-left:auto;margin-right:auto;text-align:center;}
-.does-honest strong{color:white;font-weight:700;}
+/* PROOF */
+.quote{font-family:'Playfair Display',serif;font-size:clamp(23px,3.4vw,36px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.4;max-width:18em;margin:30px auto 0;text-wrap:balance;}
+.quote mark{background:none;color:var(--teal-dark);font-style:normal;font-weight:700;}
+.who{margin-top:26px;font-size:15px;font-weight:700;color:var(--navy);}
+.where{font-size:13.5px;color:var(--text-3);margin-top:2px;}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;text-align:left;}
+@media(max-width:760px){.pair{grid-template-columns:1fr;}}
+.pcard{background:var(--bg-off);border:1px solid var(--line-soft);border-radius:var(--r-lg);padding:30px 28px;display:flex;flex-direction:column;gap:18px;}
+.pcard p{font-family:'Playfair Display',serif;font-size:clamp(17px,2.1vw,20px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.55;flex:1;}
+.pcard .who{margin-top:0;}
 
-/* PROOF: one signed-off client. One attributed number beats three vague ones. */
-.proof{background:#fff;}
-.proof-inner{max-width:760px;margin:0 auto;text-align:center;}
-.proof-quote{font-family:'Playfair Display',serif;font-size:clamp(21px,3.2vw,32px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.45;margin:26px 0 0;text-wrap:balance;}
-.proof-quote mark{background:none;color:var(--teal-dark);font-style:normal;font-weight:700;}
-.proof-attrib{margin-top:26px;padding-top:22px;border-top:1px solid var(--border-light);display:inline-flex;flex-direction:column;gap:3px;}
-.proof-name{font-size:15px;font-weight:700;color:var(--navy);}
-.proof-role{font-size:13.5px;color:var(--text-muted);}
-.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px;text-align:left;}
-@media(max-width:760px){.proof-grid{grid-template-columns:1fr;}}
-.proof-card{background:var(--bg-off);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:30px 28px;display:flex;flex-direction:column;gap:18px;}
-/* Same serif italic as Jed's quote, one step down the scale. All three
-   testimonials read as one treatment; size alone carries the hierarchy. */
-.proof-card p{font-family:'Playfair Display',serif;font-size:clamp(17px,2.1vw,20px);font-weight:500;font-style:italic;color:var(--navy);line-height:1.55;flex:1;}
-.proof-card .who{font-size:15px;font-weight:700;color:var(--navy);}
-.proof-card .where{font-size:13.5px;color:var(--text-muted);margin-top:3px;}
-@media(max-width:600px){.proof-card{padding:26px 22px;}}
-
-/* THE OFFER */
-.offer{background:var(--bg-off);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);}
-.offer-card{background:white;border:1px solid var(--teal);border-radius:var(--radius-xl);box-shadow:0 0 50px var(--teal-glow);padding:52px 44px;max-width:820px;margin:0 auto;text-align:center;}
-@media(max-width:600px){.offer-card{padding:34px 22px;}}
-.offer-card h2{color:var(--navy);margin-bottom:20px;}
-.offer-lead{font-size:clamp(17px,2.2vw,21px);color:var(--text-secondary);line-height:1.7;max-width:560px;margin:0 auto;}
-.offer-list{list-style:none;margin:34px auto 0;max-width:480px;text-align:left;}
-.offer-list li{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--border-light);font-size:15px;color:var(--text-secondary);line-height:1.6;}
-.offer-list li:last-child{border-bottom:none;}
-.offer-check{color:var(--teal-dark);font-weight:800;flex-shrink:0;}
+/* OFFER */
+.offer{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.offer::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(61,188,178,.14) 0%,transparent 62%);pointer-events:none;}
+.offer .wrap{position:relative;z-index:1;}
+.offer h2{color:#fff;margin-top:18px;}
+.offer .lead{color:rgba(255,255,255,.68);margin:22px auto 0;}
+.gets{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;max-width:600px;margin:44px auto 0;text-align:left;}
+@media(max-width:600px){.gets{grid-template-columns:1fr;}}
+.get{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(255,255,255,.82);line-height:1.55;}
+.get i{color:var(--teal);font-style:normal;font-weight:800;}
+.offer .note{color:rgba(255,255,255,.44);}
 
 /* FOUNDER */
-.founder{background:white;}
-.founder-inner{max-width:760px;margin:0 auto;text-align:center;}
-.founder-quote{font-family:'Playfair Display',serif;font-size:clamp(21px,3vw,30px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.5;margin-bottom:26px;}
-.founder-body{font-size:16px;color:var(--text-secondary);line-height:1.8;}
-.founder-name{margin-top:26px;font-size:15px;font-weight:700;color:var(--navy);}
-.founder-role{font-size:13.5px;color:var(--text-muted);margin-top:3px;}
+.founder{max-width:660px;margin:0 auto;text-align:center;}
+.founder p.q{font-family:'Playfair Display',serif;font-size:clamp(21px,2.9vw,30px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.45;margin:26px 0 22px;text-wrap:balance;}
+.founder p.b{font-size:16px;color:var(--text-2);line-height:1.7;}
+.founder .who{margin-top:26px;}
 
 /* FAQ */
-.faq-list{max-width:720px;margin:44px auto 0;}
-.faq-item{border-bottom:1px solid var(--border);}
-.faq-q{width:100%;background:none;border:none;color:var(--navy);padding:20px 0;font-size:16px;font-weight:600;font-family:'Inter',sans-serif;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color 0.2s;}
-.faq-q:hover{color:var(--teal-dark);}
-.faq-arrow{font-size:20px;color:var(--text-muted);transition:transform 0.3s;flex-shrink:0;}
-.faq-item.open .faq-arrow{transform:rotate(45deg);color:var(--teal-dark);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;}
-.faq-item.open .faq-a{max-height:420px;padding-bottom:20px;}
-.faq-a p{font-size:15px;color:var(--text-secondary);line-height:1.8;}
+.faq{max-width:760px;margin:48px auto 0;}
+.qa{border-bottom:1px solid var(--line-soft);}
+.qa:first-child{border-top:1px solid var(--line-soft);}
+.qa button{width:100%;background:none;border:none;font-family:'Inter',sans-serif;font-size:16.5px;font-weight:600;color:var(--navy);text-align:left;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;}
+.qa button:hover{color:var(--teal-dark);}
+.qa button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
+.qa .pm{font-size:21px;color:var(--text-3);transition:transform .3s;flex-shrink:0;line-height:1;}
+.qa.open .pm{transform:rotate(45deg);color:var(--teal-dark);}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .34s ease,padding .34s ease;}
+.qa.open .a{max-height:340px;padding-bottom:24px;}
+.qa .a p{font-size:15.5px;color:var(--text-2);line-height:1.72;max-width:60ch;}
 
-/* FINAL CTA */
-.final-cta{position:relative;overflow:hidden;background:var(--card-dark);color:white;}
-.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(78,205,196,0.12) 0%,transparent 60%);pointer-events:none;}
-.final-cta-inner{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;}
-.final-cta h2{color:white;margin-bottom:16px;}
-.final-cta .subhead{margin:0 auto 8px;color:rgba(255,255,255,0.72);}
-.final-cta .section-label{color:var(--teal);}
-.final-cta .cta-note{color:rgba(255,255,255,0.5);text-align:center;}
-/* Booking embed: the calendar lives on the page, so booking never leaves the site.
-   min-height keeps it usable if GoHighLevel's resize script fails to load. */
-.booking-embed{width:100%;max-width:820px;margin:36px auto 0;background:#fff;border-radius:var(--radius-xl);padding:10px;box-shadow:0 18px 60px rgba(0,0,0,0.28);}
-.booking-embed iframe{width:100%;min-height:720px;border:none;display:block;border-radius:16px;}
-@media(max-width:600px){.booking-embed{padding:6px;margin-top:28px;}.booking-embed iframe{min-height:820px;}}
+/* BOOK */
+.book{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+.book::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(61,188,178,.13) 0%,transparent 60%);pointer-events:none;}
+.book .wrap{position:relative;z-index:1;}
+.book h2{color:#fff;}
+.book .lead{color:rgba(255,255,255,.7);margin:20px auto 0;}
+.book .note{color:rgba(255,255,255,.44);}
+.embed{width:100%;max-width:840px;margin:40px auto 0;background:#fff;border-radius:var(--r-lg);padding:10px;box-shadow:0 22px 64px rgba(0,0,0,.3);}
+.embed iframe{width:100%;min-height:720px;border:none;display:block;border-radius:16px;}
+@media(max-width:600px){.embed iframe{min-height:820px;}}
 
-/* FOOTER */
-footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding:44px 0 22px;}
-.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;}
-.footer-logo img{height:30px;width:auto;}
-.footer-contact{margin-top:14px;font-size:13px;color:var(--text-secondary);line-height:2.2;}
-.footer-contact a{color:var(--text-secondary);text-decoration:none;}
-.footer-contact a:hover{color:var(--teal-dark);}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--teal-dark);}
-.footer-copy{width:100%;text-align:center;margin-top:24px;padding-top:22px;border-top:1px solid var(--border-light);font-size:12px;color:var(--text-muted);}
+footer{background:var(--bg-off);border-top:1px solid var(--line-soft);padding:54px 0 26px;}
+.f-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;}
+.f-in img{height:30px;width:auto;}
+.f-c{margin-top:16px;font-size:14px;color:var(--text-2);line-height:2.1;}
+.f-c a{color:var(--text-2);text-decoration:none;}
+.f-c a:hover{color:var(--teal-dark);}
+.f-l{display:flex;gap:26px;flex-wrap:wrap;}
+.f-l a{font-size:14px;color:var(--text-3);text-decoration:none;}
+.f-l a:hover{color:var(--teal-dark);}
+.f-b{margin-top:34px;padding-top:22px;border-top:1px solid var(--line-soft);text-align:center;font-size:12.5px;color:var(--text-3);}
 
-/* ANIMATIONS
-   Hidden state applies only when JS is running (html.js). If the script fails
-   to load or the observer never fires, the page renders fully visible instead
-   of blank. */
-.js .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.js .fade-up.visible{opacity:1;transform:translateY(0);}
-@media(prefers-reduced-motion:reduce){.js .fade-up{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+.js .up{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.js .up.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){.js .up{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="Optevalogo.png" alt="Opteva"/></a>
-    <div class="nav-links">
-      <a href="#options">The Problem</a>
-      <a href="#does">What It Does</a>
-      <a href="#faq">FAQ</a>
-      <a href="#book" class="btn btn-primary btn-sm">I'm in</a>
-    </div>
+<nav id="nv"><div class="nav-in">
+  <a href="#"><img src="Optevalogo.png" alt="Opteva"/></a>
+  <div class="nav-l">
+    <a href="#problem">The Problem</a>
+    <a href="#platform">The Platform</a>
+    <a href="#faq">FAQ</a>
+    <a href="#book" class="btn btn-sm">I'm in</a>
   </div>
-</nav>
+</div></nav>
 
 <!-- HERO -->
-<section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-inner fade-up">
-      <h1>Your clients keep asking for social.<span>You are either turning it down or losing money saying yes.</span></h1>
-      <p class="subhead" style="margin-top:24px;">Opteva writes each client's content in that client's own voice and publishes it to Facebook and Instagram through your GoHighLevel. You add a revenue line. You do not add a person.</p>
-      <div class="cta-block">
-        <a href="#book" class="btn btn-primary btn-lg">I'm in <span class="arrow">&rarr;</span></a>
-        <p class="cta-note">Fifteen minutes. Bring one client's Instagram handle. You leave with five finished posts written in that client's voice, yours to keep either way.</p>
-        <p class="cta-note" style="margin-top:10px;">Not ready to talk? <a href="calculator.html" style="color:var(--teal-dark);font-weight:600;">See what your content line is worth</a> first. Five questions, no email needed for the number.</p>
-      </div>
-      <div class="credential">
-        <div class="credential-num">26</div>
-        <div class="credential-text">Years running a med spa before I built software. <strong>Built by an operator who has been the one sending the draft back.</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
+<header class="hero"><div class="wrap"><div class="hero-in up">
+  <h1>Client social, in each client's own voice.<em>Resold under your agency.</em></h1>
+  <p class="lead">One install covers your whole roster. Opteva drafts, you approve, your GoHighLevel publishes.</p>
+  <a href="#book" class="btn">I'm in <span class="ar">&rarr;</span></a>
+  <p class="note">Fifteen minutes. One client's handle in, five posts in their voice out.</p>
+  <div class="cred"><b>26</b><span>Years running a med spa before I built software. Built by an operator who has been the one sending the draft back.</span></div>
+</div></div></header>
 
-<!-- THREE OPTIONS -->
-<section class="options section" id="options">
-  <div class="container">
-    <div class="text-center">
-      <div class="section-label fade-up" style="justify-content:center;">The Content Line</div>
-      <h2 class="fade-up">Most agencies handle client social<br/>one of three ways.</h2>
-    </div>
-    <div class="options-grid">
-      <div class="option-card fade-up">
-        <div class="option-num">Option One</div>
-        <h3>Turn it down</h3>
-        <p>The client asks, you pass, and someone else gets a foot in the door with an account you spent two years earning. That relationship is now shared.</p>
-        <span class="option-cost">Costs you the account</span>
-      </div>
-      <div class="option-card fade-up" style="transition-delay:0.1s;">
-        <div class="option-num">Option Two</div>
-        <h3>Farm it out cheap</h3>
-        <p>Now you own a quality problem plus a review step. Every draft comes back to you before it goes to the client, so you did not remove the work, you moved it.</p>
-        <span class="option-cost">Costs you the margin</span>
-      </div>
-      <div class="option-card fade-up" style="transition-delay:0.2s;">
-        <div class="option-num">Option Three</div>
-        <h3>Absorb it into the retainer</h3>
-        <p>Which most shops do, and it works. Your team writes it, nobody bills for it, and the hours stay invisible right up until the roster grows.</p>
-        <span class="option-cost">Costs you the hours</span>
-      </div>
-    </div>
-    <p class="options-kicker fade-up">It works fine until the sixth client.</p>
+<!-- PROBLEM -->
+<section class="prob" id="problem"><div class="wrap">
+  <div class="center up"><div class="eyebrow">The Content Line</div>
+    <h2 style="margin-top:16px;color:var(--navy);">Three ways this usually goes.</h2></div>
+  <div class="cols up">
+    <div class="col"><h3>Turn it down</h3><p>Someone else gets a foot in the door with an account you spent two years earning.</p><span class="cost">Costs the account</span></div>
+    <div class="col"><h3>Farm it out</h3><p>Every draft still comes back to you first. You moved the work, you did not remove it.</p><span class="cost">Costs the margin</span></div>
+    <div class="col"><h3>Absorb it</h3><p>Your team writes it, nobody bills for it, and the hours stay invisible.</p><span class="cost">Costs the hours</span></div>
   </div>
-</section>
+  <div class="turn up"><p>It works until the sixth client.</p>
+    <small>The draft was never the expensive part. The second version is.</small></div>
+</div></section>
 
-<!-- VOICE -->
-<section class="voice section" id="voice">
-  <div class="container">
-    <div class="voice-inner">
-      <div class="fade-up">
-        <div class="voice-quote">
-          <p>"This isn't really us."</p>
-          <div class="attrib">Sent back with no notes. Every agency has this email.</div>
-        </div>
-      </div>
-      <div class="voice-body fade-up" style="transition-delay:0.1s;">
-        <div class="section-label">Why It Keeps Happening</div>
-        <h2 style="margin-bottom:20px;">The draft was never the expensive part.</h2>
-        <p>A business owner has had the same conversation with customers a thousand times. She knows which sentence makes someone relax and which word makes them hesitate. <strong>It is not in the brand guide. It lives in her head.</strong></p>
-        <p>An outside writer has never been in that room, so they write what the category sounds like. Then the draft comes back with five words and no notes, and the second version is the one that actually costs you.</p>
-        <p><strong>The more mixed your roster, the worse this gets.</strong> One writer switching between a law firm, two contractors and a gym is switching between four voices they have never heard.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- PLATFORM -->
+<section id="platform"><div class="wrap">
+  <div class="center up"><div class="eyebrow">The Platform</div>
+    <h2 style="margin-top:16px;color:var(--navy);">One install. Every client. Their own voice.</h2></div>
 
-<!-- WHAT IT DOES -->
-<section class="does section" id="does">
-  <div class="container">
-    <div class="text-center">
-      <div class="section-label fade-up" style="justify-content:center;">What It Actually Does</div>
-      <h2 class="fade-up">Three things. Verified.</h2>
-      <p class="subhead fade-up" style="margin:16px auto 0;">This is the honest list, not the roadmap.</p>
-    </div>
-    <div class="does-grid">
-      <div class="does-card fade-up">
-        <div class="does-check">&#10003;</div>
-        <h3>Writes in the client's own voice</h3>
-        <p>Each client carries a stored voice profile. Tone, audience, the phrases they use and the ones they refuse. Every generation runs through it, so the output sounds like that business and not like the category.</p>
-      </div>
-      <div class="does-card fade-up" style="transition-delay:0.1s;">
-        <div class="does-check">&#10003;</div>
-        <h3>Publishes through your GoHighLevel</h3>
-        <p>Facebook and Instagram, through the GoHighLevel social planner you already run. Nothing publishes without a human approving it first.</p>
-      </div>
-      <div class="does-card fade-up" style="transition-delay:0.2s;">
-        <div class="does-check">&#10003;</div>
-        <h3>Installs at the agency level</h3>
-        <p>One install, your whole roster. Each client gets a separate workspace, a separate voice and a separate content history.</p>
-      </div>
-    </div>
-    <div class="does-honest fade-up">
-      <strong>That is the entire list, and it is deliberate.</strong> Other platforms, scheduling queues, self serve install and white label are in progress. If you ask about one of them on the call you will get a straight answer about where it actually stands, not a launch date.
-    </div>
+  <div class="flow up">
+    <svg viewBox="0 0 900 132" role="img" aria-label="Voice profile to draft to your approval to GoHighLevel to Facebook and Instagram">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94A5B6"/></marker></defs>
+      <g font-family="Inter,sans-serif">
+        <rect x="2" y="34" width="150" height="64" rx="12" fill="#F6F8FA" stroke="#E4EBF1"/>
+        <text x="77" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Voice profile</text>
+        <text x="77" y="79" text-anchor="middle" font-size="11.5" fill="#5A6E82">per client</text>
+        <line x1="160" y1="66" x2="196" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="204" y="34" width="140" height="64" rx="12" fill="#F6F8FA" stroke="#E4EBF1"/>
+        <text x="274" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Draft</text>
+        <text x="274" y="79" text-anchor="middle" font-size="11.5" fill="#5A6E82">post + first comment</text>
+        <line x1="352" y1="66" x2="388" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="396" y="30" width="146" height="72" rx="12" fill="#fff" stroke="#3DBCB2" stroke-width="1.8"/>
+        <text x="469" y="52" text-anchor="middle" font-size="10.5" font-weight="800" letter-spacing="1.3" fill="#2A9D94">YOU</text>
+        <text x="469" y="72" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Approve</text>
+        <text x="469" y="89" text-anchor="middle" font-size="11.5" fill="#5A6E82">nothing skips this</text>
+        <line x1="550" y1="66" x2="586" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="594" y="34" width="150" height="64" rx="12" fill="#F6F8FA" stroke="#E4EBF1"/>
+        <text x="669" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Your GoHighLevel</text>
+        <text x="669" y="79" text-anchor="middle" font-size="11.5" fill="#5A6E82">social planner</text>
+        <line x1="752" y1="66" x2="788" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
+        <rect x="796" y="34" width="102" height="64" rx="12" fill="#12283F"/>
+        <text x="847" y="60" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">Facebook</text>
+        <text x="847" y="79" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">Instagram</text>
+      </g>
+    </svg>
   </div>
-</section>
+
+  <div class="specs">
+    <div class="spec up"><h3>A voice profile per client</h3><p>Tone, audience, the phrases they use and the ones they refuse. Every draft runs through it.</p></div>
+    <div class="spec up"><h3>A workspace per client</h3><p>Separate voice, separate history. A law firm and a gym never bleed into each other.</p></div>
+    <div class="spec up"><h3>Installed at the agency</h3><p>One setup, your whole roster. Publishing runs through the GoHighLevel you already use.</p></div>
+  </div>
+
+  <p class="honest up"><b>That is the whole list, deliberately.</b> Other platforms, scheduling queues and dashboard branding are in progress, and you will get a straight answer on each.</p>
+</div></section>
 
 <!-- PROOF -->
-<section class="proof section" id="proof">
-  <div class="container">
-    <div class="proof-inner">
-      <div class="section-label fade-up" style="justify-content:center;">Does It Work</div>
-      <p class="proof-quote fade-up">"I wasn't visible at all on social media. Opteva got me up and running within 48 hours. I saw a <mark>133% increase in visibility</mark> in just one week and booked two new patients."</p>
-      <div class="proof-attrib fade-up">
-        <span class="proof-name">Jed Correa</span>
-        <span class="proof-role">Chicago, IL</span>
-      </div>
-      <div class="proof-grid">
-        <div class="proof-card fade-up">
-          <p>"My med spa was drowning in social media overload. It was messy. Opteva cleaned everything up and gave my business real visibility online."</p>
-          <div><div class="who">Kara Crockett</div><div class="where">Seattle, WA</div></div>
-        </div>
-        <div class="proof-card fade-up" style="transition-delay:0.1s;">
-          <p>"Opteva helped me get my socials and Google Business Profile updated and running. With the branded dashboard and all my socials in one place, I finally had time to focus on making money."</p>
-          <div><div class="who">Stephanie Jordan</div><div class="where">Las Vegas, NV</div></div>
-        </div>
-      </div>
-    </div>
+<section style="border-top:1px solid var(--line-soft);"><div class="wrap center">
+  <div class="eyebrow up">Does It Work</div>
+  <p class="quote up">"I wasn't visible at all on social media. Opteva got me up and running within 48 hours. I saw a <mark>133% increase in visibility</mark> in just one week and booked two new patients."</p>
+  <div class="up"><div class="who">Jed Correa</div><div class="where">Chicago, IL</div></div>
+  <div class="pair">
+    <div class="pcard up"><p>"My med spa was drowning in social media overload. It was messy. Opteva cleaned everything up and gave my business real visibility online."</p>
+      <div><div class="who">Kara Crockett</div><div class="where">Seattle, WA</div></div></div>
+    <div class="pcard up"><p>"Opteva helped me get my socials and Google Business Profile updated and running. With the branded dashboard and all my socials in one place, I finally had time to focus on making money."</p>
+      <div><div class="who">Stephanie Jordan</div><div class="where">Las Vegas, NV</div></div></div>
   </div>
-</section>
+</div></section>
 
-<!-- THE OFFER -->
-<section class="offer section" id="offer">
-  <div class="container">
-    <div class="offer-card fade-up">
-      <div class="section-label" style="justify-content:center;">The Offer</div>
-      <h2>Send one client's Instagram handle.<br/>Get five posts back.</h2>
-      <p class="offer-lead">Pick the client you would most like to keep and the one you would least like to write for. Same client, usually. We will write five finished posts in that business's own voice.</p>
-      <ul class="offer-list">
-        <li><span class="offer-check">&#10003;</span> Five finished posts, captions written to publish</li>
-        <li><span class="offer-check">&#10003;</span> First comment written for each one</li>
-        <li><span class="offer-check">&#10003;</span> Visual direction so your designer is not guessing</li>
-        <li><span class="offer-check">&#10003;</span> Back within 48 hours, produced personally</li>
-        <li><span class="offer-check">&#10003;</span> Yours to keep, use them either way</li>
-      </ul>
-      <div class="cta-block center">
-        <a href="#book" class="btn btn-primary btn-lg">I'm in <span class="arrow">&rarr;</span></a>
-        <p class="cta-note">No cost and no obligation. If the posts are not good enough to publish, you have lost fifteen minutes and gained an honest answer.</p>
-      </div>
-    </div>
+<!-- OFFER -->
+<section class="offer"><div class="wrap center">
+  <div class="eyebrow up">The Offer</div>
+  <h2 class="up">Send one client's handle.<br/>Get five posts back.</h2>
+  <p class="lead up">Pick the client you would least like to write for this week. We write five finished posts in that business's own voice.</p>
+  <div class="gets">
+    <div class="get up"><i>&#10003;</i> Five posts, captions ready to publish</div>
+    <div class="get up"><i>&#10003;</i> First comment written for each</div>
+    <div class="get up"><i>&#10003;</i> Visual direction for your designer</div>
+    <div class="get up"><i>&#10003;</i> Back in 48 hours, yours either way</div>
   </div>
-</section>
+  <div class="up" style="margin-top:44px;"><a href="#book" class="btn">I'm in <span class="ar">&rarr;</span></a>
+    <p class="note" style="margin-left:auto;margin-right:auto;max-width:34em;">Not ready to talk? <a href="calculator.html" style="color:var(--teal);font-weight:600;">See what your content line is worth</a> first. No email needed for the number.</p></div>
+</div></section>
 
 <!-- FOUNDER -->
-<section class="founder section" id="founder">
-  <div class="container">
-    <div class="founder-inner">
-      <div class="section-label fade-up" style="justify-content:center;">Who Built It</div>
-      <p class="founder-quote fade-up">"I ran a med spa for 26 years before I built software. I have been the owner sending that draft back."</p>
-      <p class="founder-body fade-up">I did the treatments, managed the team, ran the marketing and figured out why clients were not rebooking. The reason content breaks is not that the writing is bad. It is that the person who knows how the business actually sounds is the one person who does not have an hour to write. That is true whether the business is a clinic, a law firm or a contractor, which is why Opteva was built around the voice profile rather than around any one industry.</p>
-      <p class="founder-name fade-up">Stephanie Sullivan</p>
-      <p class="founder-role fade-up">Founder, Opteva</p>
-    </div>
-  </div>
-</section>
+<section><div class="wrap"><div class="founder">
+  <div class="eyebrow up">Who Built It</div>
+  <p class="q up">"I ran a med spa for 26 years before I built software. I have been the owner sending that draft back."</p>
+  <p class="b up">Content does not break because the writing is bad. It breaks because the one person who knows how a business sounds is the one person without an hour to write.</p>
+  <div class="up"><div class="who">Stephanie Sullivan</div><div class="where">Founder, Opteva</div></div>
+</div></div></section>
 
 <!-- FAQ -->
-<section class="section" id="faq">
-  <div class="container text-center">
-    <div class="section-label fade-up" style="justify-content:center;">FAQ</div>
-    <h2 class="fade-up">The questions agencies actually ask</h2>
-    <div class="faq-list">
-      <div class="faq-item fade-up">
-        <button class="faq-q" onclick="toggleFaq(this)">What does it cost?<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>There is no price on this page on purpose. Client count and number of locations change the answer completely, so a number posted here would be wrong for most of the agencies reading it. Bring those two numbers to the fifteen minutes and you will get a real one.</p></div>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:0.05s;">
-        <button class="faq-q" onclick="toggleFaq(this)">My clients are all in different industries. Is that a problem?<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>That is the best version of this conversation. A mixed roster is exactly where one writer and one template break down, because no single person has heard all four voices. Bring the hardest one and we will start there.</p></div>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:0.1s;">
-        <button class="faq-q" onclick="toggleFaq(this)">We already use GoHighLevel.<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>Good, that is the shortest path in. GoHighLevel schedules and publishes. It does not write in a client's voice. Opteva writes, GoHighLevel delivers, and the part your team is doing by hand today is the part that changes.</p></div>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:0.15s;">
-        <button class="faq-q" onclick="toggleFaq(this)">We tried AI content and it was bad.<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>Most agencies have, and the failure is usually the same one. A generic tool writes what the category sounds like because it was never given the voice. Tell us which tool and what came back wrong. If it is the same failure mode, you will recognise the difference in the five posts. If it is not, we would rather know.</p></div>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:0.2s;">
-        <button class="faq-q" onclick="toggleFaq(this)">Will my clients approve AI content?<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>They approve it the same way they approve yours. Nothing publishes without a human clicking approve, and every post runs through a compliance check before it can go out. The difference is not the approval step. It is what the first draft costs you to produce.</p></div>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:0.25s;">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I put my own brand on it?<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>White labelling is in progress, not shipped, so we are not going to claim it here. Ask on the call and you will get shown exactly where it stands rather than a promise.</p></div>
-      </div>
-      <div class="faq-item fade-up" style="transition-delay:0.3s;">
-        <button class="faq-q" onclick="toggleFaq(this)">What happens in the fifteen minutes?<span class="faq-arrow">+</span></button>
-        <div class="faq-a"><p>You name a client, we generate content in that client's voice while you watch, and you say whether it sounds like them. That is the whole call. If it does not sound like them, that is a useful answer too.</p></div>
-      </div>
-    </div>
+<section id="faq" style="background:var(--bg-off);border-top:1px solid var(--line-soft);"><div class="wrap center">
+  <div class="eyebrow up">FAQ</div>
+  <h2 class="up" style="margin-top:16px;color:var(--navy);">What agencies ask</h2>
+  <div class="faq">
+    <div class="qa up"><button onclick="tg(this)">What does it cost?<span class="pm">+</span></button>
+      <div class="a"><p>No price here on purpose. Client count and locations change the answer completely. Bring both numbers and you get a real one.</p></div></div>
+    <div class="qa up"><button onclick="tg(this)">Can I resell it as my own?<span class="pm">+</span></button>
+      <div class="a"><p>That is the model. It installs at your agency, you hold the client, and everything publishes through your GoHighLevel to your client's own accounts. Dashboard branding is still in progress, so ask and you will be shown exactly where it stands.</p></div></div>
+    <div class="qa up"><button onclick="tg(this)">My clients are in different industries.<span class="pm">+</span></button>
+      <div class="a"><p>That is the best version of this call. A mixed roster is where one writer and one template break down. Bring the hardest client.</p></div></div>
+    <div class="qa up"><button onclick="tg(this)">We tried AI content and it was bad.<span class="pm">+</span></button>
+      <div class="a"><p>Usually the same failure: a generic tool writes what the category sounds like, because it was never given the voice. Tell us which tool.</p></div></div>
+    <div class="qa up"><button onclick="tg(this)">Will my clients approve AI content?<span class="pm">+</span></button>
+      <div class="a"><p>The same way they approve yours. Nothing publishes without a human clicking approve. What changes is the cost of the first draft.</p></div></div>
   </div>
-</section>
+</div></section>
 
-<!-- FINAL CTA -->
-<section class="final-cta section" id="book">
-  <div class="container">
-    <div class="final-cta-inner">
-      <div class="section-label fade-up" style="justify-content:center;">One Client. Five Posts.</div>
-      <h2 class="fade-up">Pick the client you least<br/>want to write for this week.</h2>
-      <p class="subhead fade-up">Bring that handle to fifteen minutes and leave with five posts in their voice. Whatever you decide afterwards, the posts are yours.</p>
-      <p class="cta-note fade-up" style="margin-top:18px;">Pick a time below. No form in between.</p>
-      <div class="booking-embed fade-up">
-        <iframe src="https://api.opteva.ai/widget/booking/d2KmG49HKwyvLOS2HF5G" allow="payment" scrolling="no" id="msgsndr-calendar" title="Book fifteen minutes with Opteva"></iframe>
-      </div>
-      <p class="cta-note fade-up" style="margin-top:18px;">Calendar not loading? <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;">Book here instead</a>.</p>
-    </div>
+<!-- BOOK -->
+<section class="book" id="book"><div class="wrap center">
+  <div class="eyebrow up">One Client. Five Posts.</div>
+  <h2 class="up" style="margin-top:16px;">Pick a time.</h2>
+  <p class="lead up">Bring one client's handle. Leave with five posts in their voice, yours whatever you decide.</p>
+  <div class="embed up">
+    <iframe src="https://api.opteva.ai/widget/booking/d2KmG49HKwyvLOS2HF5G" allow="payment" scrolling="no" id="msgsndr-calendar" title="Book fifteen minutes with Opteva"></iframe>
   </div>
-</section>
+  <p class="note up">Calendar not loading? <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;">Book here instead</a>.</p>
+</div></section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo"><img src="Optevalogo.png" alt="Opteva"/></div>
-        <div class="footer-contact">
-          <a href="mailto:hello@opteva.ai">hello@opteva.ai</a><br/>
-          <a href="tel:+14845426653">+1 (484) 542-6653</a><br/>
-          Easton, PA
-        </div>
-      </div>
-      <div class="footer-links">
-        <a href="#options">The Problem</a>
-        <a href="#does">What It Does</a>
-        <a href="#faq">FAQ</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
+<footer><div class="wrap">
+  <div class="f-in">
+    <div>
+      <img src="Optevalogo.png" alt="Opteva"/>
+      <div class="f-c"><a href="mailto:hello@opteva.ai">hello@opteva.ai</a><br/>
+        <a href="tel:+14845426653">+1 (484) 542-6653</a><br/>Easton, PA</div>
     </div>
-    <div class="footer-copy">&copy; 2026 Opteva. All rights reserved.</div>
+    <div class="f-l">
+      <a href="#problem">The Problem</a><a href="#platform">The Platform</a><a href="#faq">FAQ</a>
+      <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+    </div>
   </div>
-</footer>
+  <div class="f-b">&copy; 2026 Opteva. All rights reserved.</div>
+</div></footer>
 
 <script>
-// Nav shadow on scroll
-var navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function(){
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-}, {passive:true});
-
-// Reveal on scroll
-var io = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
-}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fade-up').forEach(function(el){ io.observe(el); });
-
-// FAQ accordion: one open at a time
-// (GoHighLevel's embed.js is loaded at the end of the body)
-function toggleFaq(btn){
-  var item = btn.parentElement;
-  var wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-  if(!wasOpen){ item.classList.add('open'); }
-}
+var nv=document.getElementById('nv');
+window.addEventListener('scroll',function(){nv.classList.toggle('on',window.scrollY>16);},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.up').forEach(function(el){io.observe(el);});
+function tg(b){var i=b.parentElement,o=i.classList.contains('open');
+  document.querySelectorAll('.qa.open').forEach(function(x){x.classList.remove('open');});
+  if(!o){i.classList.add('open');}}
 </script>
 <script src="https://api.opteva.ai/js/embed.js" type="text/javascript"></script>
 
