@@ -14,317 +14,371 @@
 <script>document.documentElement.className+=' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --navy:#12283F;--navy-mid:#1B3A5C;
-  --teal:#3DBCB2;--teal-dark:#2A9D94;--teal-light:#5CD6CC;
-  --bg:#ffffff;--bg-off:#F6F8FA;
-  --text:#12283F;--text-2:#5A6E82;--text-3:#94A5B6;
-  --line:#E4EBF1;--line-soft:#EFF3F7;
-  --r:14px;--r-lg:22px;
-  --shadow-teal:0 6px 24px rgba(61,188,178,0.24);
+  --ink:#0E2032;--ink-2:#51677A;--ink-3:#93A3B1;
+  --paper:#FBFCFC;--paper-2:#F4F6F7;
+  --rule:#E3E8EC;--rule-2:#EFF2F4;
+  --teal:#3DBCB2;--teal-ink:#1F8079;
+  --gut:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
-@media(max-width:700px){.wrap{padding:0 20px;}body{font-size:16px;}}
-section{padding:120px 0;}
-@media(max-width:700px){section{padding:76px 0;}}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+  -webkit-font-smoothing:antialiased;font-size:17px;line-height:1.6;overflow-x:hidden;}
 
-h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6.2vw,74px);font-weight:700;line-height:1.03;letter-spacing:-0.03em;text-wrap:balance;}
-h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4.4vw,50px);font-weight:700;line-height:1.1;letter-spacing:-0.025em;text-wrap:balance;}
-h3{font-size:16px;font-weight:700;letter-spacing:-0.01em;}
-.lead{font-size:clamp(17px,1.9vw,21px);color:var(--text-2);line-height:1.6;max-width:34em;}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:2.4px;}
-.eyebrow::before{content:'';width:26px;height:2px;background:var(--teal);}
-.center{text-align:center;}
-.center .eyebrow{justify-content:center;}
+.w{max-width:1240px;margin:0 auto;padding:0 var(--gut);}
+@media(max-width:900px){:root{--gut:32px;}}
+@media(max-width:560px){:root{--gut:22px;}body{font-size:16px;}}
 
-.btn{display:inline-flex;align-items:center;gap:10px;padding:19px 42px;border-radius:var(--r);font-size:17px;font-weight:800;font-family:'Inter',sans-serif;border:none;cursor:pointer;text-decoration:none;background:var(--teal);color:#fff;box-shadow:var(--shadow-teal);transition:background .2s,transform .2s,box-shadow .2s;}
-.btn:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 10px 32px rgba(61,188,178,.34);}
-.btn:focus-visible{outline:3px solid var(--navy);outline-offset:3px;}
-.btn .ar{transition:transform .2s;}
-.btn:hover .ar{transform:translateX(4px);}
-.btn-sm{padding:12px 24px;font-size:15px;}
-.note{margin-top:16px;font-size:14.5px;color:var(--text-3);line-height:1.6;}
-@media(max-width:480px){.btn{width:100%;justify-content:center;}.btn-sm{width:auto;}}
+/* An editorial grid: a narrow label rail beside a wide content column.
+   This asymmetry is what keeps the page off the centred-template look. */
+.ed{display:grid;grid-template-columns:180px minmax(0,1fr);gap:0 72px;align-items:start;}
+@media(max-width:900px){.ed{grid-template-columns:1fr;gap:22px;}}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s;}
-nav.on{border-bottom-color:var(--line-soft);}
-.nav-in{max-width:1140px;margin:0 auto;padding:0 28px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.nav-in img{height:36px;width:auto;display:block;}
-.nav-l{display:flex;align-items:center;gap:34px;}
-.nav-l a:not(.btn){font-size:14.5px;font-weight:500;color:var(--text-2);text-decoration:none;}
-.nav-l a:not(.btn):hover{color:var(--teal-dark);}
-@media(max-width:820px){.nav-l a:not(.btn){display:none;}.nav-in{height:68px;padding:0 20px;}}
+.lab{font-size:10.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-3);
+  padding-top:.9em;line-height:1.5;}
+.lab.t{color:var(--teal-ink);}
 
-/* HERO */
-.hero{padding:186px 0 104px;position:relative;overflow:hidden;}
-.hero::after{content:'';position:absolute;top:-260px;right:-220px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(61,188,178,.10) 0%,transparent 68%);pointer-events:none;}
-.hero-in{position:relative;z-index:1;max-width:860px;}
-.hero h1{color:var(--navy);}
-.hero h1 em{display:block;font-style:normal;color:var(--teal-dark);}
-.hero .lead{margin:26px 0 40px;}
-.cred{margin-top:56px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;align-items:center;gap:18px;max-width:520px;}
-.cred b{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1;}
-.cred span{font-size:14.5px;color:var(--text-2);line-height:1.55;}
-@media(max-width:700px){.hero{padding:132px 0 72px;}}
+h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(46px,8.4vw,108px);
+  line-height:.96;letter-spacing:-.035em;text-wrap:balance;}
+h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(31px,4.8vw,62px);
+  line-height:1.04;letter-spacing:-.03em;text-wrap:balance;}
+h3{font-size:17px;font-weight:600;letter-spacing:-.01em;}
+.lede{font-size:clamp(18px,1.75vw,22px);line-height:1.55;color:var(--ink-2);max-width:31em;}
+.sm{font-size:15px;line-height:1.7;color:var(--ink-2);}
+.xs{font-size:13.5px;line-height:1.65;color:var(--ink-3);}
 
-/* PROBLEM */
-.prob{background:var(--bg-off);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:52px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;}
-@media(max-width:800px){.cols{grid-template-columns:1fr;}}
-.col{background:#fff;padding:34px 30px;}
-.col h3{color:var(--navy);margin-bottom:10px;font-size:18px;}
-.col p{font-size:15px;color:var(--text-2);line-height:1.65;}
-.col .cost{display:block;margin-top:18px;font-size:11.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-3);}
-.turn{margin-top:56px;text-align:center;}
-.turn p{font-family:'Playfair Display',serif;font-size:clamp(22px,3.2vw,34px);font-weight:700;color:var(--navy);line-height:1.35;max-width:20em;margin:0 auto;text-wrap:balance;}
-.turn small{display:block;margin-top:16px;font-family:'Inter',sans-serif;font-size:15.5px;font-weight:500;color:var(--text-2);}
+/* Rules, not background bands, carry the rhythm. */
+.rule{height:1px;background:var(--rule);border:0;}
+.band{padding:132px 0;}
+.band.tight{padding:96px 0;}
+@media(max-width:900px){.band{padding:84px 0;}.band.tight{padding:64px 0;}}
 
-/* PLATFORM */
-.flow{margin:56px auto 0;max-width:920px;border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:38px 30px;overflow-x:auto;}
-.flow svg{display:block;margin:0 auto;min-width:660px;}
-.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;}
-@media(max-width:800px){.specs{grid-template-columns:1fr;gap:24px;}}
-.spec{padding-top:20px;border-top:2px solid var(--navy);}
-.spec h3{color:var(--navy);margin-bottom:8px;}
-.spec p{font-size:14.5px;color:var(--text-2);line-height:1.65;}
-.honest{margin-top:52px;padding:18px 24px;border:1px dashed var(--line);border-radius:var(--r);font-size:14px;color:var(--text-3);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;}
-.honest b{color:var(--text-2);font-weight:700;}
+a.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);
+  font-size:16px;font-weight:600;letter-spacing:-.005em;padding:20px 36px;border-radius:2px;
+  text-decoration:none;transition:background .22s,gap .22s;}
+a.cta:hover{background:var(--teal-ink);gap:18px;}
+a.cta:focus-visible{outline:2px solid var(--teal);outline-offset:4px;}
+a.cta.inv{background:var(--paper);color:var(--ink);}
+a.cta.inv:hover{background:var(--teal);color:#fff;}
+a.cta.sm{padding:12px 22px;font-size:14.5px;}
+a.q{color:var(--teal-ink);text-decoration:none;border-bottom:1px solid rgba(31,128,121,.32);}
+a.q:hover{border-bottom-color:var(--teal-ink);}
 
-/* PROOF */
-.quote{font-family:'Playfair Display',serif;font-size:clamp(23px,3.4vw,36px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.4;max-width:18em;margin:30px auto 0;text-wrap:balance;}
-.quote mark{background:none;color:var(--teal-dark);font-style:normal;font-weight:700;}
-.who{margin-top:26px;font-size:15px;font-weight:700;color:var(--navy);}
-.where{font-size:13.5px;color:var(--text-3);margin-top:2px;}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;text-align:left;}
-@media(max-width:760px){.pair{grid-template-columns:1fr;}}
-.pcard{background:var(--bg-off);border:1px solid var(--line-soft);border-radius:var(--r-lg);padding:30px 28px;display:flex;flex-direction:column;gap:18px;}
-.pcard p{font-family:'Playfair Display',serif;font-size:clamp(17px,2.1vw,20px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.55;flex:1;}
-.pcard .who{margin-top:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(251,252,252,.86);
+  backdrop-filter:blur(16px);transition:box-shadow .3s;}
+nav.on{box-shadow:0 1px 0 var(--rule);}
+.nv{max-width:1240px;margin:0 auto;padding:0 var(--gut);height:84px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;}
+.nv img{height:32px;width:auto;display:block;}
+.nv .l{display:flex;align-items:center;gap:38px;}
+.nv .l a:not(.cta){font-size:14px;color:var(--ink-2);text-decoration:none;}
+.nv .l a:not(.cta):hover{color:var(--ink);}
+@media(max-width:860px){.nv .l a:not(.cta){display:none;}.nv{height:70px;}}
+
+/* HERO — asymmetric, left-set, type does the work */
+.hero{padding:210px 0 0;}
+@media(max-width:900px){.hero{padding:142px 0 0;}}
+.hero h1{max-width:13ch;}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--teal-ink);}
+.hero-b{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:72px;align-items:end;margin-top:56px;}
+@media(max-width:980px){.hero-b{grid-template-columns:1fr;gap:38px;}}
+.hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
+.cred{padding-top:22px;border-top:1px solid var(--rule);}
+.cred b{font-family:'Playfair Display',serif;font-size:60px;font-weight:600;line-height:.9;
+  letter-spacing:-.04em;display:block;margin-bottom:12px;}
+.hero-rule{margin-top:120px;}
+@media(max-width:900px){.hero-rule{margin-top:76px;}}
+
+/* THREE OPTIONS — editorial rows, hairlines, no cards */
+.opt{display:grid;grid-template-columns:180px minmax(0,1fr) 150px;gap:0 72px;
+  padding:34px 0;border-bottom:1px solid var(--rule-2);align-items:baseline;}
+.opt:first-of-type{border-top:1px solid var(--rule-2);}
+@media(max-width:900px){.opt{grid-template-columns:1fr;gap:8px;padding:26px 0;}}
+.opt h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:500;letter-spacing:-.02em;}
+.opt p{font-size:15.5px;color:var(--ink-2);line-height:1.65;max-width:46ch;}
+.opt .c{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);text-align:right;}
+@media(max-width:900px){.opt .c{text-align:left;}}
+.pivot{margin-top:76px;max-width:24ch;}
+.pivot p{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,50px);font-weight:600;
+  line-height:1.08;letter-spacing:-.03em;}
+.pivot span{display:block;margin-top:22px;font-family:'Inter',sans-serif;font-size:16px;
+  font-weight:400;color:var(--ink-2);letter-spacing:0;max-width:34ch;}
+
+/* PLATFORM — schematic, not a boxed graphic */
+.flow{margin-top:64px;overflow-x:auto;padding-bottom:8px;}
+.flow svg{display:block;min-width:720px;}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:76px;}
+@media(max-width:900px){.specs{grid-template-columns:1fr;gap:38px;}}
+.spec{padding-top:18px;border-top:1px solid var(--ink);}
+.spec h3{margin-bottom:9px;}
+.spec p{font-size:14.5px;color:var(--ink-2);line-height:1.68;}
+.honest{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);max-width:52ch;}
+
+/* PROOF — a typographic moment, then quiet text. No grey boxes. */
+.big{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+  font-size:clamp(27px,4.4vw,56px);line-height:1.16;letter-spacing:-.028em;max-width:16ch;text-wrap:balance;}
+.big mark{background:none;color:var(--teal-ink);font-style:normal;font-weight:600;}
+.att{margin-top:34px;font-size:14px;font-weight:600;}
+.att span{display:block;font-weight:400;color:var(--ink-3);margin-top:2px;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 72px;margin-top:88px;}
+@media(max-width:900px){.two{grid-template-columns:1fr;gap:44px;}}
+.two blockquote{padding-top:22px;border-top:1px solid var(--rule);}
+.two blockquote p{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+  font-size:20px;line-height:1.5;letter-spacing:-.015em;}
 
 /* OFFER */
-.offer{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
-.offer::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(61,188,178,.14) 0%,transparent 62%);pointer-events:none;}
-.offer .wrap{position:relative;z-index:1;}
-.offer h2{color:#fff;margin-top:18px;}
-.offer .lead{color:rgba(255,255,255,.68);margin:22px auto 0;}
-.gets{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;max-width:600px;margin:44px auto 0;text-align:left;}
-@media(max-width:600px){.gets{grid-template-columns:1fr;}}
-.get{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(255,255,255,.82);line-height:1.55;}
-.get i{color:var(--teal);font-style:normal;font-weight:800;}
-.offer .note{color:rgba(255,255,255,.44);}
-
-/* FOUNDER */
-.founder{max-width:660px;margin:0 auto;text-align:center;}
-.founder p.q{font-family:'Playfair Display',serif;font-size:clamp(21px,2.9vw,30px);font-style:italic;font-weight:500;color:var(--navy);line-height:1.45;margin:26px 0 22px;text-wrap:balance;}
-.founder p.b{font-size:16px;color:var(--text-2);line-height:1.7;}
-.founder .who{margin-top:26px;}
+.gets{margin-top:48px;max-width:640px;}
+.gets div{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:15px 0;
+  border-bottom:1px solid var(--rule-2);font-size:15.5px;color:var(--ink-2);}
+.gets div:first-child{border-top:1px solid var(--rule-2);}
+.gets i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--ink-3);padding-top:.35em;}
 
 /* FAQ */
-.faq{max-width:760px;margin:48px auto 0;}
-.qa{border-bottom:1px solid var(--line-soft);}
-.qa:first-child{border-top:1px solid var(--line-soft);}
-.qa button{width:100%;background:none;border:none;font-family:'Inter',sans-serif;font-size:16.5px;font-weight:600;color:var(--navy);text-align:left;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;}
-.qa button:hover{color:var(--teal-dark);}
+.qa{border-bottom:1px solid var(--rule-2);}
+.qa:first-of-type{border-top:1px solid var(--rule-2);}
+.qa button{width:100%;background:none;border:0;cursor:pointer;font-family:'Inter',sans-serif;
+  font-size:17px;font-weight:500;color:var(--ink);text-align:left;padding:26px 0;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;letter-spacing:-.01em;}
+.qa button:hover{color:var(--teal-ink);}
 .qa button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
-.qa .pm{font-size:21px;color:var(--text-3);transition:transform .3s;flex-shrink:0;line-height:1;}
-.qa.open .pm{transform:rotate(45deg);color:var(--teal-dark);}
-.qa .a{max-height:0;overflow:hidden;transition:max-height .34s ease,padding .34s ease;}
-.qa.open .a{max-height:340px;padding-bottom:24px;}
-.qa .a p{font-size:15.5px;color:var(--text-2);line-height:1.72;max-width:60ch;}
+.qa .pm{flex-shrink:0;width:11px;height:11px;position:relative;}
+.qa .pm::before,.qa .pm::after{content:'';position:absolute;background:var(--ink-3);transition:transform .32s,background .32s;}
+.qa .pm::before{left:0;top:5px;width:11px;height:1px;}
+.qa .pm::after{left:5px;top:0;width:1px;height:11px;}
+.qa.open .pm::after{transform:rotate(90deg);}
+.qa.open .pm::before,.qa.open .pm::after{background:var(--teal-ink);}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .36s ease,padding .36s ease;}
+.qa.open .a{max-height:320px;padding-bottom:28px;}
+.qa .a p{font-size:15.5px;color:var(--ink-2);line-height:1.72;max-width:58ch;}
 
-/* BOOK */
-.book{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
-.book::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(61,188,178,.13) 0%,transparent 60%);pointer-events:none;}
-.book .wrap{position:relative;z-index:1;}
-.book h2{color:#fff;}
-.book .lead{color:rgba(255,255,255,.7);margin:20px auto 0;}
-.book .note{color:rgba(255,255,255,.44);}
-.embed{width:100%;max-width:840px;margin:40px auto 0;background:#fff;border-radius:var(--r-lg);padding:10px;box-shadow:0 22px 64px rgba(0,0,0,.3);}
-.embed iframe{width:100%;min-height:720px;border:none;display:block;border-radius:16px;}
+/* BOOK — the single dark moment on the page */
+.book{background:var(--ink);color:var(--paper);padding:132px 0;}
+@media(max-width:900px){.book{padding:84px 0;}}
+.book .lab{color:rgba(251,252,252,.42);}
+.book .lede{color:rgba(251,252,252,.62);}
+.embed{margin-top:56px;background:#fff;border-radius:3px;padding:8px;}
+.embed iframe{width:100%;min-height:720px;border:0;display:block;border-radius:2px;}
 @media(max-width:600px){.embed iframe{min-height:820px;}}
+.book .xs{color:rgba(251,252,252,.4);margin-top:20px;}
+.book .xs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(61,188,178,.4);}
 
-footer{background:var(--bg-off);border-top:1px solid var(--line-soft);padding:54px 0 26px;}
-.f-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;}
-.f-in img{height:30px;width:auto;}
-.f-c{margin-top:16px;font-size:14px;color:var(--text-2);line-height:2.1;}
-.f-c a{color:var(--text-2);text-decoration:none;}
-.f-c a:hover{color:var(--teal-dark);}
-.f-l{display:flex;gap:26px;flex-wrap:wrap;}
-.f-l a{font-size:14px;color:var(--text-3);text-decoration:none;}
-.f-l a:hover{color:var(--teal-dark);}
-.f-b{margin-top:34px;padding-top:22px;border-top:1px solid var(--line-soft);text-align:center;font-size:12.5px;color:var(--text-3);}
+footer{padding:76px 0 32px;}
+.f{display:grid;grid-template-columns:180px minmax(0,1fr) auto;gap:0 72px;align-items:start;}
+@media(max-width:900px){.f{grid-template-columns:1fr;gap:34px;}}
+.f img{height:28px;width:auto;}
+.f a{color:var(--ink-2);text-decoration:none;}
+.f a:hover{color:var(--teal-ink);}
+.f-l{display:flex;flex-direction:column;gap:10px;font-size:14px;}
+.f-b{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule-2);font-size:12.5px;color:var(--ink-3);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
-.js .up{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
-.js .up.in{opacity:1;transform:none;}
-@media(prefers-reduced-motion:reduce){.js .up{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+.js .u{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);}
+.js .u.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){.js .u{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
 
-<nav id="nv"><div class="nav-in">
+<nav id="nv"><div class="nv">
   <a href="#"><img src="Optevalogo.png" alt="Opteva"/></a>
-  <div class="nav-l">
-    <a href="#problem">The Problem</a>
-    <a href="#platform">The Platform</a>
-    <a href="#faq">FAQ</a>
-    <a href="#book" class="btn btn-sm">I'm in</a>
+  <div class="l">
+    <a href="#problem">Problem</a><a href="#platform">Platform</a><a href="#faq">FAQ</a>
+    <a href="#book" class="cta sm">I'm in</a>
   </div>
 </div></nav>
 
 <!-- HERO -->
-<header class="hero"><div class="wrap"><div class="hero-in up">
-  <h1>Client social, in each client's own voice.<em>Resold under your agency.</em></h1>
-  <p class="lead">One install covers your whole roster. Opteva drafts, you approve, your GoHighLevel publishes.</p>
-  <a href="#book" class="btn">I'm in <span class="ar">&rarr;</span></a>
-  <p class="note">Fifteen minutes. One client's handle in, five posts in their voice out.</p>
-  <div class="cred"><b>26</b><span>Years running a med spa before I built software. Built by an operator who has been the one sending the draft back.</span></div>
-</div></div></header>
+<header class="hero"><div class="w">
+  <h1 class="u">Client social, in each client's own voice. <em>Resold under your agency.</em></h1>
+  <div class="hero-b">
+    <p class="lede u">One install covers your whole roster. Opteva drafts, you approve, your GoHighLevel publishes.</p>
+    <div class="hero-cta u">
+      <a href="#book" class="cta">I'm in &rarr;</a>
+      <p class="xs">Fifteen minutes. One client's handle in, five posts in their voice out.</p>
+    </div>
+  </div>
+  <div class="hero-rule"><div class="ed u">
+    <div class="lab">Who built it</div>
+    <div class="cred"><b>26</b><p class="sm" style="max-width:44ch;">Years running a med spa before I built software. Built by an operator who has been the one sending the draft back.</p></div>
+  </div></div>
+</div></header>
 
 <!-- PROBLEM -->
-<section class="prob" id="problem"><div class="wrap">
-  <div class="center up"><div class="eyebrow">The Content Line</div>
-    <h2 style="margin-top:16px;color:var(--navy);">Three ways this usually goes.</h2></div>
-  <div class="cols up">
-    <div class="col"><h3>Turn it down</h3><p>Someone else gets a foot in the door with an account you spent two years earning.</p><span class="cost">Costs the account</span></div>
-    <div class="col"><h3>Farm it out</h3><p>Every draft still comes back to you first. You moved the work, you did not remove it.</p><span class="cost">Costs the margin</span></div>
-    <div class="col"><h3>Absorb it</h3><p>Your team writes it, nobody bills for it, and the hours stay invisible.</p><span class="cost">Costs the hours</span></div>
+<section class="band" id="problem"><div class="w"><div class="ed">
+  <div class="lab t u">The content line</div>
+  <div>
+    <h2 class="u" style="max-width:14ch;">Three ways this usually goes.</h2>
+    <div style="margin-top:52px;">
+      <div class="opt u"><h3>Turn it down</h3>
+        <p>Someone else gets a foot in the door with an account you spent two years earning.</p>
+        <div class="c">Costs the account</div></div>
+      <div class="opt u"><h3>Farm it out</h3>
+        <p>Every draft still comes back to you first. You moved the work, you did not remove it.</p>
+        <div class="c">Costs the margin</div></div>
+      <div class="opt u"><h3>Absorb it</h3>
+        <p>Your team writes it, nobody bills for it, and the hours stay invisible.</p>
+        <div class="c">Costs the hours</div></div>
+    </div>
+    <div class="pivot u"><p>It works until the sixth client.</p>
+      <span>The draft was never the expensive part. The second version is.</span></div>
   </div>
-  <div class="turn up"><p>It works until the sixth client.</p>
-    <small>The draft was never the expensive part. The second version is.</small></div>
-</div></section>
-
-<!-- PLATFORM -->
-<section id="platform"><div class="wrap">
-  <div class="center up"><div class="eyebrow">The Platform</div>
-    <h2 style="margin-top:16px;color:var(--navy);">One install. Every client. Their own voice.</h2></div>
-
-  <div class="flow up">
-    <svg viewBox="0 0 900 132" role="img" aria-label="Voice profile to draft to your approval to GoHighLevel to Facebook and Instagram">
-      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94A5B6"/></marker></defs>
-      <g font-family="Inter,sans-serif">
-        <rect x="2" y="34" width="150" height="64" rx="12" fill="#F6F8FA" stroke="#E4EBF1"/>
-        <text x="77" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Voice profile</text>
-        <text x="77" y="79" text-anchor="middle" font-size="11.5" fill="#5A6E82">per client</text>
-        <line x1="160" y1="66" x2="196" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
-        <rect x="204" y="34" width="140" height="64" rx="12" fill="#F6F8FA" stroke="#E4EBF1"/>
-        <text x="274" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Draft</text>
-        <text x="274" y="79" text-anchor="middle" font-size="11.5" fill="#5A6E82">post + first comment</text>
-        <line x1="352" y1="66" x2="388" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
-        <rect x="396" y="30" width="146" height="72" rx="12" fill="#fff" stroke="#3DBCB2" stroke-width="1.8"/>
-        <text x="469" y="52" text-anchor="middle" font-size="10.5" font-weight="800" letter-spacing="1.3" fill="#2A9D94">YOU</text>
-        <text x="469" y="72" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Approve</text>
-        <text x="469" y="89" text-anchor="middle" font-size="11.5" fill="#5A6E82">nothing skips this</text>
-        <line x1="550" y1="66" x2="586" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
-        <rect x="594" y="34" width="150" height="64" rx="12" fill="#F6F8FA" stroke="#E4EBF1"/>
-        <text x="669" y="60" text-anchor="middle" font-size="13.5" font-weight="700" fill="#12283F">Your GoHighLevel</text>
-        <text x="669" y="79" text-anchor="middle" font-size="11.5" fill="#5A6E82">social planner</text>
-        <line x1="752" y1="66" x2="788" y2="66" stroke="#94A5B6" stroke-width="1.6" marker-end="url(#ar)"/>
-        <rect x="796" y="34" width="102" height="64" rx="12" fill="#12283F"/>
-        <text x="847" y="60" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">Facebook</text>
-        <text x="847" y="79" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">Instagram</text>
-      </g>
-    </svg>
-  </div>
-
-  <div class="specs">
-    <div class="spec up"><h3>A voice profile per client</h3><p>Tone, audience, the phrases they use and the ones they refuse. Every draft runs through it.</p></div>
-    <div class="spec up"><h3>A workspace per client</h3><p>Separate voice, separate history. A law firm and a gym never bleed into each other.</p></div>
-    <div class="spec up"><h3>Installed at the agency</h3><p>One setup, your whole roster. Publishing runs through the GoHighLevel you already use.</p></div>
-  </div>
-
-  <p class="honest up"><b>That is the whole list, deliberately.</b> Other platforms, scheduling queues and dashboard branding are in progress, and you will get a straight answer on each.</p>
-</div></section>
-
-<!-- PROOF -->
-<section style="border-top:1px solid var(--line-soft);"><div class="wrap center">
-  <div class="eyebrow up">Does It Work</div>
-  <p class="quote up">"I wasn't visible at all on social media. Opteva got me up and running within 48 hours. I saw a <mark>133% increase in visibility</mark> in just one week and booked two new patients."</p>
-  <div class="up"><div class="who">Jed Correa</div><div class="where">Chicago, IL</div></div>
-  <div class="pair">
-    <div class="pcard up"><p>"My med spa was drowning in social media overload. It was messy. Opteva cleaned everything up and gave my business real visibility online."</p>
-      <div><div class="who">Kara Crockett</div><div class="where">Seattle, WA</div></div></div>
-    <div class="pcard up"><p>"Opteva helped me get my socials and Google Business Profile updated and running. With the branded dashboard and all my socials in one place, I finally had time to focus on making money."</p>
-      <div><div class="who">Stephanie Jordan</div><div class="where">Las Vegas, NV</div></div></div>
-  </div>
-</div></section>
-
-<!-- OFFER -->
-<section class="offer"><div class="wrap center">
-  <div class="eyebrow up">The Offer</div>
-  <h2 class="up">Send one client's handle.<br/>Get five posts back.</h2>
-  <p class="lead up">Pick the client you would least like to write for this week. We write five finished posts in that business's own voice.</p>
-  <div class="gets">
-    <div class="get up"><i>&#10003;</i> Five posts, captions ready to publish</div>
-    <div class="get up"><i>&#10003;</i> First comment written for each</div>
-    <div class="get up"><i>&#10003;</i> Visual direction for your designer</div>
-    <div class="get up"><i>&#10003;</i> Back in 48 hours, yours either way</div>
-  </div>
-  <div class="up" style="margin-top:44px;"><a href="#book" class="btn">I'm in <span class="ar">&rarr;</span></a>
-    <p class="note" style="margin-left:auto;margin-right:auto;max-width:34em;">Not ready to talk? <a href="calculator.html" style="color:var(--teal);font-weight:600;">See what your content line is worth</a> first. No email needed for the number.</p></div>
-</div></section>
-
-<!-- FOUNDER -->
-<section><div class="wrap"><div class="founder">
-  <div class="eyebrow up">Who Built It</div>
-  <p class="q up">"I ran a med spa for 26 years before I built software. I have been the owner sending that draft back."</p>
-  <p class="b up">Content does not break because the writing is bad. It breaks because the one person who knows how a business sounds is the one person without an hour to write.</p>
-  <div class="up"><div class="who">Stephanie Sullivan</div><div class="where">Founder, Opteva</div></div>
 </div></div></section>
 
+<hr class="rule"/>
+
+<!-- PLATFORM -->
+<section class="band" id="platform"><div class="w"><div class="ed">
+  <div class="lab t u">The platform</div>
+  <div>
+    <h2 class="u" style="max-width:15ch;">One install. Every client. Their own voice.</h2>
+
+    <div class="flow u">
+      <svg viewBox="0 0 960 96" role="img" aria-label="Voice profile to draft to your approval to your GoHighLevel to Facebook and Instagram">
+        <g font-family="Inter,sans-serif" fill="#0E2032">
+          <text x="0" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#93A3B1">01</text>
+          <text x="0" y="42" font-size="16" font-weight="500">Voice profile</text>
+          <text x="0" y="64" font-size="12.5" fill="#51677A">per client</text>
+          <line x1="150" y1="37" x2="212" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+
+          <text x="232" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#93A3B1">02</text>
+          <text x="232" y="42" font-size="16" font-weight="500">Draft</text>
+          <text x="232" y="64" font-size="12.5" fill="#51677A">post + first comment</text>
+          <line x1="382" y1="37" x2="444" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+
+          <text x="464" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#1F8079">03 &#183; YOU</text>
+          <text x="464" y="42" font-size="16" font-weight="500" fill="#1F8079">Approve</text>
+          <text x="464" y="64" font-size="12.5" fill="#51677A">nothing skips this</text>
+          <line x1="464" y1="78" x2="576" y2="78" stroke="#3DBCB2" stroke-width="1.5"/>
+          <line x1="596" y1="37" x2="658" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+
+          <text x="678" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#93A3B1">04</text>
+          <text x="678" y="42" font-size="16" font-weight="500">Your GoHighLevel</text>
+          <text x="678" y="64" font-size="12.5" fill="#51677A">social planner</text>
+          <line x1="828" y1="37" x2="874" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+
+          <text x="894" y="42" font-size="12.5" font-weight="600">Facebook</text>
+          <text x="894" y="60" font-size="12.5" font-weight="600">Instagram</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="specs">
+      <div class="spec u"><h3>A voice profile per client</h3><p>Tone, audience, the phrases they use and the ones they refuse. Every draft runs through it.</p></div>
+      <div class="spec u"><h3>A workspace per client</h3><p>Separate voice, separate history. A law firm and a gym never bleed into each other.</p></div>
+      <div class="spec u"><h3>Installed at the agency</h3><p>One setup, your whole roster. Publishing runs through the GoHighLevel you already use.</p></div>
+    </div>
+
+    <p class="honest xs u"><strong style="color:var(--ink-2);font-weight:600;">That is the whole list, deliberately.</strong> Other platforms, scheduling queues and dashboard branding are in progress, and you will get a straight answer on each.</p>
+  </div>
+</div></div></section>
+
+<hr class="rule"/>
+
+<!-- PROOF -->
+<section class="band"><div class="w"><div class="ed">
+  <div class="lab u">Does it work</div>
+  <div>
+    <p class="big u">"I wasn't visible at all on social media. Opteva got me up and running within 48 hours. I saw a <mark>133% increase in visibility</mark> in just one week and booked two new patients."</p>
+    <p class="att u">Jed Correa<span>Chicago, IL</span></p>
+    <div class="two">
+      <blockquote class="u"><p>"My med spa was drowning in social media overload. It was messy. Opteva cleaned everything up and gave my business real visibility online."</p>
+        <p class="att">Kara Crockett<span>Seattle, WA</span></p></blockquote>
+      <blockquote class="u"><p>"Opteva helped me get my socials and Google Business Profile updated and running. With the branded dashboard and all my socials in one place, I finally had time to focus on making money."</p>
+        <p class="att">Stephanie Jordan<span>Las Vegas, NV</span></p></blockquote>
+    </div>
+  </div>
+</div></div></section>
+
+<hr class="rule"/>
+
+<!-- OFFER -->
+<section class="band"><div class="w"><div class="ed">
+  <div class="lab t u">The offer</div>
+  <div>
+    <h2 class="u" style="max-width:16ch;">Send one client's handle. Get five posts back.</h2>
+    <p class="lede u" style="margin-top:28px;">Pick the client you would least like to write for this week. We write five finished posts in that business's own voice.</p>
+    <div class="gets">
+      <div class="u"><i>01</i> Five posts, captions ready to publish</div>
+      <div class="u"><i>02</i> First comment written for each</div>
+      <div class="u"><i>03</i> Visual direction for your designer</div>
+      <div class="u"><i>04</i> Back in 48 hours, yours either way</div>
+    </div>
+    <div class="u" style="margin-top:48px;">
+      <a href="#book" class="cta">I'm in &rarr;</a>
+      <p class="xs" style="margin-top:20px;max-width:40ch;">Not ready to talk? <a href="calculator.html" class="q">See what your content line is worth</a> first. No email needed for the number.</p>
+    </div>
+  </div>
+</div></div></section>
+
+<hr class="rule"/>
+
+<!-- FOUNDER -->
+<section class="band tight"><div class="w"><div class="ed">
+  <div class="lab u">The operator</div>
+  <div>
+    <p class="big u" style="max-width:20ch;">"I ran a med spa for 26 years before I built software. I have been the owner sending that draft back."</p>
+    <p class="sm u" style="margin-top:32px;max-width:52ch;">Content does not break because the writing is bad. It breaks because the one person who knows how a business sounds is the one person without an hour to write.</p>
+    <p class="att u">Stephanie Sullivan<span>Founder, Opteva</span></p>
+  </div>
+</div></div></section>
+
+<hr class="rule"/>
+
 <!-- FAQ -->
-<section id="faq" style="background:var(--bg-off);border-top:1px solid var(--line-soft);"><div class="wrap center">
-  <div class="eyebrow up">FAQ</div>
-  <h2 class="up" style="margin-top:16px;color:var(--navy);">What agencies ask</h2>
-  <div class="faq">
-    <div class="qa up"><button onclick="tg(this)">What does it cost?<span class="pm">+</span></button>
+<section class="band" id="faq"><div class="w"><div class="ed">
+  <div class="lab u">FAQ</div>
+  <div>
+    <h2 class="u" style="max-width:12ch;margin-bottom:52px;">What agencies ask</h2>
+    <div class="qa u"><button onclick="tg(this)">What does it cost?<span class="pm"></span></button>
       <div class="a"><p>No price here on purpose. Client count and locations change the answer completely. Bring both numbers and you get a real one.</p></div></div>
-    <div class="qa up"><button onclick="tg(this)">Can I resell it as my own?<span class="pm">+</span></button>
+    <div class="qa u"><button onclick="tg(this)">Can I resell it as my own?<span class="pm"></span></button>
       <div class="a"><p>That is the model. It installs at your agency, you hold the client, and everything publishes through your GoHighLevel to your client's own accounts. Dashboard branding is still in progress, so ask and you will be shown exactly where it stands.</p></div></div>
-    <div class="qa up"><button onclick="tg(this)">My clients are in different industries.<span class="pm">+</span></button>
+    <div class="qa u"><button onclick="tg(this)">My clients are in different industries.<span class="pm"></span></button>
       <div class="a"><p>That is the best version of this call. A mixed roster is where one writer and one template break down. Bring the hardest client.</p></div></div>
-    <div class="qa up"><button onclick="tg(this)">We tried AI content and it was bad.<span class="pm">+</span></button>
+    <div class="qa u"><button onclick="tg(this)">We tried AI content and it was bad.<span class="pm"></span></button>
       <div class="a"><p>Usually the same failure: a generic tool writes what the category sounds like, because it was never given the voice. Tell us which tool.</p></div></div>
-    <div class="qa up"><button onclick="tg(this)">Will my clients approve AI content?<span class="pm">+</span></button>
+    <div class="qa u"><button onclick="tg(this)">Will my clients approve AI content?<span class="pm"></span></button>
       <div class="a"><p>The same way they approve yours. Nothing publishes without a human clicking approve. What changes is the cost of the first draft.</p></div></div>
   </div>
-</div></section>
+</div></div></section>
 
 <!-- BOOK -->
-<section class="book" id="book"><div class="wrap center">
-  <div class="eyebrow up">One Client. Five Posts.</div>
-  <h2 class="up" style="margin-top:16px;">Pick a time.</h2>
-  <p class="lead up">Bring one client's handle. Leave with five posts in their voice, yours whatever you decide.</p>
-  <div class="embed up">
-    <iframe src="https://api.opteva.ai/widget/booking/d2KmG49HKwyvLOS2HF5G" allow="payment" scrolling="no" id="msgsndr-calendar" title="Book fifteen minutes with Opteva"></iframe>
+<section class="book" id="book"><div class="w"><div class="ed">
+  <div class="lab u">One client. Five posts.</div>
+  <div>
+    <h2 class="u" style="max-width:9ch;">Pick a time.</h2>
+    <p class="lede u" style="margin-top:24px;">Bring one client's handle. Leave with five posts in their voice, yours whatever you decide.</p>
+    <div class="embed u">
+      <iframe src="https://api.opteva.ai/widget/booking/d2KmG49HKwyvLOS2HF5G" allow="payment" scrolling="no" id="msgsndr-calendar" title="Book fifteen minutes with Opteva"></iframe>
+    </div>
+    <p class="xs u">Calendar not loading? <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener">Book here instead</a>.</p>
   </div>
-  <p class="note up">Calendar not loading? <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;">Book here instead</a>.</p>
-</div></section>
+</div></div></section>
 
-<footer><div class="wrap">
-  <div class="f-in">
-    <div>
-      <img src="Optevalogo.png" alt="Opteva"/>
-      <div class="f-c"><a href="mailto:hello@opteva.ai">hello@opteva.ai</a><br/>
-        <a href="tel:+14845426653">+1 (484) 542-6653</a><br/>Easton, PA</div>
+<footer><div class="w">
+  <div class="f">
+    <div><img src="Optevalogo.png" alt="Opteva"/></div>
+    <div class="f-l">
+      <a href="mailto:hello@opteva.ai">hello@opteva.ai</a>
+      <a href="tel:+14845426653">+1 (484) 542-6653</a>
+      <span style="color:var(--ink-3);">Easton, PA</span>
     </div>
     <div class="f-l">
-      <a href="#problem">The Problem</a><a href="#platform">The Platform</a><a href="#faq">FAQ</a>
+      <a href="#problem">Problem</a><a href="#platform">Platform</a><a href="#faq">FAQ</a>
       <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
     </div>
   </div>
-  <div class="f-b">&copy; 2026 Opteva. All rights reserved.</div>
+  <div class="f-b"><span>&copy; 2026 Opteva</span><span>Easton, Pennsylvania</span></div>
 </div></footer>
 
 <script>
 var nv=document.getElementById('nv');
 window.addEventListener('scroll',function(){nv.classList.toggle('on',window.scrollY>16);},{passive:true});
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.up').forEach(function(el){io.observe(el);});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.u').forEach(function(el,i){el.style.transitionDelay=(i%4*45)+'ms';io.observe(el);});
 function tg(b){var i=b.parentElement,o=i.classList.contains('open');
   document.querySelectorAll('.qa.open').forEach(function(x){x.classList.remove('open');});
   if(!o){i.classList.add('open');}}
