@@ -17,15 +17,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --ink:#0E2032;--ink-2:#51677A;--ink-3:#93A3B1;
-  --paper:#FBFCFC;--paper-2:#F4F6F7;
-  --rule:#E3E8EC;--rule-2:#EFF2F4;
-  --teal:#3DBCB2;--teal-ink:#1F8079;
+  /* Original opteva.ai brand board */
+  --navy:#1B3A5C;--navy-light:#224A72;--navy-dark:#122840;
+  --teal:#3DBCB2;--teal-dark:#2FA89F;--teal-light:#5CD6CC;
+  /* Same hue as --teal, dropped to 34% lightness so it clears 4.5:1 on white.
+     Board teal is 2.32:1 and is not legible at label sizes. */
+  --teal-deep:#287B74;
+  --blue:#2E86C1;--blue-light:#5BC8D8;
+  --text:#1a2a3a;--text-secondary:#566a7f;--text-muted:#8fa0b3;
+  --bg:#ffffff;--bg-off:#f5f7fa;--bg-warm:#fafbfd;
+  --border:#dfe6ed;--border-light:#eaf0f5;
   --gut:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
   -webkit-font-smoothing:antialiased;font-size:17px;line-height:1.6;overflow-x:hidden;}
 
 .w{max-width:1240px;margin:0 auto;padding:0 var(--gut);}
@@ -37,56 +43,56 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--pap
 .ed{display:grid;grid-template-columns:180px minmax(0,1fr);gap:0 72px;align-items:start;}
 @media(max-width:900px){.ed{grid-template-columns:1fr;gap:22px;}}
 
-.lab{font-size:10.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-3);
+.lab{font-size:10.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--text-muted);
   padding-top:.9em;line-height:1.5;}
-.lab.t{color:var(--teal-ink);}
+.lab.t{color:var(--teal-deep);}
 
 h1{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(46px,8.4vw,108px);
   line-height:.96;letter-spacing:-.035em;text-wrap:balance;}
 h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(31px,4.8vw,62px);
   line-height:1.04;letter-spacing:-.03em;text-wrap:balance;}
 h3{font-size:17px;font-weight:600;letter-spacing:-.01em;}
-.lede{font-size:clamp(18px,1.75vw,22px);line-height:1.55;color:var(--ink-2);max-width:31em;}
-.sm{font-size:15px;line-height:1.7;color:var(--ink-2);}
-.xs{font-size:13.5px;line-height:1.65;color:var(--ink-3);}
+.lede{font-size:clamp(18px,1.75vw,22px);line-height:1.55;color:var(--text-secondary);max-width:31em;}
+.sm{font-size:15px;line-height:1.7;color:var(--text-secondary);}
+.xs{font-size:13.5px;line-height:1.65;color:var(--text-muted);}
 
 /* Rules, not background bands, carry the rhythm. */
-.rule{height:1px;background:var(--rule);border:0;}
+.rule{height:1px;background:var(--border);border:0;}
 .band{padding:132px 0;}
 .band.tight{padding:96px 0;}
 @media(max-width:900px){.band{padding:84px 0;}.band.tight{padding:64px 0;}}
 
-a.cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);
+a.cta{display:inline-flex;align-items:center;gap:12px;background:var(--navy);color:var(--bg);
   font-size:16px;font-weight:600;letter-spacing:-.005em;padding:20px 36px;border-radius:2px;
   text-decoration:none;transition:background .22s,gap .22s;}
-a.cta:hover{background:var(--teal-ink);gap:18px;}
+a.cta:hover{background:var(--teal-deep);gap:18px;}
 a.cta:focus-visible{outline:2px solid var(--teal);outline-offset:4px;}
-a.cta.inv{background:var(--paper);color:var(--ink);}
+a.cta.inv{background:var(--bg);color:var(--text);}
 a.cta.inv:hover{background:var(--teal);color:#fff;}
 a.cta.sm{padding:12px 22px;font-size:14.5px;}
-a.q{color:var(--teal-ink);text-decoration:none;border-bottom:1px solid rgba(31,128,121,.32);}
-a.q:hover{border-bottom-color:var(--teal-ink);}
+a.q{color:var(--teal-deep);text-decoration:none;border-bottom:1px solid rgba(38,120,113,.32);}
+a.q:hover{border-bottom-color:var(--teal-deep);}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(251,252,252,.86);
+nav{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(255,255,255,.88);
   backdrop-filter:blur(16px);transition:box-shadow .3s;}
-nav.on{box-shadow:0 1px 0 var(--rule);}
+nav.on{box-shadow:0 1px 0 var(--border);}
 .nv{max-width:1240px;margin:0 auto;padding:0 var(--gut);height:84px;display:flex;align-items:center;
   justify-content:space-between;gap:20px;}
 .nv img{height:32px;width:auto;display:block;}
 .nv .l{display:flex;align-items:center;gap:38px;}
-.nv .l a:not(.cta){font-size:14px;color:var(--ink-2);text-decoration:none;}
-.nv .l a:not(.cta):hover{color:var(--ink);}
+.nv .l a:not(.cta){font-size:14px;color:var(--text-secondary);text-decoration:none;}
+.nv .l a:not(.cta):hover{color:var(--navy);}
 @media(max-width:860px){.nv .l a:not(.cta){display:none;}.nv{height:70px;}}
 
 /* HERO — asymmetric, left-set, type does the work */
 .hero{padding:210px 0 0;}
 @media(max-width:900px){.hero{padding:142px 0 0;}}
 .hero h1{max-width:13ch;}
-.hero h1 em{font-style:italic;font-weight:500;color:var(--teal-ink);}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--teal-deep);}
 .hero-b{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:72px;align-items:end;margin-top:56px;}
 @media(max-width:980px){.hero-b{grid-template-columns:1fr;gap:38px;}}
 .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
-.cred{padding-top:22px;border-top:1px solid var(--rule);}
+.cred{padding-top:22px;border-top:1px solid var(--border);}
 .cred b{font-family:'Playfair Display',serif;font-size:60px;font-weight:600;line-height:.9;
   letter-spacing:-.04em;display:block;margin-bottom:12px;}
 .hero-rule{margin-top:120px;}
@@ -94,85 +100,85 @@ nav.on{box-shadow:0 1px 0 var(--rule);}
 
 /* THREE OPTIONS — editorial rows, hairlines, no cards */
 .opt{display:grid;grid-template-columns:180px minmax(0,1fr) 150px;gap:0 72px;
-  padding:34px 0;border-bottom:1px solid var(--rule-2);align-items:baseline;}
-.opt:first-of-type{border-top:1px solid var(--rule-2);}
+  padding:34px 0;border-bottom:1px solid var(--border-light);align-items:baseline;}
+.opt:first-of-type{border-top:1px solid var(--border-light);}
 @media(max-width:900px){.opt{grid-template-columns:1fr;gap:8px;padding:26px 0;}}
 .opt h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:500;letter-spacing:-.02em;}
-.opt p{font-size:15.5px;color:var(--ink-2);line-height:1.65;max-width:46ch;}
-.opt .c{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);text-align:right;}
+.opt p{font-size:15.5px;color:var(--text-secondary);line-height:1.65;max-width:46ch;}
+.opt .c{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);text-align:right;}
 @media(max-width:900px){.opt .c{text-align:left;}}
 .pivot{margin-top:76px;max-width:24ch;}
 .pivot p{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,50px);font-weight:600;
   line-height:1.08;letter-spacing:-.03em;}
 .pivot span{display:block;margin-top:22px;font-family:'Inter',sans-serif;font-size:16px;
-  font-weight:400;color:var(--ink-2);letter-spacing:0;max-width:34ch;}
+  font-weight:400;color:var(--text-secondary);letter-spacing:0;max-width:34ch;}
 
 /* PLATFORM — schematic, not a boxed graphic */
 .flow{margin-top:64px;overflow-x:auto;padding-bottom:8px;}
 .flow svg{display:block;min-width:720px;}
 .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:76px;}
 @media(max-width:900px){.specs{grid-template-columns:1fr;gap:38px;}}
-.spec{padding-top:18px;border-top:1px solid var(--ink);}
+.spec{padding-top:18px;border-top:1px solid var(--navy);}
 .spec h3{margin-bottom:9px;}
-.spec p{font-size:14.5px;color:var(--ink-2);line-height:1.68;}
-.honest{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);max-width:52ch;}
+.spec p{font-size:14.5px;color:var(--text-secondary);line-height:1.68;}
+.honest{margin-top:64px;padding-top:20px;border-top:1px solid var(--border);max-width:52ch;}
 
 /* PROOF — a typographic moment, then quiet text. No grey boxes. */
 .big{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
   font-size:clamp(27px,4.4vw,56px);line-height:1.16;letter-spacing:-.028em;max-width:16ch;text-wrap:balance;}
-.big mark{background:none;color:var(--teal-ink);font-style:normal;font-weight:600;}
+.big mark{background:none;color:var(--teal-deep);font-style:normal;font-weight:600;}
 .att{margin-top:34px;font-size:14px;font-weight:600;}
-.att span{display:block;font-weight:400;color:var(--ink-3);margin-top:2px;}
+.att span{display:block;font-weight:400;color:var(--text-muted);margin-top:2px;}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:0 72px;margin-top:88px;}
 @media(max-width:900px){.two{grid-template-columns:1fr;gap:44px;}}
-.two blockquote{padding-top:22px;border-top:1px solid var(--rule);}
+.two blockquote{padding-top:22px;border-top:1px solid var(--border);}
 .two blockquote p{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
   font-size:20px;line-height:1.5;letter-spacing:-.015em;}
 
 /* OFFER */
 .gets{margin-top:48px;max-width:640px;}
 .gets div{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:15px 0;
-  border-bottom:1px solid var(--rule-2);font-size:15.5px;color:var(--ink-2);}
-.gets div:first-child{border-top:1px solid var(--rule-2);}
-.gets i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--ink-3);padding-top:.35em;}
+  border-bottom:1px solid var(--border-light);font-size:15.5px;color:var(--text-secondary);}
+.gets div:first-child{border-top:1px solid var(--border-light);}
+.gets i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--text-muted);padding-top:.35em;}
 
 /* FAQ */
-.qa{border-bottom:1px solid var(--rule-2);}
-.qa:first-of-type{border-top:1px solid var(--rule-2);}
+.qa{border-bottom:1px solid var(--border-light);}
+.qa:first-of-type{border-top:1px solid var(--border-light);}
 .qa button{width:100%;background:none;border:0;cursor:pointer;font-family:'Inter',sans-serif;
-  font-size:17px;font-weight:500;color:var(--ink);text-align:left;padding:26px 0;
+  font-size:17px;font-weight:500;color:var(--navy);text-align:left;padding:26px 0;
   display:flex;justify-content:space-between;align-items:center;gap:24px;letter-spacing:-.01em;}
-.qa button:hover{color:var(--teal-ink);}
+.qa button:hover{color:var(--teal-deep);}
 .qa button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
 .qa .pm{flex-shrink:0;width:11px;height:11px;position:relative;}
-.qa .pm::before,.qa .pm::after{content:'';position:absolute;background:var(--ink-3);transition:transform .32s,background .32s;}
+.qa .pm::before,.qa .pm::after{content:'';position:absolute;background:var(--text-muted);transition:transform .32s,background .32s;}
 .qa .pm::before{left:0;top:5px;width:11px;height:1px;}
 .qa .pm::after{left:5px;top:0;width:1px;height:11px;}
 .qa.open .pm::after{transform:rotate(90deg);}
-.qa.open .pm::before,.qa.open .pm::after{background:var(--teal-ink);}
+.qa.open .pm::before,.qa.open .pm::after{background:var(--teal-deep);}
 .qa .a{max-height:0;overflow:hidden;transition:max-height .36s ease,padding .36s ease;}
 .qa.open .a{max-height:320px;padding-bottom:28px;}
-.qa .a p{font-size:15.5px;color:var(--ink-2);line-height:1.72;max-width:58ch;}
+.qa .a p{font-size:15.5px;color:var(--text-secondary);line-height:1.72;max-width:58ch;}
 
 /* BOOK — the single dark moment on the page */
-.book{background:var(--ink);color:var(--paper);padding:132px 0;}
+.book{background:var(--navy);color:var(--bg);padding:132px 0;}
 @media(max-width:900px){.book{padding:84px 0;}}
-.book .lab{color:rgba(251,252,252,.42);}
-.book .lede{color:rgba(251,252,252,.62);}
+.book .lab{color:rgba(255,255,255,.42);}
+.book .lede{color:rgba(255,255,255,.62);}
 .embed{margin-top:56px;background:#fff;border-radius:3px;padding:8px;}
 .embed iframe{width:100%;min-height:720px;border:0;display:block;border-radius:2px;}
 @media(max-width:600px){.embed iframe{min-height:820px;}}
-.book .xs{color:rgba(251,252,252,.4);margin-top:20px;}
+.book .xs{color:rgba(255,255,255,.4);margin-top:20px;}
 .book .xs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(61,188,178,.4);}
 
 footer{padding:76px 0 32px;}
 .f{display:grid;grid-template-columns:180px minmax(0,1fr) auto;gap:0 72px;align-items:start;}
 @media(max-width:900px){.f{grid-template-columns:1fr;gap:34px;}}
 .f img{height:28px;width:auto;}
-.f a{color:var(--ink-2);text-decoration:none;}
-.f a:hover{color:var(--teal-ink);}
+.f a{color:var(--text-secondary);text-decoration:none;}
+.f a:hover{color:var(--teal-deep);}
 .f-l{display:flex;flex-direction:column;gap:10px;font-size:14px;}
-.f-b{margin-top:60px;padding-top:22px;border-top:1px solid var(--rule-2);font-size:12.5px;color:var(--ink-3);
+.f-b{margin-top:60px;padding-top:22px;border-top:1px solid var(--border-light);font-size:12.5px;color:var(--text-muted);
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
 .js .u{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);}
@@ -237,27 +243,27 @@ footer{padding:76px 0 32px;}
 
     <div class="flow u">
       <svg viewBox="0 0 960 96" role="img" aria-label="Voice profile to draft to your approval to your GoHighLevel to Facebook and Instagram">
-        <g font-family="Inter,sans-serif" fill="#0E2032">
-          <text x="0" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#93A3B1">01</text>
+        <g font-family="Inter,sans-serif" fill="#1B3A5C">
+          <text x="0" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#8fa0b3">01</text>
           <text x="0" y="42" font-size="16" font-weight="500">Voice profile</text>
-          <text x="0" y="64" font-size="12.5" fill="#51677A">per client</text>
-          <line x1="150" y1="37" x2="212" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+          <text x="0" y="64" font-size="12.5" fill="#566a7f">per client</text>
+          <line x1="150" y1="37" x2="212" y2="37" stroke="#dfe6ed" stroke-width="1"/>
 
-          <text x="232" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#93A3B1">02</text>
+          <text x="232" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#8fa0b3">02</text>
           <text x="232" y="42" font-size="16" font-weight="500">Draft</text>
-          <text x="232" y="64" font-size="12.5" fill="#51677A">post + first comment</text>
-          <line x1="382" y1="37" x2="444" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+          <text x="232" y="64" font-size="12.5" fill="#566a7f">post + first comment</text>
+          <line x1="382" y1="37" x2="444" y2="37" stroke="#dfe6ed" stroke-width="1"/>
 
-          <text x="464" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#1F8079">03 &#183; YOU</text>
-          <text x="464" y="42" font-size="16" font-weight="500" fill="#1F8079">Approve</text>
-          <text x="464" y="64" font-size="12.5" fill="#51677A">nothing skips this</text>
+          <text x="464" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#287B74">03 &#183; YOU</text>
+          <text x="464" y="42" font-size="16" font-weight="500" fill="#287B74">Approve</text>
+          <text x="464" y="64" font-size="12.5" fill="#566a7f">nothing skips this</text>
           <line x1="464" y1="78" x2="576" y2="78" stroke="#3DBCB2" stroke-width="1.5"/>
-          <line x1="596" y1="37" x2="658" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+          <line x1="596" y1="37" x2="658" y2="37" stroke="#dfe6ed" stroke-width="1"/>
 
-          <text x="678" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#93A3B1">04</text>
+          <text x="678" y="14" font-size="9.5" font-weight="700" letter-spacing="1.7" fill="#8fa0b3">04</text>
           <text x="678" y="42" font-size="16" font-weight="500">Your GoHighLevel</text>
-          <text x="678" y="64" font-size="12.5" fill="#51677A">social planner</text>
-          <line x1="828" y1="37" x2="874" y2="37" stroke="#E3E8EC" stroke-width="1"/>
+          <text x="678" y="64" font-size="12.5" fill="#566a7f">social planner</text>
+          <line x1="828" y1="37" x2="874" y2="37" stroke="#dfe6ed" stroke-width="1"/>
 
           <text x="894" y="42" font-size="12.5" font-weight="600">Facebook</text>
           <text x="894" y="60" font-size="12.5" font-weight="600">Instagram</text>
@@ -271,7 +277,7 @@ footer{padding:76px 0 32px;}
       <div class="spec u"><h3>Installed at the agency</h3><p>One setup, your whole roster. Publishing runs through the GoHighLevel you already use.</p></div>
     </div>
 
-    <p class="honest xs u"><strong style="color:var(--ink-2);font-weight:600;">That is the whole list, deliberately.</strong> Other platforms, scheduling queues and dashboard branding are in progress, and you will get a straight answer on each.</p>
+    <p class="honest xs u"><strong style="color:var(--text-secondary);font-weight:600;">That is the whole list, deliberately.</strong> Other platforms, scheduling queues and dashboard branding are in progress, and you will get a straight answer on each.</p>
   </div>
 </div></div></section>
 
@@ -364,7 +370,7 @@ footer{padding:76px 0 32px;}
     <div class="f-l">
       <a href="mailto:hello@opteva.ai">hello@opteva.ai</a>
       <a href="tel:+14845426653">+1 (484) 542-6653</a>
-      <span style="color:var(--ink-3);">Easton, PA</span>
+      <span style="color:var(--text-muted);">Easton, PA</span>
     </div>
     <div class="f-l">
       <a href="#problem">Problem</a><a href="#platform">Platform</a><a href="#faq">FAQ</a>
