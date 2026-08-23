@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="icon" type="image/png" href="../opteva-mark.png"/>
+<link rel="apple-touch-icon" href="../opteva-mark.png"/>
+<title>Five posts, in your client's voice | opteva</title>
+<meta name="description" content="Give us one client's handle. We write five finished posts in that business's own voice and send them back. Yours to keep."/>
+<meta property="og:title" content="Five posts, in your client's voice"/>
+<meta property="og:description" content="One handle in. Five finished posts out, written in that business's own voice. Yours to keep."/>
+<meta property="og:type" content="website"/>
+<meta name="robots" content="noindex"/>
+<script>document.documentElement.className+=' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#182C63;--navy-2:#43507F;--navy-3:#8B93B4;
+  --aqua:#30C6CC;--aqua-ink:#17868B;
+  --paper:#FCFCFD;--rule:#E4E7F0;--rule-2:#EFF1F7;
+  --warn:#B0433A;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--navy);
+  -webkit-font-smoothing:antialiased;font-size:17px;line-height:1.6;}
+.w{max-width:1080px;margin:0 auto;padding:0 56px;}
+@media(max-width:860px){.w{padding:0 26px;}}
+@media(max-width:520px){body{font-size:16px;}}
+
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(38px,5.6vw,68px);
+  line-height:1.02;letter-spacing:-.025em;text-wrap:balance;}
+h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;letter-spacing:-.018em;}
+.lab{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua-ink);}
+.lede{font-size:clamp(17px,1.7vw,20px);color:var(--navy-2);line-height:1.55;max-width:30em;}
+.fine{font-size:13.5px;color:var(--navy-3);line-height:1.6;}
+
+header.top{padding:34px 0;}
+header.top img{height:30px;width:auto;display:block;}
+
+.hero{padding:34px 0 84px;}
+.hero h1{max-width:15ch;}
+.hero .lede{margin-top:26px;}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:80px;align-items:start;}
+@media(max-width:980px){.grid{grid-template-columns:1fr;gap:52px;}}
+
+.card{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:38px 36px;}
+@media(max-width:520px){.card{padding:28px 22px;}}
+.card h2{margin-bottom:6px;}
+.f{margin-top:26px;display:flex;flex-direction:column;gap:22px;}
+.fld label{display:block;font-size:14.5px;font-weight:500;margin-bottom:7px;}
+.fld .h{font-size:13px;color:var(--navy-3);margin-bottom:9px;}
+input,select{width:100%;font-family:'Inter Tight',sans-serif;font-size:16.5px;color:var(--navy);
+  padding:14px 15px;border:1.5px solid var(--rule);border-radius:3px;background:#fff;transition:border-color .18s,box-shadow .18s;}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%238B93B4' stroke-width='1.6'/></svg>");
+  background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;}
+input:focus,select:focus{outline:none;border-color:var(--aqua);box-shadow:0 0 0 4px rgba(48,198,204,.16);}
+input::placeholder{color:var(--navy-3);}
+.at{position:relative;}
+.at span{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--navy-3);font-size:16.5px;pointer-events:none;}
+.at input{padding-left:32px;}
+
+button.go{width:100%;font-family:'Inter Tight',sans-serif;font-size:16.5px;font-weight:600;color:#fff;
+  background:var(--navy);border:0;border-radius:3px;padding:18px;cursor:pointer;transition:background .2s;}
+button.go:hover:not(:disabled){background:var(--aqua-ink);}
+button.go:disabled{opacity:.45;cursor:not-allowed;}
+button.go:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;}
+.err{font-size:13.5px;color:var(--warn);}
+.tier{font-size:13.5px;color:var(--aqua-ink);line-height:1.55;}
+
+.done{text-align:center;padding:14px 0;}
+.done .tick{font-family:'Fraunces',serif;font-size:38px;color:var(--aqua);line-height:1;}
+.done h2{margin:14px 0 10px;}
+.done p{font-size:15px;color:var(--navy-2);max-width:32ch;margin:0 auto;}
+
+.list{margin-top:46px;}
+.list div{display:grid;grid-template-columns:24px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule-2);font-size:15.5px;color:var(--navy-2);}
+.list div:first-child{border-top:1px solid var(--rule-2);}
+.list i{font-style:normal;font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--navy-3);padding-top:.45em;}
+
+.what{margin-top:56px;padding-top:24px;border-top:1px solid var(--rule);max-width:44em;}
+.what p{font-size:15px;color:var(--navy-2);line-height:1.7;}
+.what p+p{margin-top:12px;}
+
+footer{margin-top:96px;padding:26px 0 40px;border-top:1px solid var(--rule-2);}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--navy-3);}
+footer a{color:var(--navy-3);text-decoration:none;}
+footer a:hover{color:var(--aqua-ink);}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="w"><img src="../Optevalogo.png" alt="opteva"/></div></header>
+
+<div class="w">
+  <div class="grid">
+    <div>
+      <section class="hero">
+        <div class="lab">For agencies running client social</div>
+        <h1 style="margin-top:18px;">Send one client's handle. Get five posts in their voice.</h1>
+        <p class="lede">Pick the client you would least like to write for this week. We write five finished posts in that business's own voice and send them back. Yours to keep, whatever you decide after.</p>
+      </section>
+
+      <div class="list">
+        <div><i>01</i> Five posts, captions ready to publish</div>
+        <div><i>02</i> First comment written for each one</div>
+        <div><i>03</i> Visual direction so your designer is not guessing</div>
+        <div><i>04</i> Back inside 48 hours, written personally</div>
+      </div>
+
+      <div class="what">
+        <h2 style="margin-bottom:12px;">What opteva is</h2>
+        <p>opteva learns a business's voice from real inputs, then writes that business's content in its own voice. It publishes to Facebook and Instagram through the GoHighLevel social planner.</p>
+        <p>It installs at the agency level, inside the CRM you already run, so there is no integration project to run. Built by an operator who ran service businesses for 26 years, not by a software company guessing at it.</p>
+        <p class="fine" style="margin-top:16px;">Generic AI writes the category. It has never sat in a room with your client's customers. That is the whole difference, and five posts is enough to see it.</p>
+      </div>
+    </div>
+
+    <aside class="card" id="panel">
+      <div id="form">
+        <h2>Where do we send them?</h2>
+        <p class="fine">Three questions. Nothing else.</p>
+        <div class="f">
+          <div class="fld">
+            <label for="handle">One client's Instagram handle</label>
+            <div class="h">A real client account, or your own brand if you would rather start there.</div>
+            <div class="at"><span>@</span><input type="text" id="handle" autocomplete="off" spellcheck="false" placeholder="theirbusiness"/></div>
+          </div>
+          <div class="fld">
+            <label for="email">Your email</label>
+            <input type="email" id="email" autocomplete="email" placeholder="you@youragency.com"/>
+          </div>
+          <div class="fld">
+            <label for="count">How many client accounts are you running social for right now, or being asked to?</label>
+            <select id="count">
+              <option value="">Pick one</option>
+              <option value="10+">10 or more</option>
+              <option value="3-9">3 to 9</option>
+              <option value="1-2">1 or 2</option>
+              <option value="own">Just my own brand</option>
+            </select>
+            <p class="tier" id="tier" hidden></p>
+          </div>
+          <div>
+            <button type="button" class="go" id="send">Send me the posts</button>
+            <p class="err" id="err" hidden></p>
+            <p class="fine" style="margin-top:12px;">No cost and nothing to cancel. If they are not good enough to publish, you have lost the time it took to read them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="done" id="done" hidden>
+        <div class="tick">&#10003;</div>
+        <h2>Got it.</h2>
+        <p id="doneMsg">We will come back to you inside 48 hours with the posts, at the address you gave us.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer><div class="w">
+  <span>&copy; 2026 opteva</span>
+  <span><a href="mailto:hello@opteva.ai">hello@opteva.ai</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a></span>
+</div></footer>
+
+<script>
+// -----------------------------------------------------------------------
+// PASTE THE GOHIGHLEVEL INBOUND WEBHOOK URL HERE.
+// Automation > Workflows > Create Workflow > Add Trigger > Inbound Webhook.
+// While this is empty the form refuses to pretend it sent anything.
+// -----------------------------------------------------------------------
+var WEBHOOK_URL = '';
+
+var $ = function(id){ return document.getElementById(id); };
+
+// Steffi's tier rule, applied before they submit so the page never promises
+// five posts to someone the rule gives three.
+var TIERS = {
+  '10+' : {posts:5, tag:'audit-priority', note:'You are the case this was built for. Five posts, and yours goes first.'},
+  '3-9' : {posts:5, tag:'audit-standard', note:'Five posts, back inside 48 hours.'},
+  '1-2' : {posts:3, tag:'audit-light',    note:'At that size we send three posts, plus what this looks like across a full roster.'},
+  'own' : {posts:3, tag:'audit-light',    note:'For your own brand we send three posts, plus what this looks like across client accounts.'}
+};
+
+$('count').addEventListener('change', function(){
+  var t = TIERS[this.value];
+  var el = $('tier');
+  if(t){ el.textContent = t.note; el.hidden = false; }
+  else { el.hidden = true; }
+});
+
+$('send').addEventListener('click', function(){
+  var handle = $('handle').value.trim().replace(/^@+/, '');
+  var email  = $('email').value.trim();
+  var count  = $('count').value;
+  var err    = $('err');
+
+  var fail = null;
+  if(!handle)                                          fail = 'Add one client handle so we know who to write for.';
+  else if(!/^[\w.](?:[\w.]{0,28}[\w])?$/.test(handle)) fail = 'That handle does not look right. Letters, numbers, dots and underscores.';
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))   fail = 'Check the email address and try again.';
+  else if(!count)                                      fail = 'Pick how many client accounts you are running.';
+
+  if(fail){ err.textContent = fail; err.hidden = false; return; }
+  err.hidden = true;
+
+  var tier = TIERS[count];
+  var payload = {
+    email: email,
+    instagram_handle: handle,
+    client_accounts: count,
+    posts_promised: tier.posts,
+    segment_tag: tier.tag,
+    high_value: count === '10+',
+    source: 'five-post-audit-page'
+  };
+
+  var btn = $('send');
+  btn.disabled = true;
+  btn.textContent = 'Sending';
+
+  var finish = function(){
+    $('doneMsg').textContent = 'We will come back to you inside 48 hours with ' +
+      (tier.posts === 5 ? 'five posts' : 'three posts') + ' for @' + handle + ', at ' + email + '.';
+    $('form').hidden = true;
+    $('done').hidden = false;
+  };
+
+  var stuck = function(){
+    btn.disabled = false;
+    btn.textContent = 'Send me the posts';
+    err.textContent = 'That did not go through. Email hello@opteva.ai with the handle and we will pick it up from there.';
+    err.hidden = false;
+  };
+
+  if(!WEBHOOK_URL){ stuck(); return; }
+
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(function(r){ r && r.ok === false ? stuck() : finish(); }).catch(stuck);
+});
+</script>
+
+</body>
+</html>
