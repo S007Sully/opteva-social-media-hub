@@ -41,7 +41,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg)
 /* An editorial grid: a narrow label rail beside a wide content column.
    This asymmetry is what keeps the page off the centred-template look. */
 .ed{display:grid;grid-template-columns:180px minmax(0,1fr);gap:0 72px;align-items:start;}
-@media(max-width:900px){.ed{grid-template-columns:1fr;gap:22px;}}
+.ed>*{min-width:0;}
+@media(max-width:900px){.ed{grid-template-columns:minmax(0,1fr);gap:22px;}}
 
 .lab{font-size:10.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:var(--text-muted);
   padding-top:.9em;line-height:1.5;}
@@ -80,7 +81,7 @@ nav.on{box-shadow:0 1px 0 var(--border);}
   justify-content:space-between;gap:20px;}
 .nv img{height:32px;width:auto;display:block;}
 .nv .l{display:flex;align-items:center;gap:38px;}
-.nv .l a:not(.cta){font-size:14px;color:var(--text-secondary);text-decoration:none;}
+.nv .l a:not(.cta){font-size:14px;color:var(--text-secondary);text-decoration:none;display:inline-block;padding:4px 0;}
 .nv .l a:not(.cta):hover{color:var(--navy);}
 @media(max-width:860px){.nv .l a:not(.cta){display:none;}.nv{height:70px;}}
 
@@ -169,15 +170,15 @@ nav.on{box-shadow:0 1px 0 var(--border);}
 .embed iframe{width:100%;min-height:720px;border:0;display:block;border-radius:2px;}
 @media(max-width:600px){.embed iframe{min-height:820px;}}
 .book .xs{color:rgba(255,255,255,.4);margin-top:20px;}
-.book .xs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(61,188,178,.4);}
+.book .xs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(61,188,178,.4);display:inline-block;padding:4px 0;}
 
 footer{padding:76px 0 32px;}
 .f{display:grid;grid-template-columns:180px minmax(0,1fr) auto;gap:0 72px;align-items:start;}
 @media(max-width:900px){.f{grid-template-columns:1fr;gap:34px;}}
 .f img{height:28px;width:auto;}
-.f a{color:var(--text-secondary);text-decoration:none;}
+.f a{color:var(--text-secondary);text-decoration:none;display:inline-block;padding:4px 0;}
 .f a:hover{color:var(--teal-deep);}
-.f-l{display:flex;flex-direction:column;gap:10px;font-size:14px;}
+.f-l{display:flex;flex-direction:column;gap:4px;font-size:14px;}
 .f-b{margin-top:60px;padding-top:22px;border-top:1px solid var(--border-light);font-size:12.5px;color:var(--text-muted);
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
