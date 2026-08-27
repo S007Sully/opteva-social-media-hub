@@ -175,8 +175,8 @@ nav.scrolled{background:rgba(255,255,255,0.97);box-shadow:0 2px 16px rgba(0,0,0,
 /* Booking embed: the calendar lives on the page, so booking never leaves the site.
    min-height keeps it usable if GoHighLevel's resize script fails to load. */
 .booking-embed{width:100%;max-width:820px;margin:36px auto 0;background:#fff;border-radius:var(--radius-xl);padding:10px;box-shadow:0 18px 60px rgba(0,0,0,0.28);}
-.booking-embed iframe{width:100%;min-height:720px;border:none;display:block;border-radius:16px;}
-@media(max-width:600px){.booking-embed{padding:6px;margin-top:28px;}.booking-embed iframe{min-height:820px;}}
+.booking-embed iframe{width:100%;min-height:640px;border:none;display:block;border-radius:16px;}
+@media(max-width:600px){.booking-embed{padding:6px;margin-top:28px;}.booking-embed iframe{min-height:720px;}}
 
 /* FOOTER */
 footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding:44px 0 22px;}
@@ -422,7 +422,7 @@ footer{background:var(--bg-off);border-top:1px solid var(--border-light);padding
       <p class="subhead fade-up">Bring that handle to fifteen minutes and leave with five posts in their voice. Whatever you decide afterwards, the posts are yours.</p>
       <p class="cta-note fade-up" style="margin-top:18px;">Pick a time below. No form in between.</p>
       <div class="booking-embed fade-up">
-        <iframe src="https://api.opteva.ai/widget/booking/d2KmG49HKwyvLOS2HF5G" allow="payment" scrolling="no" id="msgsndr-calendar" title="Book fifteen minutes with Opteva"></iframe>
+        <iframe src="https://api.opteva.ai/widget/booking/d2KmG49HKwyvLOS2HF5G" allow="payment" style="width:100%;border:none;overflow:hidden;" scrolling="no" id="d2KmG49HKwyvLOS2HF5G_1787532098748" title="Book fifteen minutes with Opteva"></iframe>
       </div>
       <p class="cta-note fade-up" style="margin-top:18px;">Calendar not loading? <a href="https://api.opteva.ai/widget/bookings/opteva-free-audit" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;">Book here instead</a>.</p>
     </div>
@@ -477,7 +477,7 @@ function toggleFaq(btn){
   if(!wasOpen){ item.classList.add('open'); }
 }
 </script>
-<script src="https://api.opteva.ai/js/embed.js" type="text/javascript"></script>
+<script src="https://api.opteva.ai/js/form_embed.js" type="text/javascript"></script>
 
 </body>
 </html>
