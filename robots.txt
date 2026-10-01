@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /calculator.html
+Disallow: /opteva-growth-final.html
+Disallow: /opteva-social-media-app.html
+Disallow: /opteva-website.html
+Disallow: /supabase/
+
+Sitemap: https://opteva.ai/sitemap.xml
