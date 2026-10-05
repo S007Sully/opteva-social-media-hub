@@ -611,13 +611,30 @@ window.addEventListener('scroll', function(){
   navbar.classList.toggle('scrolled', window.scrollY > 20);
 }, {passive:true});
 
-// Reveal on scroll
+// Reveal on scroll. A fast flick or a scrollbar drag can jump an element
+// straight past the viewport in one frame, so the observer never catches it
+// mid-transit and it would otherwise stay at opacity:0 forever. The scroll
+// listener below is the fix: anything already above the fold gets revealed
+// too, not just what's currently on screen.
 var io = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
   });
-}, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+}, {threshold:0, rootMargin:'400px 0px 0px 0px'});
 document.querySelectorAll('.fade-up').forEach(function(el){ io.observe(el); });
+
+var revealPassed = function(){
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(function(el){
+    if(el.getBoundingClientRect().top < window.innerHeight){ el.classList.add('visible'); io.unobserve(el); }
+  });
+};
+window.addEventListener('scroll', revealPassed, {passive:true});
+window.addEventListener('resize', revealPassed, {passive:true});
+window.addEventListener('load', revealPassed);
+// One more pass once images have had time to load and settle the layout,
+// in case that shifted something already-scrolled-to out from under the
+// reveal check above.
+window.addEventListener('load', function(){ setTimeout(revealPassed, 1500); });
 
 // FAQ accordion: one open at a time
 // (GoHighLevel's embed.js is loaded at the end of the body)
